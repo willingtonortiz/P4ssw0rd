@@ -2,8 +2,9 @@ import { Alfabeto } from "../Alfabeto/Alfabeto";
 import { Rotor } from "./Rotor";
 import { Reflector } from "./Reflector";
 import { EnigmaAlfabeto } from "./EnigmaAlfabeto";
+import { IEncryptor } from "../../Interfaces/IEncryptor";
 
-export class Enigma {
+export class Enigma implements IEncryptor {
 	// Singleton
 	private static instancia: Enigma = null;
 
@@ -97,7 +98,7 @@ export class Enigma {
 	}
 
 	// Devuelve el texto cifrado
-	public cifrarTexto(texto: string): string {
+	private cifrarTexto(texto: string): string {
 		let cadena: string = "";
 		for (let i = 0; i < texto.length; ++i) {
 			cadena += this.cifrarLetra(texto[i]);
@@ -106,5 +107,13 @@ export class Enigma {
 		this.rotorII.reiniciar();
 		this.rotorIII.reiniciar();
 		return cadena;
+	}
+
+	public encrypt(text: string): string {
+		return this.cifrarTexto(text);
+	}
+
+	public decrypt(text: string): string {
+		return this.cifrarTexto(text);
 	}
 }
