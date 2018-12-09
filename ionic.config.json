@@ -1,5 +1,7 @@
 {
   "name": "p4ssw0rd",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
