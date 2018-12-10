@@ -5,16 +5,21 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 import { StatusBar } from "@ionic-native/status-bar";
 
 import { MyApp } from "./app.component";
+
+// Páginas
 import { HomePage } from "../pages/home/home";
+import { PinPage } from "../pages/pin/pin";
 
 // Storage
 import { IonicStorageModule } from "@ionic/storage";
 
 // Providers
 import { CuentaDAO } from "../daos/CuentaDAO";
+import { PinDAO } from "../daos/PinDAO";
+import { AgregarCuentaPage } from "../pages/agregar-cuenta/agregar-cuenta";
 
 @NgModule({
-	declarations: [MyApp, HomePage],
+	declarations: [MyApp, HomePage, PinPage, AgregarCuentaPage],
 
 	imports: [
 		BrowserModule,
@@ -22,12 +27,13 @@ import { CuentaDAO } from "../daos/CuentaDAO";
 		IonicStorageModule.forRoot()
 	],
 	bootstrap: [IonicApp],
-	entryComponents: [MyApp, HomePage],
+	entryComponents: [MyApp, HomePage, PinPage, AgregarCuentaPage],
 	providers: [
 		StatusBar,
 		SplashScreen,
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
-		CuentaDAO
+		CuentaDAO,
+		PinDAO
 	]
 })
 export class AppModule {}

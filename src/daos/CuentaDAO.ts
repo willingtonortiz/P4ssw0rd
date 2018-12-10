@@ -111,14 +111,15 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 		return false;
 	}
 
-	public getAll(): Array<DTOCuenta> {
-		this.storage.get("cuentas").then((data: string) => {
-			if (data) {
-				return JSON.parse(data);
-			} else {
-				return null;
-			}
+	public getAll(): Promise<{}> {
+		return new Promise((resolve, reject) => {
+			this.storage.get("cuentas").then((data: string) => {
+				if (data) {
+					resolve(JSON.parse(data));
+				} else {
+					resolve(null);
+				}
+			});
 		});
-		return null;
 	}
 }

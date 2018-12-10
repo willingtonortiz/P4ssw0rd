@@ -1,22 +1,36 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { Component } from "@angular/core";
+import { Platform } from "ionic-angular";
+import { StatusBar } from "@ionic-native/status-bar";
+import { SplashScreen } from "@ionic-native/splash-screen";
 
-import { HomePage } from '../pages/home/home';
+import { HomePage } from "../pages/home/home";
+import { PinPage } from "../pages/pin/pin";
+import { PinDAO } from "../daos/PinDAO";
+
 @Component({
-  templateUrl: 'app.html'
+	templateUrl: "app.html"
 })
 export class MyApp {
-  rootPage:any = HomePage;
+	// rootPage: any = HomePage;
+	rootPage: any = PinPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-    });
-  }
+	constructor(
+		platform: Platform,
+		statusBar: StatusBar,
+		splashScreen: SplashScreen,
+		private pinDao: PinDAO
+	) {
+		platform.ready().then(() => {
+			pinDao.getPin().then((data: string) => {
+				console.log(data);
+				if (data) {
+					this.rootPage = HomePage;
+				} else {
+					this.rootPage = PinPage;
+				}
+				statusBar.styleDefault();
+				splashScreen.hide();
+			});
+		});
+	}
 }
-

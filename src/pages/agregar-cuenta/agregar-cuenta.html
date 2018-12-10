@@ -1,0 +1,13 @@
+<button (click)="regresar()">Regresar</button>
+
+<label>Nueva cuenta</label>
+<input type="text" placeholder="Tipo de cuenta" [(ngModel)]="type" />
+<input
+	type="text"
+	placeholder="Descripción de la cuenta"
+	[(ngModel)]="description"
+/>
+<input type="text" placeholder="Usuario" [(ngModel)]="user" />
+<input type="text" placeholder="Contraseña" [(ngModel)]="password" />
+
+<button (click)="agregarCuenta()">Añadir cuenta</button>
