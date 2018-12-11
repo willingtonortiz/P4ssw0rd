@@ -1,8 +1,10 @@
 import { Component } from "@angular/core";
-import { NavController } from "ionic-angular";
+import { NavController, AlertController } from "ionic-angular";
 import { AgregarCuentaPage } from "../agregar-cuenta/agregar-cuenta";
 import { CuentaDAO } from "../../daos/CuentaDAO";
 import { DTOCuenta } from "../../dtos/DTOCuenta";
+import { EditAccountPage } from "../edit-account/edit-account";
+import { PinDAO } from "../../daos/PinDAO";
 
 @Component({
 	selector: "page-home",
@@ -11,7 +13,12 @@ import { DTOCuenta } from "../../dtos/DTOCuenta";
 export class HomePage {
 	private cuentas: Array<DTOCuenta>;
 
-	constructor(public navCtrl: NavController, private cuentaDao: CuentaDAO) {
+	constructor(
+		public navCtrl: NavController,
+		private cuentaDao: CuentaDAO,
+		private alertController: AlertController,
+		private pinDao: PinDAO
+	) {
 		console.log("Estoy en home");
 	}
 
@@ -23,5 +30,43 @@ export class HomePage {
 
 	private agregarCuenta(): void {
 		this.navCtrl.push(AgregarCuentaPage);
+	}
+
+	private editAccount(item: DTOCuenta): void {
+		let promise = new Promise((resolve, reject) => {
+			this.alertController
+				.create({
+					title: "Ingrese el pin",
+					inputs: [
+						{
+							name: "pin",
+							placeholder: "Pin"
+						}
+					],
+					buttons: [
+						{
+							text: "Aceptar",
+							handler: (data: any) => {
+								console.log("Entré aqui", data);
+								this.pinDao
+									.verifyPin(data.pin)
+									.then((data: boolean) => {
+										if (data) {
+											this.navCtrl.push(
+												EditAccountPage,
+												item
+											);
+										}
+									});
+							}
+						},
+						{
+							text: "Cancelar",
+							handler: (data: string) => {}
+						}
+					]
+				})
+				.present();
+		});
 	}
 }

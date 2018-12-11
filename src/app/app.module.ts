@@ -9,6 +9,7 @@ import { MyApp } from "./app.component";
 // Páginas
 import { HomePage } from "../pages/home/home";
 import { PinPage } from "../pages/pin/pin";
+import { AgregarCuentaPage } from "../pages/agregar-cuenta/agregar-cuenta";
 
 // Storage
 import { IonicStorageModule } from "@ionic/storage";
@@ -16,10 +17,16 @@ import { IonicStorageModule } from "@ionic/storage";
 // Providers
 import { CuentaDAO } from "../daos/CuentaDAO";
 import { PinDAO } from "../daos/PinDAO";
-import { AgregarCuentaPage } from "../pages/agregar-cuenta/agregar-cuenta";
+import { EditAccountPage } from "../pages/edit-account/edit-account";
 
 @NgModule({
-	declarations: [MyApp, HomePage, PinPage, AgregarCuentaPage],
+	declarations: [
+		MyApp,
+		HomePage,
+		PinPage,
+		AgregarCuentaPage,
+		EditAccountPage
+	],
 
 	imports: [
 		BrowserModule,
@@ -27,7 +34,13 @@ import { AgregarCuentaPage } from "../pages/agregar-cuenta/agregar-cuenta";
 		IonicStorageModule.forRoot()
 	],
 	bootstrap: [IonicApp],
-	entryComponents: [MyApp, HomePage, PinPage, AgregarCuentaPage],
+	entryComponents: [
+		MyApp,
+		HomePage,
+		PinPage,
+		AgregarCuentaPage,
+		EditAccountPage
+	],
 	providers: [
 		StatusBar,
 		SplashScreen,

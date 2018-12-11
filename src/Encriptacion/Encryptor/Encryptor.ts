@@ -13,6 +13,7 @@ export class Encryptor implements IEncryptor {
 	encrypt(text: string): string {
 		return this.enigma.encrypt(text);
 	}
+
 	decrypt(text: string): string {
 		return this.enigma.decrypt(text);
 	}

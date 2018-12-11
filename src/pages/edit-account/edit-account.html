@@ -1,0 +1,11 @@
+<ion-header>
+	<ion-navbar> <ion-title>Editar cuenta</ion-title> </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<input type="text" [(ngModel)]="account.email" />
+	<input type="text" [(ngModel)]="account.password" />
+	<input type="text" [(ngModel)]="account.description" />
+	<input type="text" [(ngModel)]="account.type" />
+	<button (click)="editAccount()">Editar Cuenta</button>
+</ion-content>
