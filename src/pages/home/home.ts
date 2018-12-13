@@ -12,7 +12,7 @@ import { PinDAO } from "../../daos/PinDAO";
 })
 export class HomePage {
 	private cuentas: Array<DTOCuenta>;
-
+	public eventAdd = false;
 	constructor(
 		public navCtrl: NavController,
 		private cuentaDao: CuentaDAO,
@@ -29,7 +29,8 @@ export class HomePage {
 	}
 
 	private agregarCuenta(): void {
-		this.navCtrl.push(AgregarCuentaPage);
+		// this.navCtrl.push(AgregarCuentaPage);
+		this.eventAdd = !this.eventAdd;
 	}
 
 	private editAccount(item: DTOCuenta): void {

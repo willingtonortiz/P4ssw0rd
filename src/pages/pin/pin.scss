@@ -1,53 +1,83 @@
-#pinContainer{
-	background: map-get($colors,principal);
-	height: 100vh;
-	padding: 50px;
-	width: 100%;
-	#pinElements{
-		height: 100%;
-		#logoPin{
-			position: absolute;
-			top: 10%;
-			left: 50%;
-			transform: translate(-50%,-10%);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-			p{
-				font-family: map-get($fonts,Lato);
-				font-size: 20px;
-				font-weight: 300;
-				color: #d0d0d0;
-			}
-		}
-		#inputPin{
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%,-50%);
-
-			#IngresePinText{
-				font-family: map-get($fonts,OpenSans);
-				font-size: 14px;
-				color: map-get($colors,verde);
-				text-align: center;
-			}
-		}
-		#btnPin{
-			position: absolute;
-			top: 90%;
-			left: 50%;
-			transform: translate(-50%,-90%);
-			button{
-				width: 70vw;
-				border-radius: 4px;
-				padding: 14px 0;
-				color: map-get($colors,verde);
-				font-size: 14px;
-				font-family: map-get($fonts,OpenSans );
-				background: rgba(255,255,255,.02);
-			}
-		}
+#pinContainer {
+    background: map-get($colors, principal);
+    height: 100vh;
+    padding: 50px;
+    width: 100%;
+    #pinElements {
+        height: 100%;
+        #logoPin {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -10%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            p {
+                font-family: map-get($fonts, Lato);
+                font-size: 20px;
+                font-weight: 300;
+                color: #d0d0d0;
+            }
+        }
+        #inputPin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            #IngresePinText {
+                font-family: map-get($fonts, OpenSans);
+                font-size: 14px;
+                color: map-get($colors, verde);
+                text-align: center;
+            }
+        }
+        #btnPin {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -90%);
+            button {
+                width: 70vw;
+                border-radius: 4px;
+                padding: 14px 0;
+                color: map-get($colors, verde);
+                font-size: 14px;
+                font-family: map-get($fonts, OpenSans);
+                background: rgba(255, 255, 255, .02);
+            }
+        }
+    }
+    .item-md.item-input.item-input-has-focus .item-inner,
+    .item-md.item-input.input-has-focus .item-inner {
+        border-bottom-color: map-get($colors, blanco-medio) !important;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .list-md .item-input.item-input-has-focus:last-child,
+    .list-md .item-input.input-has-focus:last-child {
+        border-bottom-color: map-get($colors, blanco-medio) !important;
+        -webkit-box-shadow: none;
+        box-shadow: none;
 	}
+	.item-input-has-focus .label-md[stacked],
+.input-has-focus .label-md[stacked],
+.item-input-has-focus .label-md[floating],
+.input-has-focus .label-md[floating] {
+	color: #fff;
+}
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+  border-bottom-color: map-get($colors,verde );
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
+  border-bottom-color: map-get($colors,verde );
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 }

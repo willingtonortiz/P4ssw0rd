@@ -8,7 +8,12 @@
 	<div id="addAccountContainer">
 		<button (click)="agregarCuenta()">
 			<img width="20" height="20" src="../../assets/AddAcountIcon.svg" alt="">
-			Nueva cuenta </button>
+			Nueva cuenta
+		</button>
+
+		<page-agregar-cuenta *ngIf="eventAdd"></page-agregar-cuenta>
+
+
 	</div>
 
 
@@ -29,6 +34,3 @@
 
 
 </ion-content>
-
-
-
