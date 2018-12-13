@@ -19,7 +19,7 @@ export class HomePage {
 		private alertController: AlertController,
 		private pinDao: PinDAO
 	) {
-		console.log("Estoy en home");
+		console.log("Estoy en home con tu gfa");
 	}
 
 	ionViewWillEnter(): void {

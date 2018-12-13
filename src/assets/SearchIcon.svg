@@ -1,0 +1,12 @@
+<svg id="SearchIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.006 12.374">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Group_59" data-name="Group 59" transform="translate(0)">
+    <path id="Path_111" data-name="Path 111" class="cls-1" d="M15.529,8.078a4.75,4.75,0,1,0-.646.588l3.578,3.578a.43.43,0,0,0,.3.131.418.418,0,0,0,.3-.131.443.443,0,0,0,0-.617ZM8.061,4.812A3.941,3.941,0,1,1,12,8.753,3.945,3.945,0,0,1,8.061,4.812Z" transform="translate(-7.19)"/>
+  </g>
+</svg>

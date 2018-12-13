@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.143 16.143">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #5cf3bc;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #5cf3bc;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="AddAcountIcon" transform="translate(3.078 3)">
+    <path id="Path_68" data-name="Path 68" class="cls-1" d="M88.541,92.566h3.178v3.178a.424.424,0,1,0,.847,0V92.566h3.178a.424.424,0,1,0,0-.847H92.566V88.541a.424.424,0,1,0-.847,0v3.178H88.541a.424.424,0,1,0,0,.847Z" transform="translate(-86.928 -86.903)"/>
+    <g id="Ellipse_21" data-name="Ellipse 21" class="cls-2" transform="translate(-3.078 -3)">
+      <circle class="cls-3" cx="8.071" cy="8.071" r="8.071"/>
+      <circle class="cls-4" cx="8.071" cy="8.071" r="7.571"/>
+    </g>
+  </g>
+</svg>

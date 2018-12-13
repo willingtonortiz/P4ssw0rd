@@ -1,9 +1,34 @@
-<button (click)="agregarCuenta()">Nueva cuenta</button>
+<ion-content id="homeContainer" padding>
 
-<div *ngFor="let cuenta of cuentas">
-	<p>Usuario: {{ cuenta.email }}</p>
-	<p>Contraseña: {{ cuenta.password }}</p>
-	<p>Descripción: {{ cuenta.description }}</p>
-	<p>Tipo: {{ cuenta.type }}</p>
-	<button (click)="editAccount(cuenta)">Editar Cuenta</button>
-</div>
+	<div id="headerContainer">
+		<img id="logo" width="25" height="25" src="../../assets/Logo.svg" alt="">
+		<img id="configuration" width="25" height="25" src="../../assets/OpcionesTop.svg" alt="">
+	</div>
+
+	<div id="addAccountContainer">
+		<button (click)="agregarCuenta()">
+			<img width="20" height="20" src="../../assets/AddAcountIcon.svg" alt="">
+			Nueva cuenta </button>
+	</div>
+
+
+	<div id="myAccountsContainer">
+		<div id="headerAccountsContainer">
+			<p>Mis cuentas</p>
+			<img width="18.5" height="18.5" src="../../assets/SearchIcon.svg" alt="">
+		</div>
+		<div *ngFor="let cuenta of cuentas">
+			<p>Usuario: {{ cuenta.email }}</p>
+			<p>Contraseña: {{ cuenta.password }}</p>
+			<p>Descripción: {{ cuenta.description }}</p>
+			<p>Tipo: {{ cuenta.type }}</p>
+			<button (click)="editAccount(cuenta)">Editar Cuenta</button>
+		</div>
+	</div>
+
+
+
+</ion-content>
+
+
+
