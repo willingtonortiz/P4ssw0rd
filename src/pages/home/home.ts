@@ -12,14 +12,14 @@ import { PinDAO } from "../../daos/PinDAO";
 })
 export class HomePage {
 	private cuentas: Array<DTOCuenta>;
-
+	public eventAdd = false;
 	constructor(
 		public navCtrl: NavController,
 		private cuentaDao: CuentaDAO,
 		private alertController: AlertController,
 		private pinDao: PinDAO
 	) {
-		console.log("Estoy en home");
+		console.log("Estoy en home con tu gfa");
 	}
 
 	ionViewWillEnter(): void {
@@ -33,7 +33,8 @@ export class HomePage {
 	}
 
 	private agregarCuenta(): void {
-		this.navCtrl.push(AgregarCuentaPage);
+		// this.navCtrl.push(AgregarCuentaPage);
+		this.eventAdd = !this.eventAdd;
 	}
 
 	private editAccount(item: DTOCuenta): void {

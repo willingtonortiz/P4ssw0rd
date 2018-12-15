@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 267 267">
+  <defs>
+    <style>
+      .cls-1, .cls-14, .cls-9 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #707070;
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-5 {
+        opacity: 0.25;
+        clip-path: url(#clip-path);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-7 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-8 {
+        clip-path: url(#clip-path-2);
+      }
+
+      .cls-9 {
+        opacity: 0.13;
+      }
+
+      .cls-10, .cls-12 {
+        opacity: 0.67;
+      }
+
+      .cls-10 {
+        clip-path: url(#clip-path-3);
+      }
+
+      .cls-11 {
+        fill: url(#linear-gradient-6);
+      }
+
+      .cls-12 {
+        clip-path: url(#clip-path-4);
+      }
+
+      .cls-13 {
+        fill: url(#linear-gradient-7);
+      }
+
+      .cls-14 {
+        opacity: 0.36;
+      }
+
+      .cls-15 {
+        opacity: 0.35;
+      }
+
+      .cls-16 {
+        filter: url(#Ellipse_11);
+      }
+
+      .cls-17 {
+        filter: url(#Ellipse_15);
+      }
+
+      .cls-18 {
+        filter: url(#Ellipse_2);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.202" y1="0.068" x2="0.823" y2="0.89" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#b276ff"/>
+      <stop offset="1" stop-color="#f87373"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.163" y1="0.149" x2="0.877" y2="0.83" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4aa1d4"/>
+      <stop offset="1" stop-color="#73d5f8"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_12" data-name="Ellipse 12" class="cls-1" cx="50.5" cy="50.5" r="50.5" transform="translate(86 219)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-3" x1="0.147" y1="0.125" x2="0.869" y2="0.903" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4a6ad4"/>
+      <stop offset="1" stop-color="#73f8b1"/>
+    </linearGradient>
+    <filter id="Ellipse_2" x="0" y="0" width="267" height="267" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="30.5" result="blur"/>
+      <feFlood flood-color="#101010"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-4" x1="0.147" y1="0.125" x2="0.869" y2="0.903" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f6ff76"/>
+      <stop offset="1" stop-color="#f87373"/>
+    </linearGradient>
+    <filter id="Ellipse_15" x="175.53" y="27.5" width="67.93" height="67.93" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="6" result="blur-2"/>
+      <feFlood flood-color="#f88673"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_11" x="83" y="141" width="90.259" height="90.259" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-3"/>
+      <feFlood flood-color="#ff8181" flood-opacity="0.471"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path-2">
+      <circle id="Ellipse_4" data-name="Ellipse 4" class="cls-2" cx="22.63" cy="22.63" r="22.63" transform="translate(0 0)"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <path id="Path_161" data-name="Path 161" class="cls-3" d="M2606.772,202.678s14.878-2.06-2.06,9.155-63.4,32.959-86.519,19.455-32.73-6.409-32.73-6.409,5.264-2.289,17.166,9.613,9.842,24.033,32.959,12.818,25.177-10.986,40.284-6.18,39.368-10.3,42.344-25.406S2606.772,202.678,2606.772,202.678Z" transform="translate(-2358)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-6" x1="0.147" y1="0.125" x2="0.869" y2="0.903" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4aabd4"/>
+      <stop offset="1" stop-color="#73f8b1"/>
+    </linearGradient>
+    <clipPath id="clip-path-4">
+      <path id="Path_163" data-name="Path 163" class="cls-3" d="M2531.574,202.586s5.655-.783-.783,3.48-24.1,12.528-32.887,7.4-12.441-2.436-12.441-2.436,2-.87,6.525,3.654,3.741,9.135,12.528,4.872,9.57-4.176,15.312-2.349,14.965-3.915,16.1-9.657S2531.574,202.586,2531.574,202.586Z" transform="translate(-2485.463 -202.529)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-7" x1="0.147" y1="0.125" x2="0.869" y2="0.903" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#f87373"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_87" data-name="Group 87" transform="translate(-45.5 -56.5)">
+    <circle id="Ellipse_3" data-name="Ellipse 3" class="cls-4" cx="50.5" cy="50.5" r="50.5" transform="translate(76 169)"/>
+    <g id="Mask_Group_2" data-name="Mask Group 2" class="cls-5" transform="translate(-10 -50)">
+      <circle id="Ellipse_13" data-name="Ellipse 13" class="cls-1" cx="22" cy="22" r="22" transform="translate(75 219)"/>
+      <path id="Path_159" data-name="Path 159" class="cls-1" d="M2419.308,305.51s.3,25.887,26.185-20.531,63.973,9.522,95.811-1.785,32.73,12.795,32.73,12.795-33.92-10.414-44.037,16.663-24.7-38.384-46.716-32.731-44.632,48.5-60.4,39.872S2419.308,305.51,2419.308,305.51Z" transform="translate(-2358)"/>
+      <path id="Path_160" data-name="Path 160" class="cls-1" d="M2419.308,305.51s.3,25.887,26.185-20.531,63.973,9.522,95.811-1.785,32.73,12.795,32.73,12.795-33.92-10.414-44.037,16.663-24.7-38.384-46.716-32.731-44.632,48.5-60.4,39.872S2419.308,305.51,2419.308,305.51Z" transform="translate(-2346 34)"/>
+    </g>
+    <g class="cls-18" transform="matrix(1, 0, 0, 1, 45.5, 56.5)">
+      <circle id="Ellipse_2-2" data-name="Ellipse 2" class="cls-6" cx="42" cy="42" r="42" transform="translate(94.5 91.5)"/>
+    </g>
+    <g class="cls-17" transform="matrix(1, 0, 0, 1, 45.5, 56.5)">
+      <circle id="Ellipse_15-2" data-name="Ellipse 15" class="cls-7" cx="15.965" cy="15.965" r="15.965" transform="translate(196.53 45.5)"/>
+    </g>
+    <g id="Group_84" data-name="Group 84" transform="translate(19 -35)">
+      <g class="cls-16" transform="matrix(1, 0, 0, 1, 26.5, 91.5)">
+        <circle id="Ellipse_11-2" data-name="Ellipse 11" class="cls-2" cx="22.63" cy="22.63" r="22.63" transform="translate(108.5 163.5)"/>
+      </g>
+      <g id="Mask_Group_1" data-name="Mask Group 1" class="cls-8" transform="translate(135 255)">
+        <path id="Path_158" data-name="Path 158" class="cls-9" d="M2000.807,517.952s-13.281-.221-1.55-20.364-27.669-35.416-27.669-35.416-23.905,3.763-12.4,18.815,23.241-1.992,25.012,11.953,7.747,30.1,7.747,30.1Z" transform="translate(-1966.042 -465.727)"/>
+      </g>
+    </g>
+    <g id="Mask_Group_3" data-name="Mask Group 3" class="cls-10" transform="translate(-10 -50)">
+      <circle id="Ellipse_14" data-name="Ellipse 14" class="cls-11" cx="42" cy="42" r="42" transform="translate(150 198)"/>
+    </g>
+    <g id="Mask_Group_4" data-name="Mask Group 4" class="cls-12" transform="translate(233.463 103.722)">
+      <circle id="Ellipse_16" data-name="Ellipse 16" class="cls-13" cx="15.965" cy="15.965" r="15.965" transform="translate(8.567 -1.722)"/>
+    </g>
+    <path id="facebook" class="cls-14" d="M13.629,37.447h-6a1.818,1.818,0,0,1-1.817-1.817V22.1h-3.5A1.819,1.819,0,0,1,.5,20.288v-5.8a1.818,1.818,0,0,1,1.817-1.817h3.5v-2.9a9.883,9.883,0,0,1,2.613-7.08A9.412,9.412,0,0,1,15.368,0l4.574.007a1.819,1.819,0,0,1,1.813,1.817V7.205a1.818,1.818,0,0,1-1.816,1.817H16.86c-.939,0-1.178.188-1.229.246-.084.1-.185.366-.185,1.113v2.293h4.262a1.846,1.846,0,0,1,.9.228,1.823,1.823,0,0,1,.935,1.589l0,5.8A1.818,1.818,0,0,1,19.722,22.1H15.446V35.631a1.819,1.819,0,0,1-1.817,1.817Zm-5.618-2.2H13.25V21.122a1.214,1.214,0,0,1,1.213-1.213h4.88l0-5.038H14.462a1.214,1.214,0,0,1-1.213-1.213V10.382a3.739,3.739,0,0,1,.735-2.566,3.721,3.721,0,0,1,2.874-.989h2.7V2.2l-4.193-.007c-4.536,0-7.355,2.9-7.355,7.578v3.885A1.214,1.214,0,0,1,6.8,14.871H2.7v5.038H6.8a1.214,1.214,0,0,1,1.213,1.213ZM19.937,2.2h0Zm0,0" transform="translate(104.573 201.536) rotate(-13)"/>
+    <g id="mail" class="cls-15" transform="translate(159.325 183.348) rotate(-30)">
+      <g id="Group_85" data-name="Group 85">
+        <path id="Path_164" data-name="Path 164" class="cls-1" d="M25.109,21.51a.5.5,0,0,1-.342-.136l-5.754-5.4a.5.5,0,1,1,.685-.728l5.754,5.4a.5.5,0,0,1-.343.864Z"/>
+        <path id="Path_165" data-name="Path 165" class="cls-1" d="M5.9,21.51a.5.5,0,0,1-.343-.864l5.756-5.4a.5.5,0,1,1,.685.728l-5.756,5.4A.5.5,0,0,1,5.9,21.51Z"/>
+      </g>
+      <path id="Path_166" data-name="Path 166" class="cls-1" d="M28.512,26.529H2.5a2.5,2.5,0,0,1-2.5-2.5V6.982a2.5,2.5,0,0,1,2.5-2.5H28.512a2.5,2.5,0,0,1,2.5,2.5V24.029A2.5,2.5,0,0,1,28.512,26.529ZM2.5,5.482A1.5,1.5,0,0,0,1,6.982V24.029a1.5,1.5,0,0,0,1.5,1.5H28.512a1.5,1.5,0,0,0,1.5-1.5V6.982a1.5,1.5,0,0,0-1.5-1.5Z"/>
+      <path id="Path_167" data-name="Path 167" class="cls-1" d="M15.506,18.018a2.8,2.8,0,0,1-1.836-.662L.83,6.155A.5.5,0,1,1,1.487,5.4l12.84,11.2a1.871,1.871,0,0,0,2.357,0L29.508,5.419a.5.5,0,1,1,.658.754L17.342,17.355A2.794,2.794,0,0,1,15.506,18.018Z"/>
+    </g>
+  </g>
+</svg>

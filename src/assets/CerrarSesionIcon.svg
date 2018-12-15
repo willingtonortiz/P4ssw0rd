@@ -1,0 +1,13 @@
+<svg id="CerrarSesionIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.259 13.817">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff607a;
+      }
+    </style>
+  </defs>
+  <g id="Group_40" data-name="Group 40" transform="translate(0)">
+    <path id="Path_70" data-name="Path 70" class="cls-1" d="M27.1,74.809a.56.56,0,1,0-.606-.942,6.128,6.128,0,1,0,6.745.1.558.558,0,0,0-.625.924,5.01,5.01,0,1,1-7.827,4.142A4.947,4.947,0,0,1,27.1,74.809Z" transform="translate(-23.658 -71.348)"/>
+    <path id="Path_71" data-name="Path 71" class="cls-1" d="M193.928,8.21V.56a.56.56,0,1,0-1.12,0V8.21a.56.56,0,1,0,1.12,0Z" transform="translate(-187.238)"/>
+  </g>
+</svg>
