@@ -23,6 +23,10 @@ export class HomePage {
 	}
 
 	ionViewWillEnter(): void {
+		this.actualizarCuentas();
+	}
+
+	private actualizarCuentas(): void {
 		this.cuentaDao.getAll().then((data: Array<DTOCuenta>) => {
 			this.cuentas = data;
 		});
@@ -63,6 +67,41 @@ export class HomePage {
 						{
 							text: "Cancelar",
 							handler: (data: string) => {}
+						}
+					]
+				})
+				.present();
+		});
+	}
+
+	private deleteAccount(item: DTOCuenta) {
+		let promise = new Promise((resolve, reject) => {
+			this.alertController
+				.create({
+					title: "Ingrese su pin",
+					inputs: [
+						{
+							name: "pin",
+							placeholder: "Pin"
+						}
+					],
+					buttons: [
+						{
+							text: "Aceptar",
+							handler: (data: any) => {
+								this.pinDao
+									.verifyPin(data.pin)
+									.then((data: boolean) => {
+										if (data) {
+											this.cuentaDao.delete(item);
+											this.actualizarCuentas();
+										}
+									});
+							}
+						},
+						{
+							text: "Cancelar",
+							handler: (data: any) => {}
 						}
 					]
 				})

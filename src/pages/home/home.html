@@ -5,5 +5,8 @@
 	<p>Contraseña: {{ cuenta.password }}</p>
 	<p>Descripción: {{ cuenta.description }}</p>
 	<p>Tipo: {{ cuenta.type }}</p>
-	<button (click)="editAccount(cuenta)">Editar Cuenta</button>
+	<div>
+		<button (click)="editAccount(cuenta)">Editar Cuenta</button>
+		<button (click)="deleteAccount(cuenta)">Borrar Cuenta</button>
+	</div>
 </div>
