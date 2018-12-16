@@ -1,0 +1,10 @@
+<button (click)="regresar()">Regresar</button>
+<div *ngFor="let cuentas of tiposCuentas">
+	<p>Usuario: {{cuentas.email}}</p>
+	<p>Contraseña: {{cuentas.password}}</p>
+	<p>Categorias: </p>
+	<div *ngFor="let categorias of cuentas.categories">
+		<span>{{categorias}}  </span>
+	</div>
+	<button (click)="editAccount(cuenta)">Editar Cuenta</button>
+</div>

@@ -22,15 +22,37 @@
 			<p>Mis cuentas</p>
 			<img width="18.5" height="18.5" src="../../assets/SearchIcon.svg" alt="">
 		</div>
-		<div *ngFor="let cuenta of cuentas">
+		<div *ngFor="let cuenta of tiposCuentas.accounts" class="grid-container" (click)="mostrarCuentas( cuenta.first )">
+		<!-- <div *ngFor="let cuenta of tiposCuentas.accounts" class="grid-container" (click)="mostrarCuentas( 'trabajo' )"> -->
+			<img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="" >
+			<span >{{ cuenta.first }}</span>
+			<span>{{  cuenta.second.length}} cuentas</span>
+		</div>
+		<!-- <div *ngFor="let cuenta of cuentas">
 			<p>Usuario: {{ cuenta.email }}</p>
 			<p>Contraseña: {{ cuenta.password }}</p>
 			<p>Descripción: {{ cuenta.description }}</p>
 			<p>Tipo: {{ cuenta.type }}</p>
 			<button (click)="editAccount(cuenta)">Editar Cuenta</button>
-		</div>
+		</div> -->
 	</div>
 
 
 
 </ion-content>
+
+<!-- <div class="grid-header">
+
+	<button (click)="agregarCuenta()">Nueva cuenta</button>
+	<h2 *ngIf = "!buscando" >Mis cuentas</h2>
+	<input *ngIf= " buscando " type="text" placeholder="Buscar categoria">
+	<ion-icon name="search" (click)="buscando=!buscando" ></ion-icon>
+
+</div>
+
+<div *ngFor="let cuenta of tiposCuentas.accounts" class="grid-container" (click)="mostrarCuentas( cuenta.first )">
+	<img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="" >
+	<span >{{ cuenta.first }}</span>
+	<span>{{  cuenta.second.length}} cuentas</span>
+</div> -->
+

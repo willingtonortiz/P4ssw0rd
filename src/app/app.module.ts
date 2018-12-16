@@ -19,14 +19,18 @@ import { CuentaDAO } from "../daos/CuentaDAO";
 import { PinDAO } from "../daos/PinDAO";
 import { EditAccountPage } from "../pages/edit-account/edit-account";
 
+import { MostrarCuentasPage } from "../pages/mostrar-cuentas/mostrar-cuentas"
+
 @NgModule({
 	declarations: [
 		MyApp,
 		HomePage,
 		PinPage,
 		AgregarCuentaPage,
-		EditAccountPage
+		EditAccountPage,
+		MostrarCuentasPage
 	],
+	// declarations: [MyApp, HomePage, PinPage, AgregarCuentaPage,MostrarCuentasPage],
 
 	imports: [
 		BrowserModule,
@@ -39,8 +43,10 @@ import { EditAccountPage } from "../pages/edit-account/edit-account";
 		HomePage,
 		PinPage,
 		AgregarCuentaPage,
-		EditAccountPage
+		EditAccountPage,
+		MostrarCuentasPage
 	],
+	// entryComponents: [MyApp, HomePage, PinPage, AgregarCuentaPage,MostrarCuentasPage],
 	providers: [
 		StatusBar,
 		SplashScreen,
@@ -49,4 +55,4 @@ import { EditAccountPage } from "../pages/edit-account/edit-account";
 		PinDAO
 	]
 })
-export class AppModule {}
+export class AppModule { }

@@ -7,6 +7,8 @@ import { HomePage } from "../pages/home/home";
 import { PinPage } from "../pages/pin/pin";
 import { PinDAO } from "../daos/PinDAO";
 
+
+
 @Component({
 	templateUrl: "app.html"
 })
