@@ -29,7 +29,7 @@ export class MostrarCuentasPage {
 		private alertController: AlertController,
 		private pinDao: PinDAO) {
 		this.tiposCuentas = DTOTiposCuentas.getInstancia().getActual().second;
-		console.log(this.tiposCuentas);
+		//console.log(this.tiposCuentas);
 	}
 
 	ionViewDidLoad() {

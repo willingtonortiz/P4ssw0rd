@@ -33,6 +33,13 @@ export class HomePage {
 	}
 
 	ionViewWillEnter(): void {
+	//	this.actualizarCuentas();
+	}
+
+	private actualizarCuentas(): void {
+		/*this.cuentaDao.getAll().then((data: Array<DTOCuenta>) => {
+			this.cuentas = data;
+		});*/
 	}
 
 	private agregarCuenta(): void {
@@ -82,5 +89,40 @@ export class HomePage {
 		this.tiposCuentas.setActual(tipo);
 		//this.tiposCuentas.buscarCategoria(tipo); esto es cuando se busca una categoria
 		this.navCtrl.push(MostrarCuentasPage);
+	}
+	S
+	private deleteAccount(item: DTOCuenta) {
+		let promise = new Promise((resolve, reject) => {
+			this.alertController
+				.create({
+					title: "Ingrese su pin",
+					inputs: [
+						{
+							name: "pin",
+							placeholder: "Pin"
+						}
+					],
+					buttons: [
+						{
+							text: "Aceptar",
+							handler: (data: any) => {
+								this.pinDao
+									.verifyPin(data.pin)
+									.then((data: boolean) => {
+										if (data) {
+											this.cuentaDao.delete(item);
+											this.actualizarCuentas();
+										}
+									});
+							}
+						},
+						{
+							text: "Cancelar",
+							handler: (data: any) => {}
+						}
+					]
+				})
+				.present();
+		});
 	}
 }

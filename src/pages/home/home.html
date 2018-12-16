@@ -1,26 +1,44 @@
 <ion-content id="homeContainer" padding>
-
 	<div id="headerContainer">
-		<img id="logo" width="25" height="25" src="../../assets/Logo.svg" alt="">
-		<img id="configuration" width="25" height="25" src="../../assets/OpcionesTop.svg" alt="">
+		<img
+			id="logo"
+			width="25"
+			height="25"
+			src="../../assets/Logo.svg"
+			alt=""
+		/>
+		<img
+			id="configuration"
+			width="25"
+			height="25"
+			src="../../assets/OpcionesTop.svg"
+			alt=""
+		/>
 	</div>
 
 	<div id="addAccountContainer">
 		<button (click)="agregarCuenta()">
-			<img width="20" height="20" src="../../assets/AddAcountIcon.svg" alt="">
+			<img
+				width="20"
+				height="20"
+				src="../../assets/AddAcountIcon.svg"
+				alt=""
+			/>
 			Nueva cuenta
 		</button>
 
 		<page-agregar-cuenta *ngIf="eventAdd"></page-agregar-cuenta>
-
-
 	</div>
-
 
 	<div id="myAccountsContainer">
 		<div id="headerAccountsContainer">
 			<p>Mis cuentas</p>
-			<img width="18.5" height="18.5" src="../../assets/SearchIcon.svg" alt="">
+			<img
+				width="18.5"
+				height="18.5"
+				src="../../assets/SearchIcon.svg"
+				alt=""
+			/>
 		</div>
 		<div *ngFor="let cuenta of tiposCuentas.accounts" class="grid-container" (click)="mostrarCuentas( cuenta.first )">
 		<!-- <div *ngFor="let cuenta of tiposCuentas.accounts" class="grid-container" (click)="mostrarCuentas( 'trabajo' )"> -->
@@ -36,9 +54,6 @@
 			<button (click)="editAccount(cuenta)">Editar Cuenta</button>
 		</div> -->
 	</div>
-
-
-
 </ion-content>
 
 <!-- <div class="grid-header">

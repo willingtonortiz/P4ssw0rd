@@ -55,7 +55,7 @@ export class DTOTiposCuentas {
 			this.accounts.push(new Pair(cuenta.type, new Array<DTOCuenta>(cuenta)));
 		else
 			this.buscarTipo(cuenta.type).second.push(cuenta);
-		console.log(cuenta);
+		//console.log(cuenta);
 	}
 
 	private buscarTipo(tipo: string): Pair {
