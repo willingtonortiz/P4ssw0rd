@@ -42,15 +42,14 @@ export class Rotor {
 		this.indice = this.rotaciones;
 	}
 
-	public mostrarDiccionario(): void {
-		for (let i = 0; i < this.longitud; ++i) {
-			console.log(this.claves[i]);
-		}
-	}
-
 	public sigueRotacion(): boolean {
 		if ((this.indice + 1) % this.longitud === this.indiceRotacion)
 			return true;
 		return false;
+	}
+
+	public setRotations(rotations: number): void {
+		this.rotaciones = rotations;
+		this.indice = rotations;
 	}
 }

@@ -2,7 +2,7 @@ import { IEncryptor } from "../../Interfaces/IEncryptor";
 import { Enigma } from "../Enigma/Enigma";
 
 export class Encryptor implements IEncryptor {
-	private enigma: Enigma;
+	private enigma: Enigma = null;
 
 	public constructor() {
 		if (this.enigma == null) {

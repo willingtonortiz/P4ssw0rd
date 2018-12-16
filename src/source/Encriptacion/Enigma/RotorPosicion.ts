@@ -12,4 +12,16 @@ export class RotorPosicion {
 		++RotorPosicion.aumento;
 		return valor;
 	}
+
+	public transformarToArray(pin: string): Array<number> {
+		return new Array<number>(
+			this.transformar(pin),
+			this.transformar(pin),
+			this.transformar(pin)
+		);
+	}
+
+	public setAumento(aumento: number): void {
+		RotorPosicion.aumento = aumento;
+	}
 }

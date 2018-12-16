@@ -1,10 +1,15 @@
 import { Component } from "@angular/core";
-import { NavController, AlertController } from "ionic-angular";
-import { AgregarCuentaPage } from "../agregar-cuenta/agregar-cuenta";
-import { CuentaDAO } from "../../daos/CuentaDAO";
-import { DTOCuenta } from "../../dtos/DTOCuenta";
+import {
+	NavController,
+	AlertController,
+	LoadingController,
+	Alert
+} from "ionic-angular";
 import { EditAccountPage } from "../edit-account/edit-account";
-import { PinDAO } from "../../daos/PinDAO";
+import { EncryptorAccountProvider } from "../../providers/encryptor-account/encryptor-account";
+import { DTOCuenta } from "../../source/dtos/DTOCuenta";
+import { CuentaDAO } from "../../source/daos/CuentaDAO";
+import { PinDAO } from "../../source/daos/PinDAO";
 
 @Component({
 	selector: "page-home",
@@ -13,14 +18,15 @@ import { PinDAO } from "../../daos/PinDAO";
 export class HomePage {
 	private cuentas: Array<DTOCuenta>;
 	public eventAdd = false;
+
 	constructor(
 		public navCtrl: NavController,
 		private cuentaDao: CuentaDAO,
 		private alertController: AlertController,
-		private pinDao: PinDAO
-	) {
-		console.log("Estoy en home con tu gfa");
-	}
+		private loadingController: LoadingController,
+		private pinDao: PinDAO,
+		private encryptor: EncryptorAccountProvider
+	) {}
 
 	ionViewWillEnter(): void {
 		this.actualizarCuentas();
@@ -33,8 +39,55 @@ export class HomePage {
 	}
 
 	private agregarCuenta(): void {
-		// this.navCtrl.push(AgregarCuentaPage);
 		this.eventAdd = !this.eventAdd;
+	}
+
+	private revealAccount(item: DTOCuenta): void {
+		let promise = new Promise((resolve, reject) => {
+			this.alertController
+				.create({
+					title: "Ingrese el pin",
+					inputs: [
+						{
+							name: "pin",
+							placeholder: "Pin"
+						}
+					],
+					buttons: [
+						{
+							text: "Aceptar",
+							handler: (data: any) => {
+								this.pinDao
+									.verifyPin(data.pin)
+									.then((data: boolean) => {
+										if (data) {
+											item = this.encryptor.decryptAccount(
+												item
+											);
+										} else {
+											let alert: Alert = this.alertController.create(
+												{
+													message:
+														"El pin es incorrecto"
+												}
+											);
+											alert.present();
+											setTimeout(() => {
+												alert.dismiss();
+												alert = null;
+											}, 1000);
+										}
+									});
+							}
+						},
+						{
+							text: "Cancelar",
+							handler: (data: string) => {}
+						}
+					]
+				})
+				.present();
+		});
 	}
 
 	private editAccount(item: DTOCuenta): void {
@@ -75,7 +128,7 @@ export class HomePage {
 		});
 	}
 
-	private deleteAccount(item: DTOCuenta) {
+	private deleteAccount(item: DTOCuenta): void {
 		let promise = new Promise((resolve, reject) => {
 			this.alertController
 				.create({
@@ -95,6 +148,13 @@ export class HomePage {
 									.then((data: boolean) => {
 										if (data) {
 											this.cuentaDao.delete(item);
+											this.loadingController
+												.create({
+													content:
+														"Eliminando cuenta",
+													duration: 2000
+												})
+												.present();
 											this.actualizarCuentas();
 										}
 									});

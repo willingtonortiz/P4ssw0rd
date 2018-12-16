@@ -6,28 +6,34 @@ import { StatusBar } from "@ionic-native/status-bar";
 
 import { MyApp } from "./app.component";
 
-// Páginas
+// Pages
 import { HomePage } from "../pages/home/home";
 import { PinPage } from "../pages/pin/pin";
 import { AgregarCuentaPage } from "../pages/agregar-cuenta/agregar-cuenta";
+import { EditAccountPage } from "../pages/edit-account/edit-account";
+import { EditPinPage } from "../pages/edit-pin/edit-pin";
 
 // Storage
 import { IonicStorageModule } from "@ionic/storage";
 
 // Providers
-import { CuentaDAO } from "../daos/CuentaDAO";
-import { PinDAO } from "../daos/PinDAO";
-import { EditAccountPage } from "../pages/edit-account/edit-account";
+import { EncryptorAccountProvider } from "../providers/encryptor-account/encryptor-account";
+import { PassButtonComponent } from "../components/pass-button/pass-button";
+import { CuentaDAO } from "../source/daos/CuentaDAO";
+import { PinDAO } from "../source/daos/PinDAO";
 
 @NgModule({
 	declarations: [
 		MyApp,
+		// Pages
 		HomePage,
 		PinPage,
 		AgregarCuentaPage,
-		EditAccountPage
+		EditAccountPage,
+		EditPinPage,
+		// Components
+		PassButtonComponent
 	],
-
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
@@ -39,14 +45,16 @@ import { EditAccountPage } from "../pages/edit-account/edit-account";
 		HomePage,
 		PinPage,
 		AgregarCuentaPage,
-		EditAccountPage
+		EditAccountPage,
+		EditPinPage
 	],
 	providers: [
 		StatusBar,
 		SplashScreen,
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
 		CuentaDAO,
-		PinDAO
+		PinDAO,
+		EncryptorAccountProvider
 	]
 })
 export class AppModule {}

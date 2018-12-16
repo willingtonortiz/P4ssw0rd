@@ -5,7 +5,7 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 
 import { HomePage } from "../pages/home/home";
 import { PinPage } from "../pages/pin/pin";
-import { PinDAO } from "../daos/PinDAO";
+import { PinDAO } from "../source/daos/PinDAO";
 
 @Component({
 	templateUrl: "app.html"

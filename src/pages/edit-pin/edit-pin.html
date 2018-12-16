@@ -1,0 +1,30 @@
+<ion-content id="homeContainer" padding>
+	<div id="headerContainer">
+		<img
+			id="logo"
+			width="25"
+			height="25"
+			src="../../assets/Logo.svg"
+			alt=""
+		/>
+		<img
+			id="configuration"
+			width="25"
+			height="25"
+			src="../../assets/OpcionesTop.svg"
+			alt=""
+		/>
+		<!-- La imagen debe ser cambiada por una 'X' -->
+	</div>
+
+	<ion-item>
+		<ion-label floating>{{ inputText }}</ion-label>
+		<ion-input [(ngModel)]="pin"></ion-input>
+	</ion-item>
+
+	<pass-button
+		[buttonText]="buttonText"
+		(onButtonClick)="editPin()"
+	></pass-button>
+</ion-content>
+

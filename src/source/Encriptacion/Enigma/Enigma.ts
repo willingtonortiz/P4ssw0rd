@@ -109,6 +109,16 @@ export class Enigma implements IEncryptor {
 		return cadena;
 	}
 
+	public setRotations(
+		rotacionesIII: number,
+		rotacionesII: number,
+		rotacionesI: number
+	): void {
+		this.rotorI.setRotations(rotacionesI);
+		this.rotorII.setRotations(rotacionesII);
+		this.rotorIII.setRotations(rotacionesII);
+	}
+
 	public encrypt(text: string): string {
 		return this.cifrarTexto(text);
 	}

@@ -11,10 +11,8 @@ export class PinDAO {
 				if (data) {
 					if (data === pin) {
 						resolve(true);
-						console.log("El pin es correcto");
 					} else {
 						resolve(false);
-						console.log("El pin es incorrecto");
 					}
 				} else {
 					resolve(false);

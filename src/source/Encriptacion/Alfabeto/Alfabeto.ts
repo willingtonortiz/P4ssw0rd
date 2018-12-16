@@ -1,5 +1,3 @@
-import { Par } from "../Enigma/Par";
-
 export class Alfabeto {
 	// Singleton
 	private static instancia: Alfabeto = null;

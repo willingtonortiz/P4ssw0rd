@@ -1,4 +1,6 @@
-export class DTOCuenta {
+import { IShowData } from "../Interfaces/IShowData";
+
+export class DTOCuenta implements IShowData {
 	public idCuenta: number;
 	public email: string;
 	public password: string;
@@ -17,5 +19,13 @@ export class DTOCuenta {
 		this.password = password;
 		this.description = description;
 		this.type = type;
+	}
+
+	public showData(): void {
+		console.log(
+			`DTOCuenta {Id: ${this.idCuenta}, Email: ${this.email}, Password: ${
+				this.password
+			}, Descryption: ${this.description}, Type: ${this.type} }`
+		);
 	}
 }

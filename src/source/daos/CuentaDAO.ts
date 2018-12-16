@@ -1,5 +1,5 @@
 import { DTOCuenta } from "../dtos/DTOCuenta";
-import { GenericDAO } from "./GenericDAO";
+import { GenericDAO } from "../Interfaces/genericDAO";
 import { Storage } from "@ionic/storage";
 import { Injectable } from "@angular/core";
 
@@ -111,11 +111,51 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 		return false;
 	}
 
-	public getAll(): Promise<{}> {
+	getItem(id: number): Promise<{}> {
 		return new Promise((resolve, reject) => {
 			this.storage.get("cuentas").then((data: string) => {
 				if (data) {
-					resolve(JSON.parse(data));
+					let accounts: Array<DTOCuenta> = JSON.parse(data);
+					accounts.forEach((account: DTOCuenta) => {
+						if (account.idCuenta === id)
+							resolve(
+								new DTOCuenta(
+									account.idCuenta,
+									account.email,
+									account.password,
+									account.description,
+									account.type
+								)
+							);
+					});
+					resolve(null);
+				} else {
+					resolve(null);
+				}
+			});
+		});
+	}
+
+	public getAll(): Promise<Array<DTOCuenta>> {
+		return new Promise((resolve, reject) => {
+			this.storage.get("cuentas").then((data: string) => {
+				if (data) {
+					let objectArray: Array<DTOCuenta> = JSON.parse(data);
+					let accounts: Array<DTOCuenta> = new Array<DTOCuenta>();
+					for (let i = 0; i < objectArray.length; ++i) {
+						accounts.push(
+							new DTOCuenta(
+								objectArray[i].idCuenta,
+								objectArray[i].email,
+								objectArray[i].password,
+								objectArray[i].description,
+								objectArray[i].type
+							)
+						);
+					}
+					// Se limpia la memoria para el Garbage Collector
+					objectArray = null;
+					resolve(accounts);
 				} else {
 					resolve(null);
 				}

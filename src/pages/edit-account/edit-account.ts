@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
-import { DTOCuenta } from "../../dtos/DTOCuenta";
-import { CuentaDAO } from "../../daos/CuentaDAO";
+import { DTOCuenta } from "../../source/dtos/DTOCuenta";
+import { CuentaDAO } from "../../source/daos/CuentaDAO";
 
 @Component({
 	selector: "page-edit-account",

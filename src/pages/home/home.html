@@ -40,12 +40,14 @@
 				alt=""
 			/>
 		</div>
-		<div *ngFor="let cuenta of cuentas">
+		<div class="cuentas" *ngFor="let cuenta of cuentas">
 			<p>Usuario: {{ cuenta.email }}</p>
 			<p>Contraseña: {{ cuenta.password }}</p>
 			<p>Descripción: {{ cuenta.description }}</p>
 			<p>Tipo: {{ cuenta.type }}</p>
+			<button (click)="revealAccount(cuenta)">Revelar Cuenta</button>
 			<button (click)="editAccount(cuenta)">Editar Cuenta</button>
+			<button (click)="deleteAccount(cuenta)">Borrar Cuenta</button>
 		</div>
 	</div>
 </ion-content>
