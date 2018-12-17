@@ -5,168 +5,44 @@ import {
 	LoadingController,
 	Alert
 } from "ionic-angular";
+
+// Pages
 import { EditAccountPage } from "../edit-account/edit-account";
-import { EncryptorAccountProvider } from "../../providers/encryptor-account/encryptor-account";
-import { DTOCuenta } from "../../source/dtos/DTOCuenta";
-import { CuentaDAO } from "../../source/daos/CuentaDAO";
+import { MostrarCuentasPage } from "../mostrar-cuentas/mostrar-cuentas";
+
+// Daos
 import { PinDAO } from "../../source/daos/PinDAO";
+
+// Dtos
+import { DTOCuenta } from "../../source/dtos/DTOCuenta";
+
+// Services
+import { EncryptorAccountProvider } from "../../providers/encryptor-account/encryptor-account";
+import { CuentaDAO } from "../../source/daos/CuentaDAO";
+import { ArrDTOAccount } from "../../providers/ArrDTOAccount";
+import { Pair } from "../../source/dataEstructure/Pair";
 
 @Component({
 	selector: "page-home",
 	templateUrl: "home.html"
 })
 export class HomePage {
-	private cuentas: Array<DTOCuenta>;
-	public eventAdd = false;
+	// private accounts: Array<Pair> = null;
+	public eventAdd: boolean = false;
+	private buscando: boolean;
 
 	constructor(
 		public navCtrl: NavController,
-		private cuentaDao: CuentaDAO,
-		private alertController: AlertController,
-		private loadingController: LoadingController,
-		private pinDao: PinDAO,
-		private encryptor: EncryptorAccountProvider
+		private arrDtoAccount: ArrDTOAccount
 	) {}
-
-	ionViewWillEnter(): void {
-		this.actualizarCuentas();
-	}
-
-	private actualizarCuentas(): void {
-		this.cuentaDao.getAll().then((data: Array<DTOCuenta>) => {
-			this.cuentas = data;
-		});
-	}
 
 	private agregarCuenta(): void {
 		this.eventAdd = !this.eventAdd;
 	}
 
-	private revealAccount(item: DTOCuenta): void {
-		let promise = new Promise((resolve, reject) => {
-			this.alertController
-				.create({
-					title: "Ingrese el pin",
-					inputs: [
-						{
-							name: "pin",
-							placeholder: "Pin"
-						}
-					],
-					buttons: [
-						{
-							text: "Aceptar",
-							handler: (data: any) => {
-								this.pinDao
-									.verifyPin(data.pin)
-									.then((data: boolean) => {
-										if (data) {
-											item = this.encryptor.decryptAccount(
-												item
-											);
-										} else {
-											let alert: Alert = this.alertController.create(
-												{
-													message:
-														"El pin es incorrecto"
-												}
-											);
-											alert.present();
-											setTimeout(() => {
-												alert.dismiss();
-												alert = null;
-											}, 1000);
-										}
-									});
-							}
-						},
-						{
-							text: "Cancelar",
-							handler: (data: string) => {}
-						}
-					]
-				})
-				.present();
-		});
-	}
-
-	private editAccount(item: DTOCuenta): void {
-		let promise = new Promise((resolve, reject) => {
-			this.alertController
-				.create({
-					title: "Ingrese el pin",
-					inputs: [
-						{
-							name: "pin",
-							placeholder: "Pin"
-						}
-					],
-					buttons: [
-						{
-							text: "Aceptar",
-							handler: (data: any) => {
-								console.log("Entré aqui", data);
-								this.pinDao
-									.verifyPin(data.pin)
-									.then((data: boolean) => {
-										if (data) {
-											this.navCtrl.push(
-												EditAccountPage,
-												item
-											);
-										}
-									});
-							}
-						},
-						{
-							text: "Cancelar",
-							handler: (data: string) => {}
-						}
-					]
-				})
-				.present();
-		});
-	}
-
-	private deleteAccount(item: DTOCuenta): void {
-		let promise = new Promise((resolve, reject) => {
-			this.alertController
-				.create({
-					title: "Ingrese su pin",
-					inputs: [
-						{
-							name: "pin",
-							placeholder: "Pin"
-						}
-					],
-					buttons: [
-						{
-							text: "Aceptar",
-							handler: (data: any) => {
-								this.pinDao
-									.verifyPin(data.pin)
-									.then((data: boolean) => {
-										if (data) {
-											this.cuentaDao.delete(item);
-											this.loadingController
-												.create({
-													content:
-														"Eliminando cuenta",
-													duration: 2000
-												})
-												.present();
-											this.actualizarCuentas();
-										}
-									});
-							}
-						},
-						{
-							text: "Cancelar",
-							handler: (data: any) => {}
-						}
-					]
-				})
-				.present();
-		});
+	private showAccounts(tipo: string): void {
+		this.arrDtoAccount.setActual(tipo);
+		//this.tiposCuentas.buscarCategoria(tipo); esto es cuando se busca una categoria
+		this.navCtrl.push(MostrarCuentasPage);
 	}
 }

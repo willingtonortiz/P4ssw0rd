@@ -40,14 +40,19 @@
 				alt=""
 			/>
 		</div>
-		<div class="cuentas" *ngFor="let cuenta of cuentas">
-			<p>Usuario: {{ cuenta.email }}</p>
-			<p>Contraseña: {{ cuenta.password }}</p>
-			<p>Descripción: {{ cuenta.description }}</p>
-			<p>Tipo: {{ cuenta.type }}</p>
-			<button (click)="revealAccount(cuenta)">Revelar Cuenta</button>
-			<button (click)="editAccount(cuenta)">Editar Cuenta</button>
-			<button (click)="deleteAccount(cuenta)">Borrar Cuenta</button>
+
+		<div
+			*ngFor="let cuenta of arrDtoAccount.accounts"
+			class="grid-container"
+			(click)="showAccounts(cuenta.first)"
+		>
+			<img
+				src="https://www.facebook.com/images/fb_icon_325x325.png"
+				alt=""
+			/>
+			<span>{{ cuenta.first }}</span>
+			<span>{{ cuenta.second.length }} cuentas</span>
 		</div>
 	</div>
+
 </ion-content>

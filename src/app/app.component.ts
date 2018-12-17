@@ -22,7 +22,6 @@ export class MyApp {
 	) {
 		platform.ready().then(() => {
 			pinDao.getPin().then((data: string) => {
-				console.log(data);
 				if (data) {
 					this.rootPage = HomePage;
 				} else {

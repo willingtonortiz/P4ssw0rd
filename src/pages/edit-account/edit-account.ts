@@ -21,15 +21,13 @@ export class EditAccountPage {
 			params.email,
 			params.password,
 			params.description,
-			params.type
+			params.type,
+			params.categories
 		);
 	}
 
-	private ionViewDidLoad(): void {
-		console.log("ionViewDidLoad EditAccountPage");
-	}
-
 	private editAccount(): void {
+		console.log(this.account);
 		this.cuentaDAO.update(this.account);
 	}
 }

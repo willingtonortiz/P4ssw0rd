@@ -1,5 +1,5 @@
 import { DTOCuenta } from "../dtos/DTOCuenta";
-import { GenericDAO } from "../Interfaces/genericDAO";
+import { GenericDAO } from "../Interfaces/GenericDAO";
 import { Storage } from "@ionic/storage";
 import { Injectable } from "@angular/core";
 
@@ -19,7 +19,7 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 		});
 	}
 
-	private guardarId(idActual: number): void {
+	private saveId(idActual: number): void {
 		this.storage.set("idActual", idActual);
 	}
 
@@ -34,7 +34,7 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 				item.idCuenta = ++this.idActual;
 
 				// Actualiza el idActual del servicio
-				this.guardarId(this.idActual);
+				this.saveId(this.idActual);
 
 				// Se ingresa el nuevo dato
 				cuentas.push(item);
@@ -49,7 +49,7 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 				item.idCuenta = ++this.idActual;
 
 				// Se agregará el primer dato
-				this.guardarId(this.idActual);
+				this.saveId(this.idActual);
 
 				cuentas.push(item);
 				// Se guardará el arreglo a la base de datos
@@ -71,7 +71,7 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 						cuentas[i].password = item.password;
 						cuentas[i].description = item.description;
 						cuentas[i].type = item.type;
-
+						cuentas[i].categories = item.categories;
 						// Se guarda el nuevo arreglo de cuentas
 						this.storage.set("cuentas", JSON.stringify(cuentas));
 
@@ -124,7 +124,8 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 									account.email,
 									account.password,
 									account.description,
-									account.type
+									account.type,
+									account.categories
 								)
 							);
 					});
@@ -149,7 +150,8 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 								objectArray[i].email,
 								objectArray[i].password,
 								objectArray[i].description,
-								objectArray[i].type
+								objectArray[i].type,
+								objectArray[i].categories
 							)
 						);
 					}
