@@ -21,16 +21,34 @@
                 color: #d0d0d0;
             }
         }
-        #inputPin {
+        #pinInputsContainer {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            #IngresePinText {
-                font-family: map-get($fonts, OpenSans);
-                font-size: 14px;
-                color: map-get($colors, verde);
-                text-align: center;
+            #label-pin {
+                p {
+                    text-align: center;
+                    color: map-get($colors, verde);
+                    font-family: map-get($fonts, OpenSans),'sans-serif';
+                    font-size: 14px;
+                }
+            }
+            #form-container-pin {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10vh;
+                input {
+                    margin: 0 10px;
+                    width: 30px;
+                    background: transparent;
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    text-align: center;
+                    color: map-get($colors, blanco-medio);
+                    font-family: map-get($fonts, OpenSans);
+                }
             }
         }
         #btnPin {
@@ -49,35 +67,4 @@
             }
         }
     }
-    .item-md.item-input.item-input-has-focus .item-inner,
-    .item-md.item-input.input-has-focus .item-inner {
-        border-bottom-color: map-get($colors, blanco-medio) !important;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-    }
-    .list-md .item-input.item-input-has-focus:last-child,
-    .list-md .item-input.input-has-focus:last-child {
-        border-bottom-color: map-get($colors, blanco-medio) !important;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-	}
-	.item-input-has-focus .label-md[stacked],
-.input-has-focus .label-md[stacked],
-.item-input-has-focus .label-md[floating],
-.input-has-focus .label-md[floating] {
-	color: #fff;
-}
-.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
-.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
-  border-bottom-color: map-get($colors,verde );
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
-.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
-  border-bottom-color: map-get($colors,verde );
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
 }
