@@ -17,7 +17,7 @@
 	</div>
 
 	<div id="addAccountContainer">
-		<button (click)="agregarCuenta()">
+		<button *ngIf="!eventAdd" (click)="toggleCreateAccount()">
 			<img
 				width="20"
 				height="20"
@@ -27,7 +27,16 @@
 			Nueva cuenta
 		</button>
 
-		<page-agregar-cuenta *ngIf="eventAdd"></page-agregar-cuenta>
+		<button *ngIf="eventAdd" (click)="toggleCreateAccount()">
+			<img
+				width="20"
+				height="20"
+				src="../../assets/CancelarIcon.svg"
+				alt=""
+			/>
+		</button>
+
+		<create-account *ngIf="eventAdd"></create-account>
 	</div>
 
 	<div id="myAccountsContainer">
@@ -54,5 +63,4 @@
 			<span>{{ cuenta.second.length }} cuentas</span>
 		</div>
 	</div>
-
 </ion-content>

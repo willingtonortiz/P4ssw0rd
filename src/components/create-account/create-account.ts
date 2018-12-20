@@ -13,10 +13,10 @@ import { DTOCuenta } from "../../source/dtos/DTOCuenta";
 import { ArrDTOAccount } from "../../providers/ArrDTOAccount";
 
 @Component({
-	selector: "page-agregar-cuenta",
-	templateUrl: "agregar-cuenta.html"
+	selector: "create-account",
+	templateUrl: "create-account.html"
 })
-export class AgregarCuentaPage {
+export class CreateAccountComponent {
 	private user: string;
 	private password: string;
 	private type: string;
@@ -56,6 +56,10 @@ export class AgregarCuentaPage {
 				// Se agrega la cuenta al arreglo de cuentas
 				this.arrDtoAccount.agregarCuenta(newAccount);
 			});
+
+			// Se limpia el formulario
+			this.user = this.password = this.type = this.description = this.categories =
+				"";
 		} else {
 			// Secuencia de proceso fallido
 			this.encryptionProcess(false);

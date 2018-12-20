@@ -1,70 +1,78 @@
 #pinContainer {
-    background: map-get($colors, principal);
-    height: 100vh;
-    padding: 50px;
-    width: 100%;
-    #pinElements {
-        height: 100%;
-        #logoPin {
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translate(-50%, -10%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            p {
-                font-family: map-get($fonts, Lato);
-                font-size: 20px;
-                font-weight: 300;
-                color: #d0d0d0;
-            }
-        }
-        #pinInputsContainer {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            #label-pin {
-                p {
-                    text-align: center;
-                    color: map-get($colors, verde);
-                    font-family: map-get($fonts, OpenSans),'sans-serif';
-                    font-size: 14px;
-                }
-            }
-            #form-container-pin {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-top: 10vh;
-                input {
-                    margin: 0 10px;
-                    width: 30px;
-                    background: transparent;
-                    border: none;
-                    border-bottom: 1px solid #eee;
-                    text-align: center;
-                    color: map-get($colors, blanco-medio);
-                    font-family: map-get($fonts, OpenSans);
-                }
-            }
-        }
-        #btnPin {
-            position: absolute;
-            top: 90%;
-            left: 50%;
-            transform: translate(-50%, -90%);
-            button {
-                width: 70vw;
-                border-radius: 4px;
-                padding: 14px 0;
-                color: map-get($colors, verde);
-                font-size: 14px;
-                font-family: map-get($fonts, OpenSans);
-                background: rgba(255, 255, 255, .02);
-            }
-        }
-    }
+	background: map-get($colors, principal);
+	height: 100vh;
+	padding: 50px;
+	width: 100%;
+	#pinElements {
+		height: 100%;
+		#logoPin {
+			position: absolute;
+			top: 10%;
+			left: 50%;
+			transform: translate(-50%, -10%);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			p {
+				font-family: map-get($fonts, Lato);
+				font-size: 20px;
+				font-weight: 300;
+				color: #d0d0d0;
+			}
+		}
+		verify-pin {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		// StartModify
+		#pinInputsContainer {
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%, -50%);
+		    #label-pin {
+		        p {
+		            text-align: center;
+		            color: map-get($colors, verde);
+		            font-family: map-get($fonts, OpenSans),'sans-serif';
+		            font-size: 14px;
+		        }
+		    }
+		    #form-container-pin {
+		        display: flex;
+		        justify-content: center;
+		        align-items: center;
+		        margin-top: 10vh;
+		        input {
+		            margin: 0 10px;
+		            width: 30px;
+		            background: transparent;
+		            border: none;
+		            border-bottom: 1px solid #eee;
+		            text-align: center;
+		            color: map-get($colors, blanco-medio);
+		            font-family: map-get($fonts, OpenSans);
+		        }
+		    }
+		}
+		// EndModify
+		#btnPin {
+			position: absolute;
+			top: 90%;
+			left: 50%;
+			transform: translate(-50%, -90%);
+			button {
+				width: 70vw;
+				border-radius: 4px;
+				padding: 14px 0;
+				color: map-get($colors, verde);
+				font-size: 14px;
+				font-family: map-get($fonts, OpenSans);
+				background: rgba(255, 255, 255, 0.02);
+			}
+		}
+	}
 }

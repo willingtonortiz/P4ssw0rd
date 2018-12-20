@@ -10,7 +10,6 @@ import { MyApp } from "./app.component";
 // Pages
 import { HomePage } from "../pages/home/home";
 import { PinPage } from "../pages/pin/pin";
-import { AgregarCuentaPage } from "../pages/agregar-cuenta/agregar-cuenta";
 import { EditAccountPage } from "../pages/edit-account/edit-account";
 import { EditPinPage } from "../pages/edit-pin/edit-pin";
 import { MostrarCuentasPage } from "../pages/mostrar-cuentas/mostrar-cuentas";
@@ -26,6 +25,9 @@ import { ArrDTOAccount } from "../providers/ArrDTOAccount";
 
 // Components
 import { PassButtonComponent } from "../components/pass-button/pass-button";
+import { CreateAccountComponent } from "../components/create-account/create-account";
+import { VerifyPinComponent } from "../components/verify-pin/verify-pin";
+import { PinInputComponent } from "../components/pin-input/pin-input";
 
 @NgModule({
 	declarations: [
@@ -33,15 +35,15 @@ import { PassButtonComponent } from "../components/pass-button/pass-button";
 		// Pages
 		HomePage,
 		PinPage,
-		AgregarCuentaPage,
 		EditAccountPage,
 		EditPinPage,
 		MostrarCuentasPage,
 		// Components
-		PassButtonComponent
+		PassButtonComponent,
+		CreateAccountComponent,
+		VerifyPinComponent,
+		PinInputComponent
 	],
-	// declarations: [MyApp, HomePage, PinPage, AgregarCuentaPage,MostrarCuentasPage],
-
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
@@ -52,12 +54,10 @@ import { PassButtonComponent } from "../components/pass-button/pass-button";
 		MyApp,
 		HomePage,
 		PinPage,
-		AgregarCuentaPage,
 		EditAccountPage,
 		EditPinPage,
 		MostrarCuentasPage
 	],
-	// entryComponents: [MyApp, HomePage, PinPage, AgregarCuentaPage,MostrarCuentasPage],
 	providers: [
 		StatusBar,
 		SplashScreen,
