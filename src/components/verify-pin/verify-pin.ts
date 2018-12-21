@@ -1,14 +1,24 @@
-import { Component } from "@angular/core";
+import { Component, Input, ViewChild } from "@angular/core";
+import { PinDAO } from "../../source/daos/PinDAO";
+import { NavController, AlertController, Alert } from "ionic-angular";
+import { PinInputComponent } from "../pin-input/pin-input";
 
 @Component({
 	selector: "verify-pin",
 	templateUrl: "verify-pin.html"
 })
 export class VerifyPinComponent {
-	text: string;
+	@Input("text") text: string;
+	@ViewChild(PinInputComponent)
+	private inputComponent: PinInputComponent;
 
-	constructor() {
-		console.log("Hello VerifyPinComponent Component");
-		this.text = "Hello World";
+	constructor(
+		private pinDao: PinDAO,
+		private navController: NavController,
+		private alertController: AlertController
+	) {}
+
+	public getPin() {
+		return this.inputComponent.getPin();
 	}
 }
