@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_24" data-name="Rectangle 24" width="38" height="39" transform="translate(5 5)" fill="#fff"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.147" y1="0.125" x2="0.869" y2="0.903" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4a6ad4"/>
+      <stop offset="1" stop-color="#73f8b1"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <path id="Path_179" data-name="Path 179" d="M4484.687,609.636s2-11.117,16.372-9.789,23.958-21.4,23.958-21.4,4.393,18.086,0,21.4-6.655,4.148-12.378,3.318-16.239,5.973-20.1,8.13S4484.687,609.636,4484.687,609.636Z" transform="translate(-4484.687 -578.442)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <circle id="Ellipse_28" data-name="Ellipse 28" cx="4.801" cy="4.801" r="4.801" transform="translate(0 0)" fill="#fff"/>
+    </clipPath>
+    <clipPath id="clip-Bola2">
+      <rect width="48" height="48"/>
+    </clipPath>
+  </defs>
+  <g id="Bola2" clip-path="url(#clip-Bola2)">
+    <g id="Mask_Group_19" data-name="Mask Group 19" clip-path="url(#clip-path)">
+      <g id="Group_90" data-name="Group 90" transform="translate(-104.687 -214.406)">
+        <circle id="Ellipse_2" data-name="Ellipse 2" cx="18.755" cy="18.755" r="18.755" transform="translate(109.687 219.176)" fill="url(#linear-gradient)"/>
+        <g id="Mask_Group_6" data-name="Mask Group 6" transform="translate(105.687 219.602)" opacity="0.21" clip-path="url(#clip-path-2)">
+          <circle id="Ellipse_27" data-name="Ellipse 27" cx="18.755" cy="18.755" r="18.755" transform="translate(3.86 -0.648)" fill="#fff"/>
+        </g>
+        <g id="Mask_Group_7" data-name="Mask Group 7" transform="translate(110.274 220.363) rotate(3)" opacity="0.34" clip-path="url(#clip-path-3)">
+          <circle id="Ellipse_31" data-name="Ellipse 31" cx="18.711" cy="18.711" r="18.711" transform="translate(0.515 -2.78)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

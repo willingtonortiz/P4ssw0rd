@@ -29,7 +29,12 @@
         height: 20vh;
         display: flex;
         justify-content: flex-start;
-        align-items: center;
+		align-items: flex-start;
+		flex-direction: column;
+        p {
+			color: map-get($colors, blanco-alto);
+			text-align: left;
+        }
     }
     #slides-MC {
         width: 100%;
@@ -58,34 +63,30 @@
                 }
             }
             #BtnEventsforAccount {
-				width: 100%;
-				margin-top: 8vh;
-				display: flex;
-				justify-content: space-around;
-				align-items: center;
+                width: 100%;
+                margin-top: 8vh;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
                 button {
-
                     background: transparent;
                     border: none;
                     img {
-                        width: 45px !important;
-                        height: 45px !important;
-                        background: rgba(255, 255, 255, .03);
-                        border-radius: 50%;
-                        padding: 15px;
+                        width: 35px !important;
+                        height: 35px !important;
+                        padding: 5px;
                     }
                     font-family: map-get($fonts, Opensans);
                     font-weight: 300;
-                    color: map-get($colors, blanco-medio);
+                    color: map-get($colors, blanco-alto);
                     font-size: 10px;
                 }
                 #btn-mostrarAccount {
                     position: relative;
                     color: map-get($colors, verde);
                     p {
-                        margin: 10px 0;
-					}
-
+                        // margin: 10px 0;
+                    }
                 }
             }
         }

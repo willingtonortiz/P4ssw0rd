@@ -7,28 +7,22 @@
 
 	<ion-item class="inputs-newAccount">
 		<ion-label color="verde">></ion-label>
-		<ion-input
-			placeholder="Descripcion"
-			[(ngModel)]="description"
-		></ion-input>
+		<ion-input placeholder="Descripcion" [(ngModel)]="description"></ion-input>
 	</ion-item>
-
 	<ion-item class="inputs-newAccount">
 		<ion-label color="verde">></ion-label>
-		<ion-input
-			placeholder="usuario / correo"
-			[(ngModel)]="user"
-		></ion-input>
+		<ion-input placeholder="Categorias" [(ngModel)]="categories"></ion-input>
+	</ion-item>
+	<ion-item class="inputs-newAccount">
+		<ion-label color="verde">></ion-label>
+		<ion-input placeholder="usuario / correo" [(ngModel)]="user"></ion-input>
 	</ion-item>
 
 	<ion-item class="inputs-newAccount">
 		<ion-label color="verde">></ion-label>
 		<ion-input placeholder="password" [(ngModel)]="password"></ion-input>
-		<ion-input
-			placeholder="Categorias"
-			[(ngModel)]="categories"
-		></ion-input>
+
 	</ion-item>
 </ion-list>
 
-<button (click)="insertAccount()">Añadir cuenta</button>
+<button id="btn-addAcount" (click)="insertAccount()">Añadir cuenta</button>

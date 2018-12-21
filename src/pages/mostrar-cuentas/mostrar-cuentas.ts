@@ -36,6 +36,8 @@ export class MostrarCuentasPage {
 		private arrDtoAccount: ArrDTOAccount
 	) {
 		this.tiposCuentas = arrDtoAccount.getActual().second;
+
+
 	}
 
 	private revealAccount(item: DTOCuenta): void {

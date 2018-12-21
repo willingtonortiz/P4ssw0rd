@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_27" data-name="Rectangle 27" width="39" height="39" transform="translate(5 5)" fill="#fff"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.799" y1="0.116" x2="0.189" y2="0.917" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#76ffdf"/>
+      <stop offset="1" stop-color="#737df8"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <path id="Subtraction_3" data-name="Subtraction 3" d="M6.285,7.715h0A2.681,2.681,0,0,0,2.2,6.044L.039.7a.537.537,0,0,1,.3-.7L4.327,3.638a.536.536,0,0,1,.7.3l6.825.954a.536.536,0,0,1-.3.7L6.285,7.714Z" transform="translate(0 0)" fill="#fff" opacity="0.25"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <path id="Subtraction_4" data-name="Subtraction 4" d="M23.856,47.712a23.744,23.744,0,0,1-13.338-4.074,23.924,23.924,0,0,1-8.643-10.5,23.825,23.825,0,0,1,2.2-22.624,23.927,23.927,0,0,1,10.5-8.643,23.824,23.824,0,0,1,22.624,2.2,23.925,23.925,0,0,1,8.643,10.5,23.825,23.825,0,0,1-2.2,22.624,23.925,23.925,0,0,1-10.5,8.643A23.708,23.708,0,0,1,23.856,47.712Zm0-44.227A20.371,20.371,0,1,0,44.227,23.856,20.394,20.394,0,0,0,23.856,3.485Z" transform="translate(0 0)" fill="#c5fff3"/>
+    </clipPath>
+    <clipPath id="clip-Bola_5">
+      <rect width="48" height="48"/>
+    </clipPath>
+  </defs>
+  <g id="Bola_5" data-name="Bola 5" clip-path="url(#clip-Bola_5)">
+    <g id="Mask_Group_22" data-name="Mask Group 22" clip-path="url(#clip-path)">
+      <g id="Group_94" data-name="Group 94" transform="translate(-4912 -1054)">
+        <circle id="Ellipse_2" data-name="Ellipse 2" cx="18.897" cy="18.897" r="18.897" transform="translate(4917 1059.464)" fill="url(#linear-gradient)"/>
+        <path id="Subtraction_2" data-name="Subtraction 2" d="M2.524,28.593h0A19.092,19.092,0,0,1,0,26.041V2.137A19.1,19.1,0,0,1,2.044,0c.255.446.665,1.088,1.14,1.831v0c2.107,3.3,5.634,8.823,4.809,11.255a1.612,1.612,0,0,1-1.032,1.029,4.92,4.92,0,0,0-2.509,2.92,21.576,21.576,0,0,0-1.322,4.9,49.482,49.482,0,0,0-.6,6.648l0,.008ZM4.318,9.934a.8.8,0,1,0,.8.8A.8.8,0,0,0,4.318,9.934Z" transform="translate(4921.259 1064.272)" fill="#fff" opacity="0.25"/>
+        <g id="Mask_Group_15" data-name="Mask Group 15" transform="translate(4930.397 1087.988) rotate(48)" opacity="0.25" clip-path="url(#clip-path-2)">
+          <circle id="Ellipse_41" data-name="Ellipse 41" cx="18.897" cy="18.897" r="18.897" transform="translate(-22.334 -29.506)" fill="#fff"/>
+        </g>
+        <g id="Mask_Group_16" data-name="Mask Group 16" transform="translate(4933.083 1034)" opacity="0.5" clip-path="url(#clip-path-3)">
+          <circle id="Ellipse_44" data-name="Ellipse 44" cx="18.897" cy="18.897" r="18.897" transform="translate(-16.082 25.464)" fill="#c5fff3"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

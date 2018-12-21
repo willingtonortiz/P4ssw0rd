@@ -1,39 +1,19 @@
 <ion-content id="homeContainer" padding>
 	<div id="headerContainer">
-		<img
-			id="logo"
-			width="25"
-			height="25"
-			src="../../assets/Logo.svg"
-			alt=""
-		/>
-		<img
-			id="configuration"
-			width="25"
-			height="25"
-			src="../../assets/OpcionesTop.svg"
-			alt=""
-		/>
+		<img id="logo" width="25" height="25" src="../../assets/Logo.svg" alt="" />
+		<img id="configuration" width="25" height="25" src="../../assets/OpcionesTop.svg" alt="" />
 	</div>
 
 	<div id="addAccountContainer">
 		<button *ngIf="!eventAdd" (click)="toggleCreateAccount()">
-			<img
-				width="20"
-				height="20"
-				src="../../assets/AddAcountIcon.svg"
-				alt=""
-			/>
-			Nueva cuenta
+			<div id="subAddAccount">
+				<img width="20" height="20" src="../../assets/AddAcountIcon.svg" alt="" />
+<p>Nueva Cuenta</p>
+			</div>
 		</button>
 
-		<button *ngIf="eventAdd" (click)="toggleCreateAccount()">
-			<img
-				width="20"
-				height="20"
-				src="../../assets/CancelarIcon.svg"
-				alt=""
-			/>
+		<button [class.buttonHideNewAccount]="eventAdd" *ngIf="eventAdd" (click)="toggleCreateAccount()">
+			<img width="15" height="15" src="../../assets/CancelarIcon.svg" alt="" />
 		</button>
 
 		<create-account *ngIf="eventAdd"></create-account>
@@ -42,25 +22,22 @@
 	<div id="myAccountsContainer">
 		<div id="headerAccountsContainer">
 			<p>Mis cuentas</p>
-			<img
-				width="18.5"
-				height="18.5"
-				src="../../assets/SearchIcon.svg"
-				alt=""
-			/>
+			<img width="18.5" height="18.5" src="../../assets/SearchIcon.svg" alt="" />
 		</div>
 
 		<div
-			*ngFor="let cuenta of arrDtoAccount.accounts"
-			class="grid-container"
-			(click)="showAccounts(cuenta.first)"
+		*ngFor="let cuenta of arrDtoAccount.accounts"
+		class="grid-container"
 		>
-			<img
-				src="https://www.facebook.com/images/fb_icon_325x325.png"
-				alt=""
-			/>
-			<span>{{ cuenta.first }}</span>
-			<span>{{ cuenta.second.length }} cuentas</span>
+			<img class="img-account" src="../../assets/Bola5.svg" alt="" />
+			<div class="account">
+				<div id="info-account">
+					<span class="Cuenta-type">{{ cuenta.first }}</span>
+					<span class="Cuenta-length">{{ cuenta.second.length }} cuentas</span>
+
+				</div>
+				<img (click)="showAccounts(cuenta.first)" class="mostrar-icon-btn" src="../../assets/MostrarCuentaIcon.svg" alt="">
+			</div>
 		</div>
 	</div>
 </ion-content>
