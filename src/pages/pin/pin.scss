@@ -28,51 +28,43 @@
 			transform: translate(-50%, -50%);
 		}
 		// StartModify
-		#pinInputsContainer {
-		    position: absolute;
-		    top: 50%;
-		    left: 50%;
-		    transform: translate(-50%, -50%);
-		    #label-pin {
-		        p {
-		            text-align: center;
-		            color: map-get($colors, verde);
-		            font-family: map-get($fonts, OpenSans),'sans-serif';
-		            font-size: 14px;
-		        }
-		    }
-		    #form-container-pin {
-		        display: flex;
-		        justify-content: center;
-		        align-items: center;
-		        margin-top: 10vh;
-		        input {
-		            margin: 0 10px;
-		            width: 30px;
-		            background: transparent;
-		            border: none;
-		            border-bottom: 1px solid #eee;
-		            text-align: center;
-		            color: map-get($colors, blanco-medio);
-		            font-family: map-get($fonts, OpenSans);
-		        }
-		    }
-		}
+		// #pinInputsContainer {
+		//     position: absolute;
+		//     top: 50%;
+		//     left: 50%;
+		//     transform: translate(-50%, -50%);
+		//     #label-pin {
+		//         p {
+		//             text-align: center;
+		//             color: map-get($colors, verde);
+		//             font-family: map-get($fonts, OpenSans),'sans-serif';
+		//             font-size: 14px;
+		//         }
+		//     }
+		//     #form-container-pin {
+		//         display: flex;
+		//         justify-content: center;
+		//         align-items: center;
+		//         margin-top: 10vh;
+		//         input {
+		//             margin: 0 10px;
+		//             width: 30px;
+		//             background: transparent;
+		//             border: none;
+		//             border-bottom: 1px solid #eee;
+		//             text-align: center;
+		//             color: map-get($colors, blanco-medio);
+		//             font-family: map-get($fonts, OpenSans);
+		//         }
+		//     }
+		// }
 		// EndModify
-		#btnPin {
+		pass-button {
 			position: absolute;
 			top: 90%;
 			left: 50%;
 			transform: translate(-50%, -90%);
-			button {
-				width: 70vw;
-				border-radius: 4px;
-				padding: 14px 0;
-				color: map-get($colors, verde);
-				font-size: 14px;
-				font-family: map-get($fonts, OpenSans);
-				background: rgba(255, 255, 255, 0.02);
-			}
+			width: 80%;
 		}
 	}
 }
