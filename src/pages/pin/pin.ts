@@ -27,11 +27,10 @@ export class PinPage {
 		private alertController: AlertController
 	) {}
 
-	private registerPin(): void {
-		let pin: string = this.verifyPin.getPin();
-		if (pin !== null) {
+	private registerPin(text: string): void {
+		if (text !== null) {
 			// Se guarda el pin en la base de datos
-			this.pinDao.setPin(pin);
+			this.pinDao.setPin(text);
 			// Se redirige al home de la aplicación
 			this.navController.setRoot(HomePage);
 

@@ -1,0 +1,18 @@
+<p id="account-description">{{ account.description }}</p>
+
+<div class="A-info">
+	<p class="A-info-1">Usuario:</p>
+	<p class="A-info-2">{{ account.email }}</p>
+</div>
+
+<div class="A-info">
+	<p class="A-info-1">Contraseña:</p>
+	<p class="A-info-2">{{ account.password }}</p>
+</div>
+
+<div class="A-info">
+	<p class="A-info-1">Categoria:</p>
+	<p class="A-info-2" *ngFor="let categorias of account.categories">
+		{{ categorias }}
+	</p>
+</div>

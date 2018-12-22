@@ -1,6 +1,6 @@
 import { IShowData } from "../Interfaces/IShowData";
 
-export class DTOCuenta implements IShowData {
+export class DTOAccount implements IShowData {
 	public idCuenta: number;
 	public email: string;
 	public password: string;
@@ -26,7 +26,7 @@ export class DTOCuenta implements IShowData {
 
 	public showData(): void {
 		console.log(
-			`DTOCuenta {Id: ${this.idCuenta}, Email: ${this.email}, Password: ${
+			`DTOAccount {Id: ${this.idCuenta}, Email: ${this.email}, Password: ${
 				this.password
 			}, Descryption: ${this.description}, Type: ${
 				this.type

@@ -1,172 +1,129 @@
-import { Component } from "@angular/core";
-import {
-	NavController,
-	AlertController,
-	LoadingController,
-	Alert
-} from "ionic-angular";
-
-// pages
-import { EditAccountPage } from "../edit-account/edit-account";
+import { Component, ViewChild } from "@angular/core";
 
 // Daos
-import { CuentaDAO } from "../../source/daos/CuentaDAO";
+import { AccountDAO } from "../../source/daos/AccountDAO";
 import { PinDAO } from "../../source/daos/PinDAO";
 
 // Dtos
-import { DTOCuenta } from "../../source/dtos/DTOCuenta";
+import { DTOAccount } from "../../source/dtos/DTOAccount";
 import { ArrDTOAccount } from "../../providers/ArrDTOAccount";
-import { Pair } from "../../source/dataEstructure/Pair";
 import { EncryptorAccountProvider } from "../../providers/encryptor-account/encryptor-account";
+import { NavController, Slides } from "ionic-angular";
 
 @Component({
 	selector: "page-mostrar-cuentas",
 	templateUrl: "mostrar-cuentas.html"
 })
 export class MostrarCuentasPage {
-	private tiposCuentas: Pair;
+	// Para mostrar información de la cuenta
+	private currentAccountIndex: number;
+	private currentAccount: DTOAccount;
+	private accounts: Array<DTOAccount>;
+	private accountType: string;
+	private accountNumber: number;
+
+	// Manejo de slides
+	@ViewChild(Slides) private slides: Slides;
+
+	// Para manejar las funcionalidades de las cuentas
+	private isPinShow: boolean = false;
+	private option: string = "";
+	private errorText: string = "";
+	private isAccountEditted: boolean = false;
 
 	constructor(
-		public navCtrl: NavController,
-		private alertController: AlertController,
-		private loadingController: LoadingController,
-		private cuentaDao: CuentaDAO,
+		private navController: NavController,
+		private AccountDAO: AccountDAO,
 		private pinDao: PinDAO,
 		private encryptor: EncryptorAccountProvider,
 		private arrDtoAccount: ArrDTOAccount
 	) {
-		this.tiposCuentas = arrDtoAccount.getActual().second;
-
-
+		this.accountType = arrDtoAccount.getActual().first;
+		this.accounts = arrDtoAccount.getActual().second;
+		this.accountNumber = this.accounts.length;
 	}
 
-	private revealAccount(item: DTOCuenta): void {
-		let promise = new Promise((resolve, reject) => {
-			this.alertController
-				.create({
-					title: "Ingrese el pin",
-					inputs: [
-						{
-							name: "pin",
-							placeholder: "Pin"
-						}
-					],
-					buttons: [
-						{
-							text: "Aceptar",
-							handler: (data: any) => {
-								this.pinDao
-									.verifyPin(data.pin)
-									.then((data: boolean) => {
-										if (data) {
-											item = this.encryptor.decryptAccount(
-												item
-											);
-										} else {
-											let alert: Alert = this.alertController.create(
-												{
-													message:
-														"El pin es incorrecto"
-												}
-											);
-											alert.present();
-											setTimeout(() => {
-												alert.dismiss();
-												alert = null;
-											}, 1000);
-										}
-									});
-							}
-						},
-						{
-							text: "Cancelar",
-							handler: (data: string) => {}
-						}
-					]
-				})
-				.present();
-		});
+	ionViewDidEnter() {
+		this.currentAccountIndex = this.slides.getActiveIndex();
+		this.currentAccount = this.accounts[this.currentAccountIndex];
 	}
 
-	private editAccount(item: DTOCuenta): void {
-		let promise = new Promise((resolve, reject) => {
-			this.alertController
-				.create({
-					title: "Ingrese el pin",
-					inputs: [
-						{
-							name: "pin",
-							placeholder: "Pin"
-						}
-					],
-					buttons: [
-						{
-							text: "Aceptar",
-							handler: (data: any) => {
-								this.pinDao
-									.verifyPin(data.pin)
-									.then((data: boolean) => {
-										if (data) {
-											this.navCtrl.push(
-												EditAccountPage,
-												item
-											);
-										}
-									});
-							}
-						},
-						{
-							text: "Cancelar",
-							handler: (data: string) => {}
-						}
-					]
-				})
-				.present();
-		});
+	private slideChanged() {
+		this.currentAccountIndex = this.slides.getActiveIndex();
+		this.currentAccount = this.accounts[this.currentAccountIndex];
 	}
 
-	private deleteAccount(item: DTOCuenta) {
-		let promise = new Promise((resolve, reject) => {
-			this.alertController
-				.create({
-					title: "Ingrese su pin",
-					inputs: [
-						{
-							name: "pin",
-							placeholder: "Pin"
-						}
-					],
-					buttons: [
-						{
-							text: "Aceptar",
-							handler: (data: any) => {
-								this.pinDao
-									.verifyPin(data.pin)
-									.then((data: boolean) => {
-										if (data) {
-											this.cuentaDao.delete(item);
-											this.loadingController
-												.create({
-													content:
-														"Eliminando cuenta",
-													duration: 2000
-												})
-												.present();
-										}
-									});
+	private verifyPin(text: string, account: DTOAccount): void {
+		if (text != null) {
+			this.pinDao.verifyPin(text).then((pin: boolean) => {
+				if (pin) {
+					this.errorText = "";
+					this.isAccountEditted = false;
+					switch (this.option) {
+						case "reveal":
+							{
+								account = this.encryptor.decryptAccount(
+									account
+								);
 							}
-						},
-						{
-							text: "Cancelar",
-							handler: (data: any) => {}
-						}
-					]
-				})
-				.present();
-		});
+							break;
+						case "edit":
+							{
+								this.isAccountEditted = true;
+							}
+							break;
+						case "delete":
+							{
+							}
+							break;
+					}
+				} else {
+					this.errorText = "Pin incorrecto";
+				}
+			});
+		}
+	}
+
+	private togglePin(): void {
+		this.isPinShow = !this.isPinShow;
+	}
+
+	private showPin(): void {
+		this.isPinShow = true;
+	}
+
+	private hidePin(): void {
+		this.isPinShow = false;
+	}
+
+	private revealAccountSelected(item: DTOAccount): void {
+		if (this.option !== "reveal") {
+			this.option = "reveal";
+			this.showPin();
+		} else {
+			this.togglePin();
+		}
+	}
+
+	private editAccountSelected(item: DTOAccount): void {
+		if (this.option !== "edit") {
+			this.option = "edit";
+			this.showPin();
+		} else {
+			this.togglePin();
+		}
+	}
+
+	private deleteAccountSelected(item: DTOAccount): void {
+		if (this.option !== "delete") {
+			this.option = "delete";
+			this.showPin();
+		} else {
+			this.togglePin();
+		}
 	}
 
 	private goBack(): void {
-		this.navCtrl.pop();
+		this.navController.pop();
 	}
 }

@@ -1,4 +1,10 @@
-import { ElementRef, Component, ViewChild } from "@angular/core";
+import {
+	ElementRef,
+	Component,
+	ViewChild,
+	Output,
+	EventEmitter
+} from "@angular/core";
 
 @Component({
 	selector: "pin-input",
@@ -12,82 +18,113 @@ export class PinInputComponent {
 	@ViewChild("pinref5") private pinInput5: ElementRef;
 	@ViewChild("pinref6") private pinInput6: ElementRef;
 
+	@Output("onWritten") private onWritten: EventEmitter<
+		string
+	> = new EventEmitter<string>();
+
+	private inputs: any = {
+		pinref1: "",
+		pinref2: "",
+		pinref3: "",
+		pinref4: "",
+		pinref5: "",
+		pinref6: ""
+	};
+
 	constructor() {}
 
-	private focus2(ev: any) {
-		if (ev.target.value !== " ") {
-			if (ev.target.value.length === 1) {
-				this.pinInput2.nativeElement.focus();
-			}
+	private written1(ev: any) {
+		if (this.inputs.pinref1 !== "") {
+			this.pinInput2.nativeElement.focus();
+		}
+		this.emitPin();
+	}
+
+	private written2(ev: any) {
+		if (this.inputs.pinref1 !== "") {
+			this.pinInput3.nativeElement.focus();
+		}
+		this.emitPin();
+	}
+
+	private written3(ev: any) {
+		if (this.inputs.pinref1 !== "") {
+			this.pinInput4.nativeElement.focus();
+		}
+		this.emitPin();
+	}
+
+	private written4(ev: any) {
+		if (this.inputs.pinref1 !== "") {
+			this.pinInput5.nativeElement.focus();
+		}
+		this.emitPin();
+	}
+
+	private written5(ev: any) {
+		if (this.inputs.pinref1 !== "") {
+			this.pinInput6.nativeElement.focus();
+		}
+		this.emitPin();
+	}
+
+	private written6(ev: any) {
+		// this.pinInput6.nativeElement.focus();
+		this.emitPin();
+	}
+
+	private emitPin(): void {
+		this.onWritten.emit(this.getPin());
+	}
+
+	private isValid(text: string): boolean {
+		if (text !== "" && text !== " ") {
+			return true;
 		} else {
-			ev.target.value = "";
+			return false;
 		}
 	}
 
-	private focus3(ev: any) {
-		if (ev.target.value !== " ") {
-			if (ev.target.value.length === 1) {
-				this.pinInput3.nativeElement.focus();
-			}
+	private isPinValid(): boolean {
+		if (
+			this.isValid(this.inputs.pinref1) &&
+			this.isValid(this.inputs.pinref2) &&
+			this.isValid(this.inputs.pinref3) &&
+			this.isValid(this.inputs.pinref4) &&
+			this.isValid(this.inputs.pinref5) &&
+			this.isValid(this.inputs.pinref6)
+		) {
+			return true;
 		} else {
-			ev.target.value = "";
+			return false;
 		}
 	}
 
-	private focus4(ev: any) {
-		if (ev.target.value !== " ") {
-			if (ev.target.value.length === 1) {
-				this.pinInput4.nativeElement.focus();
-			}
-		} else {
-			ev.target.value = "";
-		}
-	}
-
-	private focus5(ev: any) {
-		if (ev.target.value !== " ") {
-			if (ev.target.value.length === 1) {
-				this.pinInput5.nativeElement.focus();
-			}
-		} else {
-			ev.target.value = "";
-		}
-	}
-
-	private focus6(ev: any) {
-		if (ev.target.value !== " ") {
-			if (ev.target.value.length === 1) {
-				this.pinInput6.nativeElement.focus();
-			}
-		} else {
-			ev.target.value = "";
-		}
+	private getString(): string {
+		return (
+			this.inputs.pinref1 +
+			this.inputs.pinref2 +
+			this.inputs.pinref3 +
+			this.inputs.pinref4 +
+			this.inputs.pinref5 +
+			this.inputs.pinref6
+		);
 	}
 
 	public getPin(): string {
-		if (
-			(<HTMLInputElement>this.pinInput1.nativeElement).value !== "" &&
-			(<HTMLInputElement>this.pinInput1.nativeElement).value !== " " &&
-			(<HTMLInputElement>this.pinInput2.nativeElement).value !== "" &&
-			(<HTMLInputElement>this.pinInput2.nativeElement).value !== " " &&
-			(<HTMLInputElement>this.pinInput3.nativeElement).value !== "" &&
-			(<HTMLInputElement>this.pinInput3.nativeElement).value !== " " &&
-			(<HTMLInputElement>this.pinInput4.nativeElement).value !== "" &&
-			(<HTMLInputElement>this.pinInput4.nativeElement).value !== " " &&
-			(<HTMLInputElement>this.pinInput5.nativeElement).value !== "" &&
-			(<HTMLInputElement>this.pinInput5.nativeElement).value !== " " &&
-			(<HTMLInputElement>this.pinInput6.nativeElement).value !== "" &&
-			(<HTMLInputElement>this.pinInput6.nativeElement).value !== " "
-		) {
-			return (
-				(<HTMLInputElement>this.pinInput1.nativeElement).value +
-				(<HTMLInputElement>this.pinInput2.nativeElement).value +
-				(<HTMLInputElement>this.pinInput3.nativeElement).value +
-				(<HTMLInputElement>this.pinInput4.nativeElement).value +
-				(<HTMLInputElement>this.pinInput5.nativeElement).value +
-				(<HTMLInputElement>this.pinInput6.nativeElement).value
-			);
+		if (this.isPinValid()) {
+			return this.getString();
+		} else {
+			return null;
 		}
-		return null;
+	}
+
+	private cleanInputs(): void {
+		this.inputs.pinref1 = "";
+		this.inputs.pinref2 = "";
+		this.inputs.pinref3 = "";
+		this.inputs.pinref4 = "";
+		this.inputs.pinref5 = "";
+		this.inputs.pinref6 = "";
 	}
 }

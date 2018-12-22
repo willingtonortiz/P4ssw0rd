@@ -1,22 +1,22 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
-import { DTOCuenta } from "../../source/dtos/DTOCuenta";
-import { CuentaDAO } from "../../source/daos/CuentaDAO";
+import { DTOAccount } from "../../source/dtos/DTOAccount";
+import { AccountDAO } from "../../source/daos/AccountDAO";
 
 @Component({
 	selector: "page-edit-account",
 	templateUrl: "edit-account.html"
 })
 export class EditAccountPage {
-	private account: DTOCuenta = null;
+	private account: DTOAccount = null;
 
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
-		private cuentaDAO: CuentaDAO
+		private AccountDAO: AccountDAO
 	) {
-		let params: DTOCuenta = navParams.data;
-		this.account = new DTOCuenta(
+		let params: DTOAccount = navParams.data;
+		this.account = new DTOAccount(
 			params.idCuenta,
 			params.email,
 			params.password,
@@ -28,6 +28,6 @@ export class EditAccountPage {
 
 	private editAccount(): void {
 		console.log(this.account);
-		this.cuentaDAO.update(this.account);
+		this.AccountDAO.update(this.account);
 	}
 }

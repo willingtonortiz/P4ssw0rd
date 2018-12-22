@@ -1,18 +1,19 @@
 import { Injectable } from "@angular/core";
-import { CuentaDAO } from "../source/daos/CuentaDAO";
-import { DTOCuenta } from "../source/dtos/DTOCuenta";
+import { AccountDAO } from "../source/daos/AccountDAO";
+import { DTOAccount } from "../source/dtos/DTOAccount";
 import { Pair } from "../source/dataEstructure/Pair";
 
 @Injectable()
 export class ArrDTOAccount {
-	public accounts: Array<Pair> = null;
-	private actual: Pair = null;
+	public accounts: Array<Pair<string, Array<DTOAccount>>> = null;
+	// Cuenta actualmente seleccionada
+	private actual: Pair<string, Array<DTOAccount>> = null;
 	//first->tipo:string
 	//second->array de cuentas de ese tipo
 
-	constructor(private cuentaDao: CuentaDAO) {
-		this.accounts = new Array<Pair>();
-		cuentaDao.getAll().then((data: Array<DTOCuenta>) => {
+	constructor(private AccountDAO: AccountDAO) {
+		this.accounts = new Array<Pair<string, Array<DTOAccount>>>();
+		AccountDAO.getAll().then((data: Array<DTOAccount>) => {
 			if (data) {
 				data.forEach(account => {
 					this.agregarCuenta(account);
@@ -21,7 +22,7 @@ export class ArrDTOAccount {
 		});
 	}
 
-	public getActual(): Pair {
+	public getActual(): Pair<string, Array<DTOAccount>> {
 		return this.actual;
 	}
 
@@ -29,17 +30,17 @@ export class ArrDTOAccount {
 		this.actual = this.buscarTipo(tipo);
 	}
 
-	public agregarCuenta(account: DTOCuenta): void {
+	public agregarCuenta(account: DTOAccount): void {
 		if (this.buscarTipo(account.type) == null) {
 			this.accounts.push(
-				new Pair(account.type, new Array<DTOCuenta>(account))
+				new Pair(account.type, new Array<DTOAccount>(account))
 			);
 		} else {
 			this.buscarTipo(account.type).second.push(account);
 		}
 	}
 
-	private buscarTipo(tipo: string): Pair {
+	private buscarTipo(tipo: string): Pair<string, Array<DTOAccount>> {
 		for (let pair of this.accounts) {
 			if (pair.first === tipo) return pair;
 		}
@@ -47,7 +48,7 @@ export class ArrDTOAccount {
 	}
 
 	public buscarCategoria(categoria: string): void {
-		let cuentas = new Array<DTOCuenta>();
+		let cuentas = new Array<DTOAccount>();
 		for (let type of this.accounts) {
 			for (let account of type.second) {
 				for (let category of account.categories) {

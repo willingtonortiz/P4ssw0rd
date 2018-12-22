@@ -1,10 +1,10 @@
-import { DTOCuenta } from "../dtos/DTOCuenta";
+import { DTOAccount } from "../dtos/DTOAccount";
 import { GenericDAO } from "../Interfaces/GenericDAO";
 import { Storage } from "@ionic/storage";
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class CuentaDAO implements GenericDAO<DTOCuenta> {
+export class AccountDAO implements GenericDAO<DTOAccount> {
 	// variable para asignar id a las cuentas
 	private idActual: number;
 
@@ -23,12 +23,12 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 		this.storage.set("idActual", idActual);
 	}
 
-	public insert(item: DTOCuenta): void {
+	public insert(item: DTOAccount): void {
 		this.storage.get("cuentas").then((data: string) => {
 			// Si ya existían datos
 			if (data) {
 				// Se obtienen el arrelgo de datos existen
-				let cuentas: Array<DTOCuenta> = JSON.parse(data);
+				let cuentas: Array<DTOAccount> = JSON.parse(data);
 
 				// Se ingresa el id del nuevo dato
 				item.idCuenta = ++this.idActual;
@@ -43,7 +43,7 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 				this.storage.set("cuentas", JSON.stringify(cuentas));
 			} else {
 				// Se crea un arreglo que actuará como modelo de datos
-				let cuentas = new Array<DTOCuenta>();
+				let cuentas = new Array<DTOAccount>();
 
 				// Se ingresa el id del nuevo dato ( 0 )
 				item.idCuenta = ++this.idActual;
@@ -58,11 +58,11 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 		});
 	}
 
-	public update(item: DTOCuenta): boolean {
+	public update(item: DTOAccount): boolean {
 		this.storage.get("cuentas").then((data: string) => {
 			if (data) {
 				// Si existen datos, se buscará la cuenta para actualizarla
-				let cuentas: Array<DTOCuenta> = JSON.parse(data);
+				let cuentas: Array<DTOAccount> = JSON.parse(data);
 
 				// Se busca la cuenta para actualizarla
 				for (let i = 0; i < cuentas.length; ++i) {
@@ -87,11 +87,11 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 		return false;
 	}
 
-	public delete(item: DTOCuenta): boolean {
+	public delete(item: DTOAccount): boolean {
 		this.storage.get("cuentas").then((data: string) => {
 			if (data) {
 				// Si existen datos, se buscará la cuenta para eliminarla
-				let cuentas: Array<DTOCuenta> = JSON.parse(data);
+				let cuentas: Array<DTOAccount> = JSON.parse(data);
 
 				// Se obtiene el nuevo arreglo (el arreglo original menos le dato a eliminar)
 				cuentas = cuentas.filter(
@@ -115,11 +115,11 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 		return new Promise((resolve, reject) => {
 			this.storage.get("cuentas").then((data: string) => {
 				if (data) {
-					let accounts: Array<DTOCuenta> = JSON.parse(data);
-					accounts.forEach((account: DTOCuenta) => {
+					let accounts: Array<DTOAccount> = JSON.parse(data);
+					accounts.forEach((account: DTOAccount) => {
 						if (account.idCuenta === id)
 							resolve(
-								new DTOCuenta(
+								new DTOAccount(
 									account.idCuenta,
 									account.email,
 									account.password,
@@ -137,15 +137,15 @@ export class CuentaDAO implements GenericDAO<DTOCuenta> {
 		});
 	}
 
-	public getAll(): Promise<Array<DTOCuenta>> {
+	public getAll(): Promise<Array<DTOAccount>> {
 		return new Promise((resolve, reject) => {
 			this.storage.get("cuentas").then((data: string) => {
 				if (data) {
-					let objectArray: Array<DTOCuenta> = JSON.parse(data);
-					let accounts: Array<DTOCuenta> = new Array<DTOCuenta>();
+					let objectArray: Array<DTOAccount> = JSON.parse(data);
+					let accounts: Array<DTOAccount> = new Array<DTOAccount>();
 					for (let i = 0; i < objectArray.length; ++i) {
 						accounts.push(
-							new DTOCuenta(
+							new DTOAccount(
 								objectArray[i].idCuenta,
 								objectArray[i].email,
 								objectArray[i].password,

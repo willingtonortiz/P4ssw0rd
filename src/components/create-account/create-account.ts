@@ -9,7 +9,7 @@ import {
 } from "ionic-angular";
 import { EncryptorAccountProvider } from "../../providers/encryptor-account/encryptor-account";
 
-import { DTOCuenta } from "../../source/dtos/DTOCuenta";
+import { DTOAccount } from "../../source/dtos/DTOAccount";
 import { ArrDTOAccount } from "../../providers/ArrDTOAccount";
 
 @Component({
@@ -39,7 +39,7 @@ export class CreateAccountComponent {
 
 		if (this.user !== "" && this.password !== "" && this.type !== "") {
 			// Se crea la nueva cuenta del usuario
-			let newAccount: DTOCuenta = new DTOCuenta(
+			let newAccount: DTOAccount = new DTOAccount(
 				undefined,
 				this.user,
 				this.password,

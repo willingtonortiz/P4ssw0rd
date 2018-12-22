@@ -1,80 +1,81 @@
 <ion-content id="mostrarCuentaContainer" padding>
 	<div id="headerMC-Container">
-		<img id="logo" width="25" height="25" src="../../assets/Logo.svg" alt="" />
-
-		<button id="RegresarButton" (click)="goBack()"><img width="25" height="25" src="../../assets/RegresarIcon.svg" alt=""></button>
+		<img
+			id="logo"
+			width="25"
+			height="25"
+			src="../../assets/Logo.svg"
+			alt=""
+		/>
+		<button id="RegresarButton" (click)="goBack()">
+			<img
+				width="25"
+				height="25"
+				src="../../assets/RegresarIcon.svg"
+				alt=""
+			/>
+		</button>
 	</div>
 
-
 	<div id="MC-Indicador">
-
-		<p>Estas viendos las cuentas de {{tiposCuentas[0].type}}</p><br>
-		<p>{{arrDtoAccount.accounts.length}} cuentas</p>
-		<!-- <img src="../../assets/encrypted.svg" alt=""> -->
-
-
+		<p>Estas viendos las cuentas de {{ accountType }}</p>
+		<br />
+		<p>{{ accountNumber }} cuentas</p>
 	</div>
 
 	<div id="slides-MC">
-		<ion-slides pager="true">
-			<ion-slide *ngFor="let cuenta of tiposCuentas" id="slideAccount">
-				<p id="account-description">{{cuenta.description}}</p>
+		<ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
+			<ion-slide *ngFor="let account of accounts" id="slideAccount">
+				<show-account *ngIf="!isAccountEditted" [account]="account">
+				</show-account>
 
-				<div class="A-info">
-					<p class="A-info-1">Usuario:</p>
-					<p class="A-info-2">{{cuenta.email}}</p>
-				</div>
-				<div class="A-info">
-					<p class="A-info-1">Contraseña:</p>
-					<p class="A-info-2">{{cuenta.password}}</p>
-				</div>
-				<div class="A-info">
-					<p class="A-info-1">Categoria: </p>
-					<p class="A-info-2" *ngFor="let categorias of cuenta.categories">{{categorias}}</p>
-				</div>
-				<!-- <p>Usuario: {{ cuenta.email }}</p>
-				<p>Contraseña: {{ cuenta.password }}</p>
+				<edit-account
+					*ngIf="isAccountEditted"
+					[account]="account"
+				></edit-account>
 
-				<span>Categorias:</span>
-				<span *ngFor="let categorias of cuenta.categories">{{ categorias }} </span>
-				<hr> -->
+				<verify-pin
+					[headerText]="'Ingrese el pin'"
+					[errorText]="errorText"
+					(onWrittenEvent)="verifyPin($event, account)"
+					*ngIf="isPinShow"
+				></verify-pin>
+
 				<div id="BtnEventsforAccount">
-					<button (click)="editAccount(cuenta)">
-							<img width="30" height="30" src="../../assets/EditarIcon.svg" alt="">
-
+					<button (click)="editAccountSelected(account)">
+						<img
+							width="30"
+							height="30"
+							src="../../assets/EditarIcon.svg"
+							alt=""
+						/>
 						<p>Editar Cuenta</p>
-
 					</button>
-					<button id="btn-mostrarAccount" (click)="revealAccount(cuenta)">
 
-						<img width="30" height="30" src="../../assets/aNada.svg" alt="">
+					<button
+						id="btn-mostrarAccount"
+						(click)="revealAccountSelected(account)"
+					>
+						<img
+							width="30"
+							height="30"
+							src="../../assets/aNada.svg"
+							alt=""
+						/>
 						<p>Mostrar Cuenta</p>
 					</button>
-					<button (click)="deleteAccount(cuenta)">
-							<img width="30" height="30" src="../../assets/BorrarIcon.svg" alt="">
+
+					<button (click)="deleteAccountSelected(account)">
+						<img
+							width="30"
+							height="30"
+							src="../../assets/BorrarIcon.svg"
+							alt=""
+						/>
 						<p>Borrar Cuenta</p>
 					</button>
-
 				</div>
 			</ion-slide>
 		</ion-slides>
 	</div>
-
-	<!-- <div *ngFor="let cuenta of tiposCuentas">
-		<p>Usuario: {{ cuenta.email }}</p>
-		<p>Contraseña: {{ cuenta.password }}</p>
-
-		<span>Categorias:</span>
-		<span *ngFor="let categorias of cuenta.categories">{{ categorias }} </span>
-		<hr>
-
-		<button (click)="revealAccount(cuenta)">Mostrar Cuenta</button>
-		<button (click)="editAccount(cuenta)">Editar Cuenta</button>
-		<button (click)="deleteAccount(cuenta)">Borrar Cuenta</button>
-	</div> -->
-
-
-
-
-
 </ion-content>

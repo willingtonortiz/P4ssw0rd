@@ -1,24 +1,19 @@
-import { Component, Input, ViewChild } from "@angular/core";
-import { PinDAO } from "../../source/daos/PinDAO";
-import { NavController, AlertController, Alert } from "ionic-angular";
-import { PinInputComponent } from "../pin-input/pin-input";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
 	selector: "verify-pin",
 	templateUrl: "verify-pin.html"
 })
 export class VerifyPinComponent {
-	@Input("text") text: string;
-	@ViewChild(PinInputComponent)
-	private inputComponent: PinInputComponent;
+	@Input("headerText") headerText: string;
+	@Input("errorText") errorText: string;
+	@Output("onWrittenEvent") onWrittenEvent: EventEmitter<
+		string
+	> = new EventEmitter<string>();
 
-	constructor(
-		private pinDao: PinDAO,
-		private navController: NavController,
-		private alertController: AlertController
-	) {}
+	constructor() {}
 
-	public getPin() {
-		return this.inputComponent.getPin();
+	private onWritten(text: string): void {
+		this.onWrittenEvent.emit(text);
 	}
 }

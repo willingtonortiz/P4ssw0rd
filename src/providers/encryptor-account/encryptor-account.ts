@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Encryptor } from "../../source/Encriptacion/Encryptor/Encryptor";
-import { CuentaDAO } from "../../source/daos/CuentaDAO";
-import { DTOCuenta } from "../../source/dtos/DTOCuenta";
+import { AccountDAO } from "../../source/daos/AccountDAO";
+import { DTOAccount } from "../../source/dtos/DTOAccount";
 import { RotorPosicion } from "../../source/Encriptacion/Enigma/RotorPosicion";
 import { Enigma } from "../../source/Encriptacion/Enigma/Enigma";
 
@@ -9,12 +9,12 @@ import { Enigma } from "../../source/Encriptacion/Enigma/Enigma";
 export class EncryptorAccountProvider {
 	private encryptor: Encryptor;
 
-	constructor(private accountDAO: CuentaDAO) {
+	constructor(private accountDAO: AccountDAO) {
 		this.encryptor = new Encryptor();
 	}
 
-	public encryptAccount(item: DTOCuenta): DTOCuenta {
-		// return new DTOCuenta(
+	public encryptAccount(item: DTOAccount): DTOAccount {
+		// return new DTOAccount(
 		// 	item.idCuenta,
 		// 	this.encryptor.encrypt(item.email),
 		// 	this.encryptor.encrypt(item.password),
@@ -26,8 +26,8 @@ export class EncryptorAccountProvider {
 		return item;
 	}
 
-	public decryptAccount(item: DTOCuenta): DTOCuenta {
-		// return new DTOCuenta(
+	public decryptAccount(item: DTOAccount): DTOAccount {
+		// return new DTOAccount(
 		// 	item.idCuenta,
 		// 	this.encryptor.decrypt(item.email),
 		// 	this.encryptor.decrypt(item.password),
@@ -39,15 +39,15 @@ export class EncryptorAccountProvider {
 		return item;
 	}
 
-	public insertAccount(item: DTOCuenta): void {
+	public insertAccount(item: DTOAccount): void {
 		item = this.encryptAccount(item);
 		this.accountDAO.insert(item);
 	}
 
 	public modifyAccounts(pin: string): void {
-		this.accountDAO.getAll().then((data: Array<DTOCuenta>) => {
+		this.accountDAO.getAll().then((data: Array<DTOAccount>) => {
 			if (data) {
-				let accounts: Array<DTOCuenta> = data;
+				let accounts: Array<DTOAccount> = data;
 
 				// Se desencriptan todos los datos
 				for (let i = 0; i < accounts.length; ++i) {

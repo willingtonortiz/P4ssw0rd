@@ -1,94 +1,94 @@
 #mostrarCuentaContainer {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background: map-get($colors, principal);
-    #headerMC-Container {
-        width: 100%;
-        padding: 10px 0;
-        height: 5vh;
-        position: relative;
-        #logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        #RegresarButton {
-            position: absolute;
-            top: 50%;
-            left: 0%;
-            transform: translate(0%, -50%);
-            background: transparent;
-            border: none;
-        }
-    }
-    #MC-Indicador {
-        width: 100%;
-        padding: 35px 0;
-        height: 20vh;
-        display: flex;
-        justify-content: flex-start;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background: map-get($colors, principal);
+	#headerMC-Container {
+		width: 100%;
+		padding: 10px 0;
+		height: 5vh;
+		position: relative;
+		#logo {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		#RegresarButton {
+			position: absolute;
+			top: 50%;
+			left: 0%;
+			transform: translate(0%, -50%);
+			background: transparent;
+			border: none;
+		}
+	}
+	#MC-Indicador {
+		width: 100%;
+		padding: 35px 0;
+		height: 20vh;
+		display: flex;
+		justify-content: flex-start;
 		align-items: flex-start;
 		flex-direction: column;
-        p {
+		p {
 			color: map-get($colors, blanco-alto);
 			text-align: left;
-        }
-    }
-    #slides-MC {
-        width: 100%;
-        height: 70vh;
-        #slideAccount {
-            #account-description {
-                font-family: map-get($fonts, OpenSans);
-                font-weight: 600;
-                color: #e8e8e8;
-                margin: 20px 0;
-                font-size: 20px;
-            }
-            .A-info {
-                margin: 2vh 0;
-                .A-info-1 {
-                    font-family: map-get($fonts, OpenSans);
-                    font-weight: 300;
-                    color: map-get($colors, verde);
-                    font-size: 12px;
-                }
-                .A-info-2 {
-                    font-family: map-get($fonts, OpenSans);
-                    font-weight: 300;
-                    color: map-get($colors, blanco-medio);
-                    font-size: 14px;
-                }
-            }
-            #BtnEventsforAccount {
-                width: 100%;
-                margin-top: 8vh;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                button {
-                    background: transparent;
-                    border: none;
-                    img {
-                        width: 35px !important;
-                        height: 35px !important;
-                        padding: 5px;
-                    }
-                    font-family: map-get($fonts, Opensans);
-                    font-weight: 300;
-                    color: map-get($colors, blanco-alto);
-                    font-size: 10px;
-                }
-                #btn-mostrarAccount {
-                    position: relative;
-                    color: map-get($colors, verde);
-                    p {
-                        // margin: 10px 0;
-                    }
-                }
-            }
-        }
-    }
+		}
+	}
+	#slides-MC {
+		width: 100%;
+		height: 70vh;
+		#slideAccount {
+			// #account-description {
+			// 	font-family: map-get($fonts, OpenSans);
+			// 	font-weight: 600;
+			// 	color: #e8e8e8;
+			// 	margin: 20px 0;
+			// 	font-size: 20px;
+			// }
+			// .A-info {
+			// 	margin: 2vh 0;
+			// 	.A-info-1 {
+			// 		font-family: map-get($fonts, OpenSans);
+			// 		font-weight: 300;
+			// 		color: map-get($colors, verde);
+			// 		font-size: 12px;
+			// 	}
+			// 	.A-info-2 {
+			// 		font-family: map-get($fonts, OpenSans);
+			// 		font-weight: 300;
+			// 		color: map-get($colors, blanco-medio);
+			// 		font-size: 14px;
+			// 	}
+			// }
+			#BtnEventsforAccount {
+				width: 100%;
+				margin-top: 8vh;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				button {
+					background: transparent;
+					border: none;
+					img {
+						width: 35px !important;
+						height: 35px !important;
+						padding: 5px;
+					}
+					font-family: map-get($fonts, Opensans);
+					font-weight: 300;
+					color: map-get($colors, blanco-alto);
+					font-size: 10px;
+				}
+				#btn-mostrarAccount {
+					position: relative;
+					color: map-get($colors, verde);
+					p {
+						// margin: 10px 0;
+					}
+				}
+			}
+		}
+	}
 }

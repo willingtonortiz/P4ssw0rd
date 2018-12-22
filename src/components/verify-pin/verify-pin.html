@@ -1,6 +1,11 @@
 <div>
 	<div id="label-pin">
-		<p>{{ text }}</p>
+		<p>{{ headerText }}</p>
 	</div>
-	<pin-input></pin-input>
+
+	<pin-input (onWritten)="onWritten($event)"></pin-input>
+
+	<div>
+		<p>{{ errorText }}</p>
+	</div>
 </div>

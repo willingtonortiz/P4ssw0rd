@@ -1,3 +1,4 @@
+import { EditAccountComponent } from './../components/edit-account/edit-account';
 import { BrowserModule } from "@angular/platform-browser";
 import { ErrorHandler, NgModule } from "@angular/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
@@ -19,7 +20,7 @@ import { IonicStorageModule } from "@ionic/storage";
 
 // Providers
 import { EncryptorAccountProvider } from "../providers/encryptor-account/encryptor-account";
-import { CuentaDAO } from "../source/daos/CuentaDAO";
+import { AccountDAO } from "../source/daos/AccountDAO";
 import { PinDAO } from "../source/daos/PinDAO";
 import { ArrDTOAccount } from "../providers/ArrDTOAccount";
 
@@ -28,6 +29,8 @@ import { PassButtonComponent } from "../components/pass-button/pass-button";
 import { CreateAccountComponent } from "../components/create-account/create-account";
 import { VerifyPinComponent } from "../components/verify-pin/verify-pin";
 import { PinInputComponent } from "../components/pin-input/pin-input";
+import { ShowAccountComponent } from "../components/show-account/show-account";
+// import { ComponentsModule } from "../components/components.module";
 
 @NgModule({
 	declarations: [
@@ -42,12 +45,15 @@ import { PinInputComponent } from "../components/pin-input/pin-input";
 		PassButtonComponent,
 		CreateAccountComponent,
 		VerifyPinComponent,
-		PinInputComponent
+		PinInputComponent,
+		ShowAccountComponent,
+		EditAccountComponent
 	],
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
 		IonicStorageModule.forRoot()
+		// ComponentsModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
@@ -62,7 +68,7 @@ import { PinInputComponent } from "../components/pin-input/pin-input";
 		StatusBar,
 		SplashScreen,
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
-		CuentaDAO,
+		AccountDAO,
 		PinDAO,
 		EncryptorAccountProvider,
 		ArrDTOAccount

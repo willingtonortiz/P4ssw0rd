@@ -1,15 +1,20 @@
 <ion-content id="pinContainer">
 	<div id="pinElements" padding>
+
 		<div id="logoPin" class="pinComponent">
 			<img src="../../assets/Logo.svg" alt="" width="100" height="100" />
 			<p>P4ssw0rds</p>
 		</div>
 
-		<verify-pin [text]="'Ingrese su pin'"></verify-pin>
+		<verify-pin
+			[headerText]="'Ingrese su pin'"
+			(onWrittenEvent)="registerPin($event)"
+		></verify-pin>
 
 		<pass-button
 			[buttonText]="'Ingresar'"
 			(onButtonClick)="registerPin()"
 		></pass-button>
+
 	</div>
 </ion-content>
