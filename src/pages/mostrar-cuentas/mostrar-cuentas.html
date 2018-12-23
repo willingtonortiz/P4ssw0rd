@@ -49,7 +49,7 @@
 							src="../../assets/EditarIcon.svg"
 							alt=""
 						/>
-						<p>Editar Cuenta</p>
+						<p [class.optionSelected]="optionTaked==='editar'">Editar Cuenta</p>
 					</button>
 
 					<button
@@ -59,10 +59,10 @@
 						<img
 							width="30"
 							height="30"
-							src="../../assets/aNada.svg"
+							src="../../assets/encrypted.svg"
 							alt=""
 						/>
-						<p>Mostrar Cuenta</p>
+						<p [class.optionSelected]="optionTaked==='revelar'">Mostrar Cuenta</p>
 					</button>
 
 					<button (click)="deleteAccountSelected()">
@@ -72,7 +72,7 @@
 							src="../../assets/BorrarIcon.svg"
 							alt=""
 						/>
-						<p>Borrar Cuenta</p>
+						<p [class.optionSelected]="optionTaked==='eliminar'">Borrar Cuenta</p>
 					</button>
 				</div>
 			</ion-slide>

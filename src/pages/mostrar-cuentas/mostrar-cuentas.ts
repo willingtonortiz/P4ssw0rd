@@ -27,7 +27,7 @@ export class MostrarCuentasPage {
 	// Para manejar las funcionalidades de las cuentas
 	private isPinShow: boolean = false;
 	private errorText: string = "";
-
+	private optionTaked:string="";
 	constructor(
 		private navController: NavController,
 		private AccountDAO: AccountDAO,
@@ -83,6 +83,7 @@ export class MostrarCuentasPage {
 	}
 
 	private revealAccountSelected(item: DTOAccount): void {
+		this.optionTaked='revelar'
 		if (this.accountManager.getOption() !== "reveal") {
 			/* LÓGICA PARA CAMBIAR LA OPCIÓN SELECCIONADA VISUALMENTE */
 
@@ -97,6 +98,7 @@ export class MostrarCuentasPage {
 	}
 
 	private editAccountSelected(item: DTOAccount): void {
+		this.optionTaked='editar';
 		if (this.accountManager.getOption() !== "edit") {
 			/* LÓGICA PARA CAMBIAR LA OPCIÓN SELECCIONADA VISUALMENTE */
 
@@ -111,6 +113,7 @@ export class MostrarCuentasPage {
 	}
 
 	private deleteAccountSelected(item: DTOAccount): void {
+		this.optionTaked='eliminar';
 		if (this.accountManager.getOption() !== "delete") {
 			/* LÓGICA PARA CAMBIAR LA OPCIÓN SELECCIONADA VISUALMENTE */
 
