@@ -30,6 +30,7 @@ import { CreateAccountComponent } from "../components/create-account/create-acco
 import { VerifyPinComponent } from "../components/verify-pin/verify-pin";
 import { PinInputComponent } from "../components/pin-input/pin-input";
 import { ShowAccountComponent } from "../components/show-account/show-account";
+import { AccountManagerProvider } from '../providers/account-manager/account-manager';
 // import { ComponentsModule } from "../components/components.module";
 
 @NgModule({
@@ -71,7 +72,8 @@ import { ShowAccountComponent } from "../components/show-account/show-account";
 		AccountDAO,
 		PinDAO,
 		EncryptorAccountProvider,
-		ArrDTOAccount
+		ArrDTOAccount,
+    AccountManagerProvider
 	]
 })
 export class AppModule {}

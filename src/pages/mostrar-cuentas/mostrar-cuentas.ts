@@ -7,8 +7,8 @@ import { PinDAO } from "../../source/daos/PinDAO";
 // Dtos
 import { DTOAccount } from "../../source/dtos/DTOAccount";
 import { ArrDTOAccount } from "../../providers/ArrDTOAccount";
-import { EncryptorAccountProvider } from "../../providers/encryptor-account/encryptor-account";
 import { NavController, Slides } from "ionic-angular";
+import { AccountManagerProvider } from "../../providers/account-manager/account-manager";
 
 @Component({
 	selector: "page-mostrar-cuentas",
@@ -16,27 +16,24 @@ import { NavController, Slides } from "ionic-angular";
 })
 export class MostrarCuentasPage {
 	// Para mostrar información de la cuenta
-	private currentAccountIndex: number;
-	private currentAccount: DTOAccount;
 	private accounts: Array<DTOAccount>;
 	private accountType: string;
 	private accountNumber: number;
+	private isAccountEditted: boolean = false;
 
 	// Manejo de slides
 	@ViewChild(Slides) private slides: Slides;
 
 	// Para manejar las funcionalidades de las cuentas
 	private isPinShow: boolean = false;
-	private option: string = "";
 	private errorText: string = "";
-	private isAccountEditted: boolean = false;
 
 	constructor(
 		private navController: NavController,
 		private AccountDAO: AccountDAO,
 		private pinDao: PinDAO,
-		private encryptor: EncryptorAccountProvider,
-		private arrDtoAccount: ArrDTOAccount
+		private arrDtoAccount: ArrDTOAccount,
+		private accountManager: AccountManagerProvider
 	) {
 		this.accountType = arrDtoAccount.getActual().first;
 		this.accounts = arrDtoAccount.getActual().second;
@@ -44,40 +41,28 @@ export class MostrarCuentasPage {
 	}
 
 	ionViewDidEnter() {
-		this.currentAccountIndex = this.slides.getActiveIndex();
-		this.currentAccount = this.accounts[this.currentAccountIndex];
+		this.accountManager.setCurrentAccount(
+			this.accounts[this.slides.getActiveIndex()]
+		);
 	}
 
 	private slideChanged() {
-		this.currentAccountIndex = this.slides.getActiveIndex();
-		this.currentAccount = this.accounts[this.currentAccountIndex];
+		this.accountManager.setCurrentAccount(
+			this.accounts[this.slides.getActiveIndex()]
+		);
 	}
 
 	private verifyPin(text: string, account: DTOAccount): void {
-		if (text != null) {
+		// Si es un pin válido (no necesariamente correcto)
+		if (text !== null) {
+			// Se verifica que sea correcto
 			this.pinDao.verifyPin(text).then((pin: boolean) => {
+				// El pin es correcto
 				if (pin) {
-					this.errorText = "";
-					this.isAccountEditted = false;
-					switch (this.option) {
-						case "reveal":
-							{
-								account = this.encryptor.decryptAccount(
-									account
-								);
-							}
-							break;
-						case "edit":
-							{
-								this.isAccountEditted = true;
-							}
-							break;
-						case "delete":
-							{
-							}
-							break;
-					}
-				} else {
+					this.accountManager.executeOption();
+				}
+				// El pin es incorrecto
+				else {
 					this.errorText = "Pin incorrecto";
 				}
 			});
@@ -94,32 +79,48 @@ export class MostrarCuentasPage {
 
 	private hidePin(): void {
 		this.isPinShow = false;
+		this.accountManager.setOption("nothing");
 	}
 
 	private revealAccountSelected(item: DTOAccount): void {
-		if (this.option !== "reveal") {
-			this.option = "reveal";
+		if (this.accountManager.getOption() !== "reveal") {
+			/* LÓGICA PARA CAMBIAR LA OPCIÓN SELECCIONADA VISUALMENTE */
+
+			// Se selecciona la opción
+			this.accountManager.setOption("reveal");
+
+			// Si no estaba visible el pin, se mostrará
 			this.showPin();
 		} else {
-			this.togglePin();
+			this.hidePin();
 		}
 	}
 
 	private editAccountSelected(item: DTOAccount): void {
-		if (this.option !== "edit") {
-			this.option = "edit";
+		if (this.accountManager.getOption() !== "edit") {
+			/* LÓGICA PARA CAMBIAR LA OPCIÓN SELECCIONADA VISUALMENTE */
+
+			// Se selecciona la opción
+			this.accountManager.setOption("edit");
+
+			// Si no estaba visible el pin, se mostrará
 			this.showPin();
 		} else {
-			this.togglePin();
+			this.hidePin();
 		}
 	}
 
 	private deleteAccountSelected(item: DTOAccount): void {
-		if (this.option !== "delete") {
-			this.option = "delete";
+		if (this.accountManager.getOption() !== "delete") {
+			/* LÓGICA PARA CAMBIAR LA OPCIÓN SELECCIONADA VISUALMENTE */
+
+			// Se selecciona la opción
+			this.accountManager.setOption("delete");
+
+			// Si no estaba visible el pin, se mostrará
 			this.showPin();
 		} else {
-			this.togglePin();
+			this.hidePin();
 		}
 	}
 
