@@ -30,11 +30,40 @@
 		display: flex;
 		justify-content: flex-start;
 		align-items: flex-start;
-		flex-direction: column;
-		p {
-			color: map-get($colors, blanco-alto);
-			text-align: left;
+		#MC-img{
+			width: 20%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			img{
+				width: 36px !important;
+				height: 36px !important;
+			}
 		}
+		#MC-Descp{
+			width: 70%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+			p {
+				color: map-get($colors, blanco-alto);
+				text-align: left;
+				font-family: map-get($fonts,OpenSans);
+			}
+			#MC-Sub1{
+				font-size: 14px;
+				color: #e8e8e8;
+				margin-bottom: 5px;
+			}
+			#MC-Sub2{
+				font-size: 10px;
+				color: #c3c3c3;
+			}
+
+		}
+
+
 	}
 	#slides-MC {
 		width: 100%;
@@ -50,28 +79,7 @@
 			font-size: 10px;
 		}
 		#slideAccount {
-			// #account-description {
-			// 	font-family: map-get($fonts, OpenSans);
-			// 	font-weight: 600;
-			// 	color: #e8e8e8;
-			// 	margin: 20px 0;
-			// 	font-size: 20px;
-			// }
-			// .A-info {
-			// 	margin: 2vh 0;
-			// 	.A-info-1 {
-			// 		font-family: map-get($fonts, OpenSans);
-			// 		font-weight: 300;
-			// 		color: map-get($colors, verde);
-			// 		font-size: 12px;
-			// 	}
-			// 	.A-info-2 {
-			// 		font-family: map-get($fonts, OpenSans);
-			// 		font-weight: 300;
-			// 		color: map-get($colors, blanco-medio);
-			// 		font-size: 14px;
-			// 	}
-			// }
+
 			#BtnEventsforAccount {
 				width: 100%;
 				margin-top: 8vh;
