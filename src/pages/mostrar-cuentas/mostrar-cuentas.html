@@ -28,26 +28,29 @@
 	<div id="slides-MC">
 		<ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
 			<ion-slide *ngFor="let account of accounts" id="slideAccount">
-				<show-account
+				<div id="MC-Details">
+
+					<show-account
 					*ngIf="accountManager.isAccountShowing"
 					[account]="account"
-				>
-				</show-account>
+					>
+					</show-account>
 
-				<edit-account
+					<edit-account
 					*ngIf="accountManager.isAccountEditing"
 					[account]="account"
-				></edit-account>
+					></edit-account>
 
-				<delete-account *ngIf="true" [account]="account">
-				</delete-account>
+					<delete-account *ngIf="true" [account]="account">
+					</delete-account>
 
-				<verify-pin
+					<verify-pin
 					[headerText]="'Ingrese el pin'"
 					[errorText]="errorText"
 					(onWrittenEvent)="verifyPin($event, account)"
 					*ngIf="accountManager.isPinShown"
-				></verify-pin>
+					></verify-pin>
+				</div>
 
 				<div id="BtnEventsforAccount">
 					<button (click)="editAccountSelected()">
@@ -57,7 +60,7 @@
 							src="../../assets/EditarIcon.svg"
 							alt=""
 						/>
-						<p [class.optionSelected]="optionTaked === 'editar'">
+						<p [class.optionSelected]="optionTaked === 'edit'">
 							Editar Cuenta
 						</p>
 					</button>
@@ -72,7 +75,7 @@
 							src="../../assets/encrypted.svg"
 							alt=""
 						/>
-						<p [class.optionSelected]="optionTaked === 'revelar'">
+						<p [class.optionSelected]="optionTaked === 'reveal'">
 							Mostrar Cuenta
 						</p>
 					</button>
@@ -81,10 +84,10 @@
 						<img
 							width="30"
 							height="30"
-							src="../../assets/BorrarIcon.svg"
+							src="../../assets/deleteaccountIcon.svg"
 							alt=""
 						/>
-						<p [class.optionSelected]="optionTaked === 'eliminar'">
+						<p [class.optionSelected]="optionTaked === 'delete'">
 							Borrar Cuenta
 						</p>
 					</button>

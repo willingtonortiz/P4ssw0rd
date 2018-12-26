@@ -1,5 +1,10 @@
-<h1>¿Estas seguro que desea borrar la cuenta?</h1>
-<div>
-	<button (click)="deleteAccount(true)">Check</button>
-	<button (click)="deleteAccount(false)">No check</button>
+<h1 id="DA-Desc">¿Estas seguro que desea borrar la cuenta?</h1>
+<div id="DA-btns">
+	<button id="DA-delete" (click)="deleteAccount(true)">
+		<img src="../../assets/BorrarIcon.svg" alt="">
+	</button>
+	<button id="DA-cancel" (click)="deleteAccount(false)">
+		<img src="../../assets/CancelarIcon.svg" alt="">
+
+	</button>
 </div>

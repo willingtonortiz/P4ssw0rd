@@ -67,17 +67,17 @@ export class MostrarCuentasPage {
 	}
 
 	private revealAccountSelected(): void {
-		this.optionTaked = "revelar";
+		this.optionTaked = "reveal";
 		this.accountManager.setOption("reveal");
 	}
 
 	private editAccountSelected(): void {
-		this.optionTaked = "editar";
+		this.optionTaked = "edit";
 		this.accountManager.setOption("edit");
 	}
 
 	private deleteAccountSelected(): void {
-		this.optionTaked = "eliminar";
+		this.optionTaked = "delete";
 		this.accountManager.setOption("delete");
 	}
 

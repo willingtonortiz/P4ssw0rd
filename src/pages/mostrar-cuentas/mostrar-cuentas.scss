@@ -1,112 +1,140 @@
 #mostrarCuentaContainer {
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background: map-get($colors, principal);
-	#headerMC-Container {
-		width: 100%;
-		padding: 10px 0;
-		height: 5vh;
-		position: relative;
-		#logo {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-		#RegresarButton {
-			position: absolute;
-			top: 50%;
-			left: 0%;
-			transform: translate(0%, -50%);
-			background: transparent;
-			border: none;
-		}
-	}
-	#MC-Indicador {
-		width: 100%;
-		padding: 35px 0;
-		height: 20vh;
-		display: flex;
-		justify-content: flex-start;
-		align-items: flex-start;
-		#MC-img{
-			width: 20%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			img{
-				width: 36px !important;
-				height: 36px !important;
-			}
-		}
-		#MC-Descp{
-			width: 70%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: flex-start;
-			p {
-				color: map-get($colors, blanco-alto);
-				text-align: left;
-				font-family: map-get($fonts,OpenSans);
-			}
-			#MC-Sub1{
-				font-size: 14px;
-				color: #e8e8e8;
-				margin-bottom: 5px;
-			}
-			#MC-Sub2{
-				font-size: 10px;
-				color: #c3c3c3;
-			}
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: map-get($colors, principal);
+    #headerMC-Container {
+        width: 100%;
+        padding: 10px 0;
+        height: 5vh;
+        position: relative;
+        #logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #RegresarButton {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform: translate(0%, -50%);
+            background: transparent;
+            border: none;
+        }
+    }
+    #MC-Indicador {
+        width: 100%;
+        padding: 35px 0;
+        height: 10vh;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        #MC-img {
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 36px !important;
+                height: 36px !important;
+            }
+        }
+        #MC-Descp {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            p {
+                color: map-get($colors, blanco-alto);
+                text-align: left;
+                font-family: map-get($fonts, OpenSans);
+            }
+            #MC-Sub1 {
+                font-size: 14px;
+                color: #e8e8e8;
+                margin-bottom: 5px;
+            }
+            #MC-Sub2 {
+                font-size: 10px;
+                color: #c3c3c3;
+            }
+        }
+    }
+    #slides-MC {
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        #MC .pin-code-field {
+            width: 20px;
+            font-size: 12px;
+        }
+        #errorText {
+            margin-top: 10px;
+            color: #FF607A;
+            font-family: map-get($fonts, OpenSans);
+            font-size: 10px;
+        }
+        #slideAccount {
+            #MC-Details {
+                #DA-Desc {
+                    font-size: 12px;
+                    font-family: map-get($fonts, OpenSans);
+                    font-weight: 600;
+                    color: #fff;
+                }
+                #DA-btns {
+                    width: 80%;
+                    margin: 0 auto;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    button {
+                        background: none;
+                    }
+                }
+                .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+                .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+                    border-bottom-color: none !important;
 
-		}
+                    box-shadow:none !important;
+                }
+                .list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
+                .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
+					border-bottom-color: none !important;
 
-
-	}
-	#slides-MC {
-		width: 100%;
-		height: 70vh;
-		.pin-code-field{
-			width: 20px;
-			font-size: 12px;
-		}
-		#errorText{
-			margin-top: 10px;
-			color: #FF607A;
-			font-family: map-get($fonts,OpenSans);
-			font-size: 10px;
-		}
-		#slideAccount {
-
-			#BtnEventsforAccount {
-				width: 100%;
-				margin-top: 8vh;
-				display: flex;
-				justify-content: space-around;
-				align-items: center;
-				button {
-					background: transparent;
-					border: none;
-					img {
-						width: 35px !important;
-						height: 35px !important;
-						padding: 5px;
-					}
-					p{
-
-						font-family: map-get($fonts,OpenSans);
-						font-weight: 300;
-						color: map-get($colors, blanco-alto);
-						font-size: 10px;
-					}
-					.optionSelected{
-						color: map-get($colors,verde) !important;
-					}
-				}
-
-			}
-		}
-	}
+                    box-shadow:none !important;
+                }
+            }
+            #BtnEventsforAccount {
+                width: 100%;
+                margin-top: 8vh;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                button {
+                    background: transparent;
+                    border: none;
+                    img {
+                        width: 35px !important;
+                        height: 35px !important;
+                        padding: 5px;
+                    }
+                    p {
+                        font-family: map-get($fonts, OpenSans);
+                        font-weight: 300;
+                        color: map-get($colors, blanco-alto);
+                        font-size: 10px;
+                    }
+                    .optionSelected {
+                        color: map-get($colors, verde) !important;
+                    }
+                }
+            }
+        }
+    }
 }
