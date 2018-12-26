@@ -18,33 +18,35 @@
 	</div>
 
 	<div id="MC-Indicador">
-
-		<div id="MC-img">
-			<img src="../../assets/Bola1.svg" alt="">
-		</div>
+		<div id="MC-img"><img src="../../assets/Bola1.svg" alt="" /></div>
 		<div id="MC-Descp">
 			<p id="MC-Sub1">Cuentas de {{ accountType }}</p>
 			<p id="MC-Sub2">{{ accountNumber }} cuentas</p>
-
 		</div>
 	</div>
 
 	<div id="slides-MC">
 		<ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
 			<ion-slide *ngFor="let account of accounts" id="slideAccount">
-				<show-account *ngIf="!isAccountEditted" [account]="account">
+				<show-account
+					*ngIf="accountManager.isAccountShowing"
+					[account]="account"
+				>
 				</show-account>
 
 				<edit-account
-					*ngIf="isAccountEditted"
+					*ngIf="accountManager.isAccountEditing"
 					[account]="account"
 				></edit-account>
+
+				<delete-account *ngIf="true" [account]="account">
+				</delete-account>
 
 				<verify-pin
 					[headerText]="'Ingrese el pin'"
 					[errorText]="errorText"
 					(onWrittenEvent)="verifyPin($event, account)"
-					*ngIf="isPinShow"
+					*ngIf="accountManager.isPinShown"
 				></verify-pin>
 
 				<div id="BtnEventsforAccount">
@@ -55,7 +57,9 @@
 							src="../../assets/EditarIcon.svg"
 							alt=""
 						/>
-						<p [class.optionSelected]="optionTaked==='editar'">Editar Cuenta</p>
+						<p [class.optionSelected]="optionTaked === 'editar'">
+							Editar Cuenta
+						</p>
 					</button>
 
 					<button
@@ -68,7 +72,9 @@
 							src="../../assets/encrypted.svg"
 							alt=""
 						/>
-						<p [class.optionSelected]="optionTaked==='revelar'">Mostrar Cuenta</p>
+						<p [class.optionSelected]="optionTaked === 'revelar'">
+							Mostrar Cuenta
+						</p>
 					</button>
 
 					<button (click)="deleteAccountSelected()">
@@ -78,7 +84,9 @@
 							src="../../assets/BorrarIcon.svg"
 							alt=""
 						/>
-						<p [class.optionSelected]="optionTaked==='eliminar'">Borrar Cuenta</p>
+						<p [class.optionSelected]="optionTaked === 'eliminar'">
+							Borrar Cuenta
+						</p>
 					</button>
 				</div>
 			</ion-slide>

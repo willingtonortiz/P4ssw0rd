@@ -1,10 +1,5 @@
 import { Component, ViewChild, ElementRef } from "@angular/core";
-import {
-	NavController,
-	NavParams,
-	AlertController,
-	Alert
-} from "ionic-angular";
+import { NavController, LoadingController, Loading } from "ionic-angular";
 import { HomePage } from "../home/home";
 import { PinDAO } from "../../source/daos/PinDAO";
 import { VerifyPinComponent } from "../../components/verify-pin/verify-pin";
@@ -13,10 +8,6 @@ import { VerifyPinComponent } from "../../components/verify-pin/verify-pin";
 	selector: "page-pin",
 	templateUrl: "pin.html"
 })
-
-/*
-	UTILIZAR ANGULAR FORMS PARA OPTIMIZAR EL CÓDIGO
-*/
 export class PinPage {
 	@ViewChild(VerifyPinComponent)
 	private verifyPin: VerifyPinComponent;
@@ -24,25 +15,25 @@ export class PinPage {
 	constructor(
 		private pinDao: PinDAO,
 		private navController: NavController,
-		private alertController: AlertController
+		private loadingController: LoadingController
 	) {}
 
 	private registerPin(text: string): void {
 		if (text !== null) {
 			// Se guarda el pin en la base de datos
 			this.pinDao.setPin(text);
-			// Se redirige al home de la aplicación
-			this.navController.setRoot(HomePage);
 
-			// this.pinInput1.nativeElement.focus();
-		} else {
-			const alert: Alert = this.alertController.create({
-				message: "Debe completar todos los espacios"
+			// Animacion de guardado de pin
+			const loading: Loading = this.loadingController.create({
+				content: "Guardando pin",
+				duration: 1500
 			});
-			alert.present();
-			setTimeout(() => {
-				alert.dismiss();
-			}, 1500);
+
+			loading.present();
+			loading.onDidDismiss(() => {
+				// Se redirige al home de la aplicación
+				this.navController.setRoot(HomePage);
+			});
 		}
 	}
 }

@@ -23,6 +23,8 @@ export class EditAccountComponent implements OnInit {
 			this.realAccount.categories
 		);
 		let encryptor: Encryptor = new Encryptor();
+
+		// Siempre revelará la cuenta al abrir el componente
 		this.account.email = encryptor.decrypt(this.account.email);
 		this.account.password = encryptor.decrypt(this.account.password);
 	}

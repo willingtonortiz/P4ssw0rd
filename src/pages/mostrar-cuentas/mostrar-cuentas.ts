@@ -1,7 +1,6 @@
 import { Component, ViewChild } from "@angular/core";
 
 // Daos
-import { AccountDAO } from "../../source/daos/AccountDAO";
 import { PinDAO } from "../../source/daos/PinDAO";
 
 // Dtos
@@ -19,18 +18,16 @@ export class MostrarCuentasPage {
 	private accounts: Array<DTOAccount>;
 	private accountType: string;
 	private accountNumber: number;
-	private isAccountEditted: boolean = false;
 
 	// Manejo de slides
 	@ViewChild(Slides) private slides: Slides;
 
 	// Para manejar las funcionalidades de las cuentas
-	private isPinShow: boolean = false;
 	private errorText: string = "";
-	private optionTaked:string="";
+	private optionTaked: string = "";
+
 	constructor(
 		private navController: NavController,
-		private AccountDAO: AccountDAO,
 		private pinDao: PinDAO,
 		private arrDtoAccount: ArrDTOAccount,
 		private accountManager: AccountManagerProvider
@@ -69,65 +66,23 @@ export class MostrarCuentasPage {
 		}
 	}
 
-	private togglePin(): void {
-		this.isPinShow = !this.isPinShow;
+	private revealAccountSelected(): void {
+		this.optionTaked = "revelar";
+		this.accountManager.setOption("reveal");
 	}
 
-	private showPin(): void {
-		this.isPinShow = true;
+	private editAccountSelected(): void {
+		this.optionTaked = "editar";
+		this.accountManager.setOption("edit");
 	}
 
-	private hidePin(): void {
-		this.isPinShow = false;
-		this.accountManager.setOption("nothing");
-	}
-
-	private revealAccountSelected(item: DTOAccount): void {
-		this.optionTaked='revelar'
-		if (this.accountManager.getOption() !== "reveal") {
-			/* LÓGICA PARA CAMBIAR LA OPCIÓN SELECCIONADA VISUALMENTE */
-
-			// Se selecciona la opción
-			this.accountManager.setOption("reveal");
-
-			// Si no estaba visible el pin, se mostrará
-			this.showPin();
-		} else {
-			this.hidePin();
-		}
-	}
-
-	private editAccountSelected(item: DTOAccount): void {
-		this.optionTaked='editar';
-		if (this.accountManager.getOption() !== "edit") {
-			/* LÓGICA PARA CAMBIAR LA OPCIÓN SELECCIONADA VISUALMENTE */
-
-			// Se selecciona la opción
-			this.accountManager.setOption("edit");
-
-			// Si no estaba visible el pin, se mostrará
-			this.showPin();
-		} else {
-			this.hidePin();
-		}
-	}
-
-	private deleteAccountSelected(item: DTOAccount): void {
-		this.optionTaked='eliminar';
-		if (this.accountManager.getOption() !== "delete") {
-			/* LÓGICA PARA CAMBIAR LA OPCIÓN SELECCIONADA VISUALMENTE */
-
-			// Se selecciona la opción
-			this.accountManager.setOption("delete");
-
-			// Si no estaba visible el pin, se mostrará
-			this.showPin();
-		} else {
-			this.hidePin();
-		}
+	private deleteAccountSelected(): void {
+		this.optionTaked = "eliminar";
+		this.accountManager.setOption("delete");
 	}
 
 	private goBack(): void {
+		this.accountManager.restartService();
 		this.navController.pop();
 	}
 }

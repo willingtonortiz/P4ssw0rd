@@ -18,7 +18,8 @@ import { ShowAccountComponent } from "./show-account/show-account";
 		EditAccountComponent,
 		RevealAccountComponent,
 		DeleteAccountComponent,
-		ShowAccountComponent
+		ShowAccountComponent,
+		DeleteAccountComponent
 	],
 	imports: [FormsModule],
 	exports: [
@@ -29,7 +30,8 @@ import { ShowAccountComponent } from "./show-account/show-account";
 		EditAccountComponent,
 		RevealAccountComponent,
 		DeleteAccountComponent,
-		ShowAccountComponent
+		ShowAccountComponent,
+		DeleteAccountComponent
 	]
 })
 export class ComponentsModule {}

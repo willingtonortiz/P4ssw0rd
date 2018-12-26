@@ -1,4 +1,4 @@
-import { EditAccountComponent } from './../components/edit-account/edit-account';
+import { EditAccountComponent } from "./../components/edit-account/edit-account";
 import { BrowserModule } from "@angular/platform-browser";
 import { ErrorHandler, NgModule } from "@angular/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
@@ -30,8 +30,8 @@ import { CreateAccountComponent } from "../components/create-account/create-acco
 import { VerifyPinComponent } from "../components/verify-pin/verify-pin";
 import { PinInputComponent } from "../components/pin-input/pin-input";
 import { ShowAccountComponent } from "../components/show-account/show-account";
-import { AccountManagerProvider } from '../providers/account-manager/account-manager';
-// import { ComponentsModule } from "../components/components.module";
+import { AccountManagerProvider } from "../providers/account-manager/account-manager";
+import { DeleteAccountComponent } from "../components/delete-account/delete-account";
 
 @NgModule({
 	declarations: [
@@ -42,19 +42,20 @@ import { AccountManagerProvider } from '../providers/account-manager/account-man
 		EditAccountPage,
 		EditPinPage,
 		MostrarCuentasPage,
+
 		// Components
 		PassButtonComponent,
 		CreateAccountComponent,
 		VerifyPinComponent,
 		PinInputComponent,
 		ShowAccountComponent,
-		EditAccountComponent
+		EditAccountComponent,
+		DeleteAccountComponent
 	],
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
 		IonicStorageModule.forRoot()
-		// ComponentsModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
@@ -73,7 +74,7 @@ import { AccountManagerProvider } from '../providers/account-manager/account-man
 		PinDAO,
 		EncryptorAccountProvider,
 		ArrDTOAccount,
-    AccountManagerProvider
+		AccountManagerProvider
 	]
 })
 export class AppModule {}

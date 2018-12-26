@@ -1,7 +1,5 @@
-<verify-pin
-	[headerText]="'Ingrese el pin'"
-	[errorText]="'errorText'"
-></verify-pin>
-
-<!-- (onWrittenEvent)="verifyPin($event)" -->
-<!-- *ngIf="isPinShow" -->
+<h1>¿Estas seguro que desea borrar la cuenta?</h1>
+<div>
+	<button (click)="deleteAccount(true)">Check</button>
+	<button (click)="deleteAccount(false)">No check</button>
+</div>
