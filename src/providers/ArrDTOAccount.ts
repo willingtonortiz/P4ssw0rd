@@ -60,4 +60,18 @@ export class ArrDTOAccount {
 		}
 		this.actual = new Pair(categoria, cuentas);
 	}
+
+	public borrarCuenta(cuenta: DTOCuenta): void {
+
+		for (let type of this.accounts)
+			if (type.first == cuenta.type) {
+				type.second.splice(type.second.indexOf(cuenta), 1);
+
+				if (type.second.length == 0)
+					this.accounts.splice(this.accounts.indexOf(type), 1);
+
+				break;
+			}
+
+	}
 }

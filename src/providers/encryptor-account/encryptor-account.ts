@@ -5,6 +5,8 @@ import { DTOCuenta } from "../../source/dtos/DTOCuenta";
 import { RotorPosicion } from "../../source/Encriptacion/Enigma/RotorPosicion";
 import { Enigma } from "../../source/Encriptacion/Enigma/Enigma";
 
+import { AES } from '../../source/Encriptacion/AES/AES'
+
 @Injectable()
 export class EncryptorAccountProvider {
 	private encryptor: Encryptor;

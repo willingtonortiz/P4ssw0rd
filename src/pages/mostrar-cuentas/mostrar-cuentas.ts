@@ -124,6 +124,7 @@ export class MostrarCuentasPage {
 	}
 
 	private deleteAccount(item: DTOCuenta) {
+
 		let promise = new Promise((resolve, reject) => {
 			this.alertController
 				.create({
@@ -142,6 +143,7 @@ export class MostrarCuentasPage {
 									.verifyPin(data.pin)
 									.then((data: boolean) => {
 										if (data) {
+											this.arrDtoAccount.borrarCuenta(item);
 											this.cuentaDao.delete(item);
 											this.loadingController
 												.create({
