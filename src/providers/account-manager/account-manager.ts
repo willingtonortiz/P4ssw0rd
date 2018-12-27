@@ -134,6 +134,7 @@ export class AccountManagerProvider {
 					this.isAccountShowing = false;
 					// Mostrar el componente para editar cuenta
 					this.isAccountEditing = true;
+					console.log(this.isAccountEditing);
 				}
 				break;
 			case "delete":

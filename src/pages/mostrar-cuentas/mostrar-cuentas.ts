@@ -18,6 +18,7 @@ export class MostrarCuentasPage {
 	private accounts: Array<DTOAccount>;
 	private accountType: string;
 	private accountNumber: number;
+	private waitForPinConfirmation: boolean = false;
 
 	// Manejo de slides
 	@ViewChild(Slides) private slides: Slides;
@@ -52,14 +53,23 @@ export class MostrarCuentasPage {
 	private verifyPin(text: string, account: DTOAccount): void {
 		// Si es un pin válido (no necesariamente correcto)
 		if (text !== null) {
+
 			// Se verifica que sea correcto
 			this.pinDao.verifyPin(text).then((pin: boolean) => {
 				// El pin es correcto
+				this.waitForPinConfirmation = true;
 				if (pin) {
-					this.accountManager.executeOption();
+
+					console.log("Se muestra la validacion");
+					setTimeout(() => {
+						this.waitForPinConfirmation = false;
+						this.accountManager.executeOption();
+
+					}, 1000)
 				}
 				// El pin es incorrecto
 				else {
+					this.waitForPinConfirmation = false;
 					this.errorText = "Pin incorrecto";
 				}
 			});
@@ -67,17 +77,37 @@ export class MostrarCuentasPage {
 	}
 
 	private revealAccountSelected(): void {
-		this.optionTaked = "reveal";
+		if (this.accountManager.isPinShown) {
+			this.optionTaked = "";
+		}
+		else if (this.accountManager.isPinShown === false) {
+			this.optionTaked = "reveal";
+		}
+
 		this.accountManager.setOption("reveal");
 	}
 
 	private editAccountSelected(): void {
-		this.optionTaked = "edit";
+		if (this.accountManager.isPinShown) {
+			this.optionTaked = "";
+
+		}
+		else if (this.accountManager.isPinShown === false) {
+			this.optionTaked = "edit";
+
+		}
+
 		this.accountManager.setOption("edit");
+
 	}
 
 	private deleteAccountSelected(): void {
-		this.optionTaked = "delete";
+		if (this.accountManager.isPinShown) {
+			this.optionTaked = "";
+		}
+		else if (this.accountManager.isPinShown === false) {
+			this.optionTaked = "delete";
+		}
 		this.accountManager.setOption("delete");
 	}
 

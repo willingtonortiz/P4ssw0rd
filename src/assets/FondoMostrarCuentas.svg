@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="640" viewBox="0 0 360 640">
+  <defs>
+    <clipPath id="clip-FondoMostrarCuentas">
+      <rect width="360" height="640"/>
+    </clipPath>
+  </defs>
+  <g id="FondoMostrarCuentas" clip-path="url(#clip-FondoMostrarCuentas)">
+    <rect width="360" height="640" fill="#fff"/>
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="360" height="640" fill="#2e3046"/>
+    <ellipse id="simon-matzinger-804640-unsplash" cx="483.5" cy="505" rx="483.5" ry="505" transform="translate(-303)" fill="rgba(56,59,90,0.89)"/>
+  </g>
+</svg>

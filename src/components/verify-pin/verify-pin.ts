@@ -7,13 +7,16 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 export class VerifyPinComponent {
 	@Input("headerText") headerText: string;
 	@Input("errorText") errorText: string;
+	@Input("waitForPinConfirmation") waitForPinConfirmation:boolean;
 	@Output("onWrittenEvent") onWrittenEvent: EventEmitter<
 		string
 	> = new EventEmitter<string>();
+
 
 	constructor() {}
 
 	private onWritten(text: string): void {
 		this.onWrittenEvent.emit(text);
+
 	}
 }

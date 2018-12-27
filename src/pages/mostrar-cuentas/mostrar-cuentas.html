@@ -26,8 +26,8 @@
 	</div>
 
 	<div id="slides-MC">
-		<ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
-			<ion-slide *ngFor="let account of accounts" id="slideAccount">
+		<ion-slides paginationType="bullets" (ionSlideDidChange)="slideChanged()" pager="true">
+			<ion-slide  *ngFor="let account of accounts" id="slideAccount">
 				<div id="MC-Details">
 					<!-- Mostrar cuenta -->
 					<show-account
@@ -53,13 +53,14 @@
 					<verify-pin
 						[headerText]="'Ingrese el pin'"
 						[errorText]="errorText"
+						[waitForPinConfirmation]="waitForPinConfirmation"
 						(onWrittenEvent)="verifyPin($event, account)"
 						*ngIf="accountManager.isPinShown"
 					></verify-pin>
 				</div>
 
 				<!-- Opciones para la cuenta -->
-				<div id="BtnEventsforAccount">
+				<div id="BtnEventsforAccount" *ngIf="!accountManager.isAccountEditing">
 					<button (click)="editAccountSelected()">
 						<img
 							width="30"

@@ -18,7 +18,7 @@
 	</div>
 
 	<div id="addAccountContainer">
-		<button *ngIf="!eventAdd" (click)="toggleCreateAccount()">
+		<button *ngIf="!isCreateAccountShown" (click)="toggleCreateAccount()">
 			<div id="subAddAccount">
 				<img
 					width="20"
@@ -52,6 +52,7 @@
 	<div id="myAccountsContainer">
 		<div id="headerAccountsContainer">
 			<p>Mis cuentas</p>
+
 			<img
 				width="18.5"
 				height="18.5"
