@@ -142,6 +142,8 @@ export class AccountDAO implements GenericDAO<DTOAccount> {
 			this.storage.get("cuentas").then((data: string) => {
 				if (data) {
 					let objectArray: Array<DTOAccount> = JSON.parse(data);
+
+					// Se crea el arreglo de cuentas que se va a utilizar
 					let accounts: Array<DTOAccount> = new Array<DTOAccount>();
 					for (let i = 0; i < objectArray.length; ++i) {
 						accounts.push(

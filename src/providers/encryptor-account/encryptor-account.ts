@@ -14,26 +14,12 @@ export class EncryptorAccountProvider {
 	}
 
 	public encryptAccount(item: DTOAccount): DTOAccount {
-		// return new DTOAccount(
-		// 	item.idCuenta,
-		// 	this.encryptor.encrypt(item.email),
-		// 	this.encryptor.encrypt(item.password),
-		// 	item.description,
-		// 	item.type
-		// );
 		item.email = this.encryptor.encrypt(item.email);
 		item.password = this.encryptor.encrypt(item.password);
 		return item;
 	}
 
 	public decryptAccount(item: DTOAccount): DTOAccount {
-		// return new DTOAccount(
-		// 	item.idCuenta,
-		// 	this.encryptor.decrypt(item.email),
-		// 	this.encryptor.decrypt(item.password),
-		// 	item.description,
-		// 	item.type
-		// );
 		item.email = this.encryptor.decrypt(item.email);
 		item.password = this.encryptor.decrypt(item.password);
 		return item;
@@ -64,11 +50,14 @@ export class EncryptorAccountProvider {
 				);
 
 				// Se reencriptan todos los datos
-				// for (let i = 0; i < accounts.length; ++i) {
-				// accounts[i] = this.encryptAccount(accounts[i]);
-				// accounts[i].showData();
-				// }
+				for (let i = 0; i < accounts.length; ++i) {
+					accounts[i] = this.encryptAccount(accounts[i]);
+				}
 			}
 		});
+	}
+
+	public deleteAccount(item: DTOAccount): void {
+		this.accountDAO.delete(item);
 	}
 }

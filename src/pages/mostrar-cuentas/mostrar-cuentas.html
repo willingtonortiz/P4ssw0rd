@@ -29,29 +29,36 @@
 		<ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
 			<ion-slide *ngFor="let account of accounts" id="slideAccount">
 				<div id="MC-Details">
-
+					<!-- Mostrar cuenta -->
 					<show-account
-					*ngIf="accountManager.isAccountShowing"
-					[account]="account"
+						*ngIf="accountManager.isAccountShowing"
+						[account]="account"
 					>
 					</show-account>
 
+					<!-- Editar cuenta -->
 					<edit-account
-					*ngIf="accountManager.isAccountEditing"
-					[account]="account"
+						*ngIf="accountManager.isAccountEditing"
+						[account]="account"
 					></edit-account>
 
-					<delete-account *ngIf="true" [account]="account">
+					<!-- Borrar cuenta -->
+					<delete-account
+						*ngIf="accountManager.isAccountDeleting"
+						[account]="account"
+					>
 					</delete-account>
 
+					<!-- Verificador de pin -->
 					<verify-pin
-					[headerText]="'Ingrese el pin'"
-					[errorText]="errorText"
-					(onWrittenEvent)="verifyPin($event, account)"
-					*ngIf="accountManager.isPinShown"
+						[headerText]="'Ingrese el pin'"
+						[errorText]="errorText"
+						(onWrittenEvent)="verifyPin($event, account)"
+						*ngIf="accountManager.isPinShown"
 					></verify-pin>
 				</div>
 
+				<!-- Opciones para la cuenta -->
 				<div id="BtnEventsforAccount">
 					<button (click)="editAccountSelected()">
 						<img

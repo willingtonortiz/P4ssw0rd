@@ -5,7 +5,7 @@ import { PinDAO } from "../../source/daos/PinDAO";
 
 // Dtos
 import { DTOAccount } from "../../source/dtos/DTOAccount";
-import { ArrDTOAccount } from "../../providers/ArrDTOAccount";
+import { AccountClassifier } from "../../providers/AccountClassifier";
 import { NavController, Slides } from "ionic-angular";
 import { AccountManagerProvider } from "../../providers/account-manager/account-manager";
 
@@ -29,11 +29,11 @@ export class MostrarCuentasPage {
 	constructor(
 		private navController: NavController,
 		private pinDao: PinDAO,
-		private arrDtoAccount: ArrDTOAccount,
+		private accountClassifier: AccountClassifier,
 		private accountManager: AccountManagerProvider
 	) {
-		this.accountType = arrDtoAccount.getActual().first;
-		this.accounts = arrDtoAccount.getActual().second;
+		this.accountType = accountClassifier.getActual().first;
+		this.accounts = accountClassifier.getActual().second;
 		this.accountNumber = this.accounts.length;
 	}
 

@@ -22,7 +22,7 @@ import { IonicStorageModule } from "@ionic/storage";
 import { EncryptorAccountProvider } from "../providers/encryptor-account/encryptor-account";
 import { AccountDAO } from "../source/daos/AccountDAO";
 import { PinDAO } from "../source/daos/PinDAO";
-import { ArrDTOAccount } from "../providers/ArrDTOAccount";
+import { AccountClassifier } from "../providers/AccountClassifier";
 
 // Components
 import { PassButtonComponent } from "../components/pass-button/pass-button";
@@ -32,6 +32,7 @@ import { PinInputComponent } from "../components/pin-input/pin-input";
 import { ShowAccountComponent } from "../components/show-account/show-account";
 import { AccountManagerProvider } from "../providers/account-manager/account-manager";
 import { DeleteAccountComponent } from "../components/delete-account/delete-account";
+import { ArrAccountProvider } from "../providers/arr-account/arr-account";
 
 @NgModule({
 	declarations: [
@@ -73,8 +74,9 @@ import { DeleteAccountComponent } from "../components/delete-account/delete-acco
 		AccountDAO,
 		PinDAO,
 		EncryptorAccountProvider,
-		ArrDTOAccount,
-		AccountManagerProvider
+		AccountClassifier,
+		AccountManagerProvider,
+		ArrAccountProvider
 	]
 })
 export class AppModule {}

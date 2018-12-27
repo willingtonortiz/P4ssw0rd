@@ -4,16 +4,18 @@ import { DTOAccount } from "../source/dtos/DTOAccount";
 import { Pair } from "../source/dataEstructure/Pair";
 
 @Injectable()
-export class ArrDTOAccount {
+export class AccountClassifier {
+	// Todas las cuentas clasificadas en grupos
 	public accounts: Array<Pair<string, Array<DTOAccount>>> = null;
-	// Cuenta actualmente seleccionada
-	private actual: Pair<string, Array<DTOAccount>> = null;
-	//first->tipo:string
-	//second->array de cuentas de ese tipo
 
-	constructor(private AccountDAO: AccountDAO) {
+	// Grupo de cuentas actualmente seleccionadas
+	private actual: Pair<string, Array<DTOAccount>> = null;
+
+	constructor(private accountDAO: AccountDAO) {
 		this.accounts = new Array<Pair<string, Array<DTOAccount>>>();
-		AccountDAO.getAll().then((data: Array<DTOAccount>) => {
+
+		// Obtiene todas las cuentas de la base de datos y las clasifica
+		accountDAO.getAll().then((data: Array<DTOAccount>) => {
 			if (data) {
 				data.forEach(account => {
 					this.agregarCuenta(account);
@@ -37,6 +39,15 @@ export class ArrDTOAccount {
 			);
 		} else {
 			this.buscarTipo(account.type).second.push(account);
+		}
+	}
+
+	// Elimina una cuenta del arreglo
+	public deleteAccount(account: DTOAccount): void {
+		for (let i: number = 0; i < this.actual.second.length; ++i) {
+			if (this.actual.second[i].idCuenta === account.idCuenta) {
+				this.actual.second.splice(i, 1);
+			}
 		}
 	}
 

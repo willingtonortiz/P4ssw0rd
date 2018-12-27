@@ -8,6 +8,7 @@
 			alt=""
 		/>
 		<img
+			(click)="editPin()"
 			id="configuration"
 			width="25"
 			height="25"
@@ -30,8 +31,8 @@
 		</button>
 
 		<button
-			[class.buttonHideNewAccount]="eventAdd"
-			*ngIf="eventAdd"
+			[class.buttonHideNewAccount]="isCreateAccountShown"
+			*ngIf="isCreateAccountShown"
 			(click)="toggleCreateAccount()"
 		>
 			<img
@@ -42,7 +43,10 @@
 			/>
 		</button>
 
-		<create-account *ngIf="eventAdd"></create-account>
+		<create-account
+			*ngIf="isCreateAccountShown"
+			(onAccountCreated)="hideCreateAccount()"
+		></create-account>
 	</div>
 
 	<div id="myAccountsContainer">
@@ -57,7 +61,7 @@
 		</div>
 
 		<div
-			*ngFor="let cuenta of arrDtoAccount.accounts"
+			*ngFor="let cuenta of accountClassifier.accounts"
 			class="grid-container"
 		>
 			<img class="img-account" src="../../assets/Bola5.svg" alt="" />

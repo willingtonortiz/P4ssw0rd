@@ -25,10 +25,10 @@ export class AccountManagerProvider {
 		this.currentAccount = null;
 
 		// Estados iniciales de las cuentas
+		this.currentOption = "nothing";
 		this.isAccountShowing = true;
 		this.isAccountDeleting = false;
 		this.isAccountEditing = false;
-		this.currentOption = "nothing";
 	}
 
 	// Muestra el verificador de pin
@@ -43,9 +43,20 @@ export class AccountManagerProvider {
 		this.currentOption = "nothing";
 	}
 
+	// Hace que solo se muestre el componente de "ShowAccount"
+	private resetComponents(): void {
+		this.isAccountShowing = true;
+		this.isAccountEditing = false;
+		this.isAccountDeleting = false;
+	}
+
 	// Maneja el mostrado del verificador de pin dependiendo de las opciones
 	public setOption(option: string): void {
-		this.isAccountEditing = false;
+		// Siempre verificar que la cuenta esté encriptada
+		this.checkRevealedAccount();
+
+		//Siempre mostrar la cuenta encriptada
+		this.resetComponents();
 		switch (option) {
 			case "reveal":
 				{
@@ -65,23 +76,22 @@ export class AccountManagerProvider {
 						this.currentOption = "edit";
 						this.showPin();
 					}
-					this.checkRevealedAccount();
 				}
 				break;
 			case "delete":
 				{
-					if (this.currentOption === "reveal") {
+					if (this.currentOption === "delete") {
 						this.hidePin();
 					} else {
-						this.currentOption = "reveal";
+						this.currentOption = "delete";
 						this.showPin();
 					}
-					this.checkRevealedAccount();
 				}
 				break;
 		}
 	}
 
+	// Verifica si había una cuenta desencriptada y la encripta en dicho caso
 	private checkRevealedAccount(): void {
 		// Si la cuenta actual estaba revelada
 		if (this.isAccountRevealed) {
@@ -111,28 +121,31 @@ export class AccountManagerProvider {
 		switch (this.currentOption) {
 			case "reveal":
 				{
+					// Revela la cuenta
 					this.currentAccount = this.encryptorAccount.decryptAccount(
 						this.currentAccount
 					);
 					this.isAccountRevealed = true;
+					this.isAccountShowing = true;
 				}
 				break;
 			case "edit":
 				{
+					this.isAccountShowing = false;
 					// Mostrar el componente para editar cuenta
 					this.isAccountEditing = true;
-
-					this.isAccountRevealed = true;
 				}
 				break;
 			case "delete":
 				{
+					// No oculta la cuenta, por que se debe mostrar
+					this.isAccountDeleting = true;
 				}
 				break;
 		}
-	}
 
-	public deleteAccount(option: boolean): void {
-		console.log("Estoy eliminando la cuenta");
+		// Cuando se haya seleccionado una opcion, siempre se esconderá el pin verifier
+		// this.isPinShown = false;
+		this.hidePin();
 	}
 }
