@@ -3,7 +3,10 @@
     height: 100vh;
     background: url('../../assets/asd.svg');
     background-position: center center;
-    background-size: cover;
+	background-size: cover;
+	.scroll-content{
+		overflow-y: hidden !important;
+	}
     // overflow: auto; //background: map-get($colors, principal);
     #headerMC-Container {
         width: 100%;
