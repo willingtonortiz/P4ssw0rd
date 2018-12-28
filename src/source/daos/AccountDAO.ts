@@ -166,4 +166,8 @@ export class AccountDAO implements GenericDAO<DTOAccount> {
 			});
 		});
 	}
+
+	public replaceAccounts(accounts: Array<DTOAccount>): void {
+		this.storage.set("cuentas", JSON.stringify(accounts));
+	}
 }

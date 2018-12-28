@@ -53,19 +53,15 @@ export class MostrarCuentasPage {
 	private verifyPin(text: string, account: DTOAccount): void {
 		// Si es un pin válido (no necesariamente correcto)
 		if (text !== null) {
-
 			// Se verifica que sea correcto
 			this.pinDao.verifyPin(text).then((pin: boolean) => {
 				// El pin es correcto
 				this.waitForPinConfirmation = true;
 				if (pin) {
-
-					console.log("Se muestra la validacion");
 					setTimeout(() => {
 						this.waitForPinConfirmation = false;
 						this.accountManager.executeOption();
-
-					}, 1000)
+					}, 1000);
 				}
 				// El pin es incorrecto
 				else {
@@ -79,8 +75,7 @@ export class MostrarCuentasPage {
 	private revealAccountSelected(): void {
 		if (this.accountManager.isPinShown) {
 			this.optionTaked = "";
-		}
-		else if (this.accountManager.isPinShown === false) {
+		} else if (this.accountManager.isPinShown === false) {
 			this.optionTaked = "reveal";
 		}
 
@@ -90,22 +85,17 @@ export class MostrarCuentasPage {
 	private editAccountSelected(): void {
 		if (this.accountManager.isPinShown) {
 			this.optionTaked = "";
-
-		}
-		else if (this.accountManager.isPinShown === false) {
+		} else if (this.accountManager.isPinShown === false) {
 			this.optionTaked = "edit";
-
 		}
 
 		this.accountManager.setOption("edit");
-
 	}
 
 	private deleteAccountSelected(): void {
 		if (this.accountManager.isPinShown) {
 			this.optionTaked = "";
-		}
-		else if (this.accountManager.isPinShown === false) {
+		} else if (this.accountManager.isPinShown === false) {
 			this.optionTaked = "delete";
 		}
 		this.accountManager.setOption("delete");

@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
-import { NavController, AlertController, Alert } from "ionic-angular";
+import { NavController, LoadingController, Loading } from "ionic-angular";
 import { EncryptorAccountProvider } from "../../providers/encryptor-account/encryptor-account";
 import { PinDAO } from "../../source/daos/PinDAO";
+import { AccountClassifier } from "../../providers/AccountClassifier";
 
 @Component({
 	selector: "page-edit-pin",
@@ -14,10 +15,11 @@ export class EditPinPage {
 	private buttonText: string = "Continuar";
 
 	constructor(
-		public navCtrl: NavController,
+		private navCtrl: NavController,
 		private pinDao: PinDAO,
-		private alertContreller: AlertController,
-		private encryptorAccountProvider: EncryptorAccountProvider
+		private loadingController: LoadingController,
+		private encryptorAccountProvider: EncryptorAccountProvider,
+		private accountClassifier: AccountClassifier
 	) {}
 
 	private editPin(): void {
@@ -34,23 +36,24 @@ export class EditPinPage {
 			// Se modifica el pin
 			this.pinDao.setPin(this.pin);
 
-			// Se le presenta la alerta al usuario
-			let alert: Alert = this.alertContreller.create({
-				message: "Su pin se modificó con exito"
+			// Actualizar todas las cuentas y la base de datos
+			this.encryptorAccountProvider.modifyAccounts(this.pin).then(() => {
+				// Actualizar el arreglo actual de cuentas
+				this.accountClassifier.getAccounts();
 			});
-			alert.present();
 
-			// Se elimina la alerta
-			setTimeout(() => {
-				alert.dismiss();
-				alert = null;
-			}, 2000);
+			// Animación de modificación de pin
+			const loading: Loading = this.loadingController.create({
+				content: "Modificando pin",
+				duration: 1500
+			});
+			loading.present();
 
-			// Actualizar todas las cuentas
-			this.encryptorAccountProvider.modifyAccounts(this.pin);
-
-			// Seguir con la navegación
-			this.navCtrl.pop();
+			// Cuando termina la carga
+			loading.onDidDismiss(() => {
+				// Seguir con la navegación
+				this.navCtrl.pop();
+			});
 		}
 	}
 }
