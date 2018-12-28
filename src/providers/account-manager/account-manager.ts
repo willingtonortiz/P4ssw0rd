@@ -134,7 +134,6 @@ export class AccountManagerProvider {
 					this.isAccountShowing = false;
 					// Mostrar el componente para editar cuenta
 					this.isAccountEditing = true;
-					console.log(this.isAccountEditing);
 				}
 				break;
 			case "delete":
@@ -148,5 +147,11 @@ export class AccountManagerProvider {
 		// Cuando se haya seleccionado una opcion, siempre se esconderá el pin verifier
 		// this.isPinShown = false;
 		this.hidePin();
+	}
+
+	public nothingSelected(): void {
+		this.isAccountShowing = true;
+		this.isAccountDeleting = false;
+		this.isAccountEditing = false;
 	}
 }

@@ -58,33 +58,35 @@ export class AccountDAO implements GenericDAO<DTOAccount> {
 		});
 	}
 
-	public update(item: DTOAccount): boolean {
-		this.storage.get("cuentas").then((data: string) => {
-			if (data) {
-				// Si existen datos, se buscará la cuenta para actualizarla
-				let cuentas: Array<DTOAccount> = JSON.parse(data);
+	public update(item: DTOAccount): Promise<boolean> {
+		return new Promise((resolve, reject) => {
+			this.storage.get("cuentas").then((data: string) => {
+				if (data) {
+					// Si existen datos, se buscará la cuenta para actualizarla
+					let cuentas: Array<DTOAccount> = JSON.parse(data);
 
-				// Se busca la cuenta para actualizarla
-				for (let i = 0; i < cuentas.length; ++i) {
-					if (cuentas[i].idCuenta === item.idCuenta) {
-						cuentas[i].email = item.email;
-						cuentas[i].password = item.password;
-						cuentas[i].description = item.description;
-						cuentas[i].type = item.type;
-						cuentas[i].categories = item.categories;
-						// Se guarda el nuevo arreglo de cuentas
-						this.storage.set("cuentas", JSON.stringify(cuentas));
+					// Se busca la cuenta para actualizarla
+					for (let i = 0; i < cuentas.length; ++i) {
+						if (cuentas[i].idCuenta === item.idCuenta) {
+							cuentas[i].email = item.email;
+							cuentas[i].password = item.password;
+							cuentas[i].description = item.description;
+							cuentas[i].type = item.type;
+							cuentas[i].categories = item.categories;
 
-						// Como se encontró la cuenta, retorna verdadero
-						return true;
+							// Se guarda el nuevo arreglo de cuentas
+							this.storage.set(
+								"cuentas",
+								JSON.stringify(cuentas)
+							);
+						}
 					}
+					resolve(true);
+				} else {
+					resolve(false);
 				}
-			} else {
-				// Si no hay datos, retorna falso
-				return false;
-			}
+			});
 		});
-		return false;
 	}
 
 	public delete(item: DTOAccount): boolean {

@@ -70,17 +70,7 @@ export class EditPinPage {
 		}
 	}
 
-	// private editPin(): void {
-	// 	if (!this.verified) {
-	// 		this.pinDao.verifyPin(this.pin).then((data: boolean) => {
-	// 			if (data) {
-	// 				this.inputText = "Ingrese el nuevo pin";
-	// 				this.buttonText = "Guardar nuevo pin";
-	// 				this.pin = "";
-	// 				this.verified = true;
-	// 			}
-	// 		});
-	// 	} else {
-	// 	}
-	// }
+	private goBack(): void {
+		this.navCtrl.pop();
+	}
 }

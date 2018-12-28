@@ -65,6 +65,15 @@ export class EncryptorAccountProvider {
 		});
 	}
 
+	public updateAccount(item: DTOAccount): Promise<boolean> {
+		return new Promise<boolean>((resolve, reject) => {
+			item = this.encryptAccount(item);
+			this.accountDAO.update(item).then((data: boolean) => {
+				resolve(data);
+			});
+		});
+	}
+
 	public deleteAccount(item: DTOAccount): void {
 		this.accountDAO.delete(item);
 	}
