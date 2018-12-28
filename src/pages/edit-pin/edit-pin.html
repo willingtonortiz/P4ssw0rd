@@ -17,14 +17,9 @@
 		<!-- La imagen debe ser cambiada por una 'X' -->
 	</div>
 
-	<ion-item>
-		<ion-label floating>{{ inputText }}</ion-label>
-		<ion-input [(ngModel)]="pin"></ion-input>
-	</ion-item>
-
-	<pass-button
-		[buttonText]="buttonText"
-		(onButtonClick)="editPin()"
-	></pass-button>
+	<verify-pin
+		[headerText]="headerText"
+		[waitForPinConfirmation]="waitForPinConfirmation"
+		(onWrittenEvent)="onPinWritten($event)"
+	></verify-pin>
 </ion-content>
-
