@@ -1,4 +1,5 @@
-page-agregar-cuenta {
+create-account {
+	width: 90%;
     p {
         color: #fff;
         font-size: 12px;
@@ -8,8 +9,10 @@ page-agregar-cuenta {
         padding: 15px;
     }
     .inputs-newAccount {
+		width: 100%;
         color: #fff;
-        background: rgba(255, 255, 255, .02);
+        background: rgba(255, 255, 255, 0.02);
+        margin-bottom: 20px;
         input {
             font-family: map-get($fonts, OpenSans);
             font-weight: 300;
@@ -25,7 +28,6 @@ page-agregar-cuenta {
     .list-md .item-input.item-input-has-focus:last-child,
     .list-md .item-input.input-has-focus:last-child {
         border: none;
-        ;
         -webkit-box-shadow: none;
         box-shadow: none;
     }
@@ -34,5 +36,11 @@ page-agregar-cuenta {
     }
     .list-md .item-input:last-child {
         border: none;
-    }
+	}
+	#btn-AddAcount{
+		position: absolute;
+		left: 50%;
+		padding: 15px 0 !important;
+
+	}
 }

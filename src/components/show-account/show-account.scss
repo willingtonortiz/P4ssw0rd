@@ -1,0 +1,24 @@
+show-account {
+	#account-description {
+		font-family: map-get($fonts, OpenSans);
+		font-weight: 600;
+		color: #e8e8e8;
+		margin: 20px 0;
+		font-size: 20px;
+	}
+	.A-info {
+		margin: 2vh 0;
+		.A-info-1 {
+			font-family: map-get($fonts, OpenSans);
+			font-weight: 300;
+			color: map-get($colors, verde);
+			font-size: 12px;
+		}
+		.A-info-2 {
+			font-family: map-get($fonts, OpenSans);
+			font-weight: 300;
+			color: map-get($colors, blanco-medio);
+			font-size: 14px;
+		}
+	}
+}

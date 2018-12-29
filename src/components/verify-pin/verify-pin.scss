@@ -1,0 +1,11 @@
+verify-pin {
+	#label-pin {
+		margin-bottom: 1rem;
+		p {
+			text-align: center;
+			color: map-get($colors, verde);
+			font-family: map-get($fonts, OpenSans), "sans-serif";
+			font-size: 14px;
+		}
+	}
+}

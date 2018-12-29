@@ -1,3 +1,4 @@
+import { EditAccountComponent } from "./../components/edit-account/edit-account";
 import { BrowserModule } from "@angular/platform-browser";
 import { ErrorHandler, NgModule } from "@angular/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
@@ -10,7 +11,6 @@ import { MyApp } from "./app.component";
 // Pages
 import { HomePage } from "../pages/home/home";
 import { PinPage } from "../pages/pin/pin";
-import { AgregarCuentaPage } from "../pages/agregar-cuenta/agregar-cuenta";
 import { EditAccountPage } from "../pages/edit-account/edit-account";
 import { EditPinPage } from "../pages/edit-pin/edit-pin";
 import { MostrarCuentasPage } from "../pages/mostrar-cuentas/mostrar-cuentas";
@@ -20,12 +20,19 @@ import { IonicStorageModule } from "@ionic/storage";
 
 // Providers
 import { EncryptorAccountProvider } from "../providers/encryptor-account/encryptor-account";
-import { CuentaDAO } from "../source/daos/CuentaDAO";
+import { AccountDAO } from "../source/daos/AccountDAO";
 import { PinDAO } from "../source/daos/PinDAO";
-import { ArrDTOAccount } from "../providers/ArrDTOAccount";
+import { AccountClassifier } from "../providers/AccountClassifier";
 
 // Components
 import { PassButtonComponent } from "../components/pass-button/pass-button";
+import { CreateAccountComponent } from "../components/create-account/create-account";
+import { VerifyPinComponent } from "../components/verify-pin/verify-pin";
+import { PinInputComponent } from "../components/pin-input/pin-input";
+import { ShowAccountComponent } from "../components/show-account/show-account";
+import { AccountManagerProvider } from "../providers/account-manager/account-manager";
+import { DeleteAccountComponent } from "../components/delete-account/delete-account";
+import { ArrAccountProvider } from "../providers/arr-account/arr-account";
 
 @NgModule({
 	declarations: [
@@ -33,15 +40,19 @@ import { PassButtonComponent } from "../components/pass-button/pass-button";
 		// Pages
 		HomePage,
 		PinPage,
-		AgregarCuentaPage,
 		EditAccountPage,
 		EditPinPage,
 		MostrarCuentasPage,
-		// Components
-		PassButtonComponent
-	],
-	// declarations: [MyApp, HomePage, PinPage, AgregarCuentaPage,MostrarCuentasPage],
 
+		// Components
+		PassButtonComponent,
+		CreateAccountComponent,
+		VerifyPinComponent,
+		PinInputComponent,
+		ShowAccountComponent,
+		EditAccountComponent,
+		DeleteAccountComponent
+	],
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
@@ -52,20 +63,20 @@ import { PassButtonComponent } from "../components/pass-button/pass-button";
 		MyApp,
 		HomePage,
 		PinPage,
-		AgregarCuentaPage,
 		EditAccountPage,
 		EditPinPage,
 		MostrarCuentasPage
 	],
-	// entryComponents: [MyApp, HomePage, PinPage, AgregarCuentaPage,MostrarCuentasPage],
 	providers: [
 		StatusBar,
 		SplashScreen,
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
-		CuentaDAO,
+		AccountDAO,
 		PinDAO,
 		EncryptorAccountProvider,
-		ArrDTOAccount
+		AccountClassifier,
+		AccountManagerProvider,
+		ArrAccountProvider
 	]
 })
 export class AppModule {}

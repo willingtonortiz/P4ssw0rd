@@ -4,15 +4,18 @@ import { DTOAccount } from "../source/dtos/DTOAccount";
 import { Pair } from "../source/dataEstructure/Pair";
 
 @Injectable()
-export class ArrDTOAccount {
+export class AccountClassifier {
+	// Todas las cuentas clasificadas en grupos
 	public accounts: Array<Pair<string, Array<DTOAccount>>> = null;
-	private actual: Pair<string, Array<DTOAccount>> = null;
-	//first->tipo:string
-	//second->array de cuentas de ese tipo
 
-	constructor(private cuentaDao: AccountDAO) {
+	// Grupo de cuentas actualmente seleccionadas
+	private actual: Pair<string, Array<DTOAccount>> = null;
+
+	constructor(private accountDAO: AccountDAO) {
 		this.accounts = new Array<Pair<string, Array<DTOAccount>>>();
-		cuentaDao.getAll().then((data: Array<DTOAccount>) => {
+
+		// Obtiene todas las cuentas de la base de datos y las clasifica
+		accountDAO.getAll().then((data: Array<DTOAccount>) => {
 			if (data) {
 				data.forEach(account => {
 					this.agregarCuenta(account);
@@ -39,6 +42,18 @@ export class ArrDTOAccount {
 		}
 	}
 
+	// Elimina una cuenta del arreglo
+	public deleteAccount(account: DTOAccount): void {
+		for (let i: number = 0; i < this.actual.second.length; ++i) {
+			if (this.actual.second[i].idCuenta === account.idCuenta) {
+				this.actual.second.splice(i, 1);
+				if (this.actual.second.length == 0)
+				this.accounts.splice(this.accounts.indexOf(this.actual), 1);
+				break;
+			}
+		}
+	}
+
 	private buscarTipo(tipo: string): Pair<string, Array<DTOAccount>> {
 		for (let pair of this.accounts) {
 			if (pair.first === tipo) return pair;
@@ -59,19 +74,5 @@ export class ArrDTOAccount {
 			}
 		}
 		this.actual = new Pair(categoria, cuentas);
-	}
-
-	public borrarCuenta(cuenta: DTOAccount): void {
-
-		for (let type of this.accounts)
-			if (type.first == cuenta.type) {
-				type.second.splice(type.second.indexOf(cuenta), 1);
-
-				if (type.second.length == 0)
-					this.accounts.splice(this.accounts.indexOf(type), 1);
-
-				break;
-			}
-
 	}
 }

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_24" data-name="Rectangle 24" width="38" height="39" transform="translate(5 4)" fill="#fff"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.147" y1="0.125" x2="0.869" y2="0.903" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#b276ff"/>
+      <stop offset="1" stop-color="#f87373"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <circle id="Ellipse_45" data-name="Ellipse 45" cx="6.784" cy="6.784" r="6.784" transform="translate(0 0)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-Bola1">
+      <rect width="48" height="48"/>
+    </clipPath>
+  </defs>
+  <g id="Bola1" clip-path="url(#clip-Bola1)">
+    <g id="Mask_Group_18" data-name="Mask Group 18" clip-path="url(#clip-path)">
+      <g id="Group_89" data-name="Group 89" transform="translate(-119 -119.228)">
+        <circle id="Ellipse_2" data-name="Ellipse 2" cx="18.756" cy="18.756" r="18.756" transform="translate(124 124)" fill="url(#linear-gradient)"/>
+        <path id="Path_189" data-name="Path 189" d="M4506.056,1170.334l.17-.057.129-.053c5.831-1.391,15.128-.053,23.255-5.719,7.761-5.41,7.991-12.575,8.1-12.671" transform="translate(-4381.136 -1021.759)" fill="none" stroke="#fff" stroke-width="3" opacity="0.25"/>
+        <g id="Mask_Group_17" data-name="Mask Group 17" transform="translate(140.761 155.66)" opacity="0.5" clip-path="url(#clip-path-2)">
+          <circle id="Ellipse_46" data-name="Ellipse 46" cx="18.756" cy="18.756" r="18.756" transform="translate(-16.761 -31.66)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

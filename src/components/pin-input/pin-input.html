@@ -1,0 +1,63 @@
+<form #userForm="ngForm" id="form-container-pin">
+	<!-- <p>{{ userForm.value | json }}</p> -->
+
+	<input
+		maxlength="1"
+		type="text"
+		class="pin-code-field"
+		#pinref1
+		(keyup)="written1($event)"
+		name="pinref1"
+		[(ngModel)]="inputs.pinref1"
+	/>
+
+	<input
+		maxlength="1"
+		type="text"
+		class="pin-code-field"
+		#pinref2
+		(keyup)="written2($event)"
+		name="pinref2"
+		[(ngModel)]="inputs.pinref2"
+	/>
+
+	<input
+		maxlength="1"
+		type="text"
+		class="pin-code-field"
+		#pinref3
+		(keyup)="written3($event)"
+		name="pinref3"
+		[(ngModel)]="inputs.pinref3"
+	/>
+
+	<input
+		maxlength="1"
+		type="text"
+		class="pin-code-field"
+		#pinref4
+		(keyup)="written4($event)"
+		name="pinref4"
+		[(ngModel)]="inputs.pinref4"
+	/>
+
+	<input
+		maxlength="1"
+		type="text"
+		class="pin-code-field"
+		#pinref5
+		(keyup)="written5($event)"
+		name="pinref5"
+		[(ngModel)]="inputs.pinref5"
+	/>
+
+	<input
+		maxlength="1"
+		type="text"
+		class="pin-code-field"
+		#pinref6
+		(keyup)="written6($event)"
+		name="pinref6"
+		[(ngModel)]="inputs.pinref6"
+	/>
+</form>

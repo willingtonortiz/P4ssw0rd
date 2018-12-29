@@ -8,6 +8,7 @@
 			alt=""
 		/>
 		<img
+			(click)="editPin()"
 			id="configuration"
 			width="25"
 			height="25"
@@ -17,17 +18,35 @@
 	</div>
 
 	<div id="addAccountContainer">
-		<button (click)="agregarCuenta()">
-			<img
-				width="20"
-				height="20"
-				src="../../assets/AddAcountIcon.svg"
-				alt=""
-			/>
-			Nueva cuenta
+		<button *ngIf="!eventAdd" (click)="toggleCreateAccount()">
+			<div id="subAddAccount">
+				<img
+					width="20"
+					height="20"
+					src="../../assets/AddAcountIcon.svg"
+					alt=""
+				/>
+				<p>Nueva Cuenta</p>
+			</div>
 		</button>
 
-		<page-agregar-cuenta *ngIf="eventAdd"></page-agregar-cuenta>
+		<button
+			[class.buttonHideNewAccount]="isCreateAccountShown"
+			*ngIf="isCreateAccountShown"
+			(click)="toggleCreateAccount()"
+		>
+			<img
+				width="15"
+				height="15"
+				src="../../assets/CancelarIconE.svg"
+				alt=""
+			/>
+		</button>
+
+		<create-account
+			*ngIf="isCreateAccountShown"
+			(onAccountCreated)="hideCreateAccount()"
+		></create-account>
 	</div>
 
 	<div id="myAccountsContainer">
@@ -42,17 +61,24 @@
 		</div>
 
 		<div
-			*ngFor="let cuenta of arrDtoAccount.accounts"
+			*ngFor="let cuenta of accountClassifier.accounts"
 			class="grid-container"
-			(click)="showAccounts(cuenta.first)"
 		>
-			<img
-				src="https://www.facebook.com/images/fb_icon_325x325.png"
-				alt=""
-			/>
-			<span>{{ cuenta.first }}</span>
-			<span>{{ cuenta.second.length }} cuentas</span>
+			<img class="img-account" src="../../assets/Bola5.svg" alt="" />
+			<div class="account">
+				<div id="info-account">
+					<span class="Cuenta-type">{{ cuenta.first }}</span>
+					<span class="Cuenta-length"
+						>{{ cuenta.second.length }} cuentas</span
+					>
+				</div>
+				<img
+					(click)="showAccounts(cuenta.first)"
+					class="mostrar-icon-btn"
+					src="../../assets/MostrarCuentaIcon.svg"
+					alt=""
+				/>
+			</div>
 		</div>
 	</div>
-
 </ion-content>

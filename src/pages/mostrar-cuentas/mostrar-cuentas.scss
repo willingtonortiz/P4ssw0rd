@@ -26,66 +26,113 @@
     #MC-Indicador {
         width: 100%;
         padding: 35px 0;
-        height: 20vh;
+        height: 10vh;
         display: flex;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
+        #MC-img {
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 36px !important;
+                height: 36px !important;
+            }
+        }
+        #MC-Descp {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            p {
+                color: map-get($colors, blanco-alto);
+                text-align: left;
+                font-family: map-get($fonts, OpenSans);
+            }
+            #MC-Sub1 {
+                font-size: 14px;
+                color: #e8e8e8;
+                margin-bottom: 5px;
+            }
+            #MC-Sub2 {
+                font-size: 10px;
+                color: #c3c3c3;
+            }
+        }
     }
     #slides-MC {
         width: 100%;
-        height: 70vh;
+        height: 80vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        #MC .pin-code-field {
+            width: 20px;
+            font-size: 12px;
+        }
+        #errorText {
+            margin-top: 10px;
+            color: #FF607A;
+            font-family: map-get($fonts, OpenSans);
+            font-size: 10px;
+        }
         #slideAccount {
-            #account-description {
-                font-family: map-get($fonts, OpenSans);
-                font-weight: 600;
-                color: #e8e8e8;
-                margin: 20px 0;
-                font-size: 20px;
-            }
-            .A-info {
-                margin: 2vh 0;
-                .A-info-1 {
-                    font-family: map-get($fonts, OpenSans);
-                    font-weight: 300;
-                    color: map-get($colors, verde);
+            #MC-Details {
+                #DA-Desc {
                     font-size: 12px;
-                }
-                .A-info-2 {
                     font-family: map-get($fonts, OpenSans);
-                    font-weight: 300;
-                    color: map-get($colors, blanco-medio);
-                    font-size: 14px;
+                    font-weight: 600;
+                    color: #fff;
+                }
+                #DA-btns {
+                    width: 80%;
+                    margin: 0 auto;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    button {
+                        background: none;
+                    }
+                }
+                .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+                .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+                    border-bottom-color: none !important;
+
+                    box-shadow:none !important;
+                }
+                .list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
+                .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
+					border-bottom-color: none !important;
+
+                    box-shadow:none !important;
                 }
             }
             #BtnEventsforAccount {
-				width: 100%;
-				margin-top: 8vh;
-				display: flex;
-				justify-content: space-around;
-				align-items: center;
+                width: 100%;
+                margin-top: 8vh;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
                 button {
-
                     background: transparent;
                     border: none;
                     img {
-                        width: 45px !important;
-                        height: 45px !important;
-                        background: rgba(255, 255, 255, .03);
-                        border-radius: 50%;
-                        padding: 15px;
+                        width: 35px !important;
+                        height: 35px !important;
+                        padding: 5px;
                     }
-                    font-family: map-get($fonts, Opensans);
-                    font-weight: 300;
-                    color: map-get($colors, blanco-medio);
-                    font-size: 10px;
-                }
-                #btn-mostrarAccount {
-                    position: relative;
-                    color: map-get($colors, verde);
                     p {
-                        margin: 10px 0;
-					}
-
+                        font-family: map-get($fonts, OpenSans);
+                        font-weight: 300;
+                        color: map-get($colors, blanco-alto);
+                        font-size: 10px;
+                    }
+                    .optionSelected {
+                        color: map-get($colors, verde) !important;
+                    }
                 }
             }
         }

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 import {
 	NavController,
 	NavParams,
@@ -9,19 +9,22 @@ import {
 } from "ionic-angular";
 import { EncryptorAccountProvider } from "../../providers/encryptor-account/encryptor-account";
 
-import { DTOCuenta } from "../../source/dtos/DTOCuenta";
-import { ArrDTOAccount } from "../../providers/ArrDTOAccount";
+import { DTOAccount } from "../../source/dtos/DTOAccount";
+import { AccountClassifier } from "../../providers/AccountClassifier";
 
 @Component({
-	selector: "page-agregar-cuenta",
-	templateUrl: "agregar-cuenta.html"
+	selector: "create-account",
+	templateUrl: "create-account.html"
 })
-export class AgregarCuentaPage {
+export class CreateAccountComponent {
 	private user: string;
 	private password: string;
 	private type: string;
 	private description: string;
 	private categories: string;
+	@Output("onAccountCreated") private onAccountCreated: EventEmitter<
+		void
+	> = new EventEmitter<void>();
 
 	public constructor(
 		public navCtrl: NavController,
@@ -29,7 +32,7 @@ export class AgregarCuentaPage {
 		private loadingController: LoadingController,
 		private alertController: AlertController,
 		private encryptorAccountProvider: EncryptorAccountProvider,
-		private arrDtoAccount: ArrDTOAccount
+		private AccountClassifier: AccountClassifier
 	) {
 		this.categories = "";
 	}
@@ -39,7 +42,7 @@ export class AgregarCuentaPage {
 
 		if (this.user !== "" && this.password !== "" && this.type !== "") {
 			// Se crea la nueva cuenta del usuario
-			let newAccount: DTOCuenta = new DTOCuenta(
+			let newAccount: DTOAccount = new DTOAccount(
 				undefined,
 				this.user,
 				this.password,
@@ -54,8 +57,16 @@ export class AgregarCuentaPage {
 				this.encryptorAccountProvider.insertAccount(newAccount);
 
 				// Se agrega la cuenta al arreglo de cuentas
-				this.arrDtoAccount.agregarCuenta(newAccount);
+				this.AccountClassifier.agregarCuenta(newAccount);
+
+				// Se le informa al padre que la cuenta fue añadida
+				this.onAccountCreated.emit();
 			});
+
+			// Se limpia el formulario
+			this.user = this.password = this.type = this.description = this.categories =
+				"";
+
 		} else {
 			// Secuencia de proceso fallido
 			this.encryptionProcess(false);

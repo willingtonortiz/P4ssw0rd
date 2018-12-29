@@ -1,35 +1,20 @@
 <ion-content id="pinContainer">
-
 	<div id="pinElements" padding>
 
 		<div id="logoPin" class="pinComponent">
-			<img src="../../assets/Logo.svg" alt="" width="100" height="100">
+			<img src="../../assets/Logo.svg" alt="" width="100" height="100" />
 			<p>P4ssw0rds</p>
 		</div>
 
-		<div id="pinInputsContainer">
-			<div id="label-pin">
-				<p>Ingrese su pin</p>
-			</div>
-			<div id="form-container-pin">
-				<input #pinref1 maxlength="1" (keyup)="focus2($event)" type="text" class="pin-code-field">
-				<input #pinref2 maxlength="1" (keyup)="focus3($event)" type="text" class="pin-code-field">
-				<input #pinref3 maxlength="1" (keyup)="focus4($event)" type="text" class="pin-code-field">
-				<input #pinref4 maxlength="1" (keyup)="focus5($event)" type="text" class="pin-code-field">
-				<input #pinref5 maxlength="1" (keyup)="focus6($event)" type="text" class="pin-code-field">
-				<input #pinref6 maxlength="1"  type="text" class="pin-code-field">
-			</div>
+		<verify-pin
+			[headerText]="'Ingrese su pin'"
+			(onWrittenEvent)="registerPin($event)"
+		></verify-pin>
 
-		</div>
-		<!-- <input (keyup)="asd($event)" type="text" maxlength="1">
-		<input #ref1 type="text" maxlength="1">
-		<input type="text" maxlength="1">
-		<input type="text" maxlength="1"> -->
-		<div id="btnPin" class="pinComponent">
-			<button (click)="registrarPin()">Ingresar</button>
-		</div>
+		<pass-button
+			[buttonText]="'Ingresar'"
+			(onButtonClick)="registerPin()"
+		></pass-button>
 
 	</div>
-
-
 </ion-content>

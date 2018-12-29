@@ -1,9 +1,5 @@
 import { Component } from "@angular/core";
-import {
-	NavController,
-	AlertController,
-	Alert
-} from "ionic-angular";
+import { NavController, AlertController, Alert } from "ionic-angular";
 import { EncryptorAccountProvider } from "../../providers/encryptor-account/encryptor-account";
 import { PinDAO } from "../../source/daos/PinDAO";
 
@@ -54,6 +50,7 @@ export class EditPinPage {
 			this.encryptorAccountProvider.modifyAccounts(this.pin);
 
 			// Seguir con la navegación
+			this.navCtrl.pop();
 		}
 	}
 }

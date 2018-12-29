@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Encryptor } from "../../source/Encriptacion/Encryptor/Encryptor";
-import { CuentaDAO } from "../../source/daos/CuentaDAO";
-import { DTOCuenta } from "../../source/dtos/DTOCuenta";
+import { AccountDAO } from "../../source/daos/AccountDAO";
+import { DTOAccount } from "../../source/dtos/DTOAccount";
 import { RotorPosicion } from "../../source/Encriptacion/Enigma/RotorPosicion";
 import { Enigma } from "../../source/Encriptacion/Enigma/Enigma";
 
@@ -11,45 +11,31 @@ import { AES } from '../../source/Encriptacion/AES/AES'
 export class EncryptorAccountProvider {
 	private encryptor: Encryptor;
 
-	constructor(private accountDAO: CuentaDAO) {
+	constructor(private accountDAO: AccountDAO) {
 		this.encryptor = new Encryptor();
 	}
 
-	public encryptAccount(item: DTOCuenta): DTOCuenta {
-		// return new DTOCuenta(
-		// 	item.idCuenta,
-		// 	this.encryptor.encrypt(item.email),
-		// 	this.encryptor.encrypt(item.password),
-		// 	item.description,
-		// 	item.type
-		// );
+	public encryptAccount(item: DTOAccount): DTOAccount {
 		item.email = this.encryptor.encrypt(item.email);
 		item.password = this.encryptor.encrypt(item.password);
 		return item;
 	}
 
-	public decryptAccount(item: DTOCuenta): DTOCuenta {
-		// return new DTOCuenta(
-		// 	item.idCuenta,
-		// 	this.encryptor.decrypt(item.email),
-		// 	this.encryptor.decrypt(item.password),
-		// 	item.description,
-		// 	item.type
-		// );
+	public decryptAccount(item: DTOAccount): DTOAccount {
 		item.email = this.encryptor.decrypt(item.email);
 		item.password = this.encryptor.decrypt(item.password);
 		return item;
 	}
 
-	public insertAccount(item: DTOCuenta): void {
+	public insertAccount(item: DTOAccount): void {
 		item = this.encryptAccount(item);
 		this.accountDAO.insert(item);
 	}
 
 	public modifyAccounts(pin: string): void {
-		this.accountDAO.getAll().then((data: Array<DTOCuenta>) => {
+		this.accountDAO.getAll().then((data: Array<DTOAccount>) => {
 			if (data) {
-				let accounts: Array<DTOCuenta> = data;
+				let accounts: Array<DTOAccount> = data;
 
 				// Se desencriptan todos los datos
 				for (let i = 0; i < accounts.length; ++i) {
@@ -65,12 +51,17 @@ export class EncryptorAccountProvider {
 					rotorPosition.transformar(pin)
 				);
 
+				AES.getInstancia(pin);
+
 				// Se reencriptan todos los datos
-				// for (let i = 0; i < accounts.length; ++i) {
-				// accounts[i] = this.encryptAccount(accounts[i]);
-				// accounts[i].showData();
-				// }
+				for (let i = 0; i < accounts.length; ++i) {
+					accounts[i] = this.encryptAccount(accounts[i]);
+				}
 			}
 		});
+	}
+
+	public deleteAccount(item: DTOAccount): void {
+		this.accountDAO.delete(item);
 	}
 }

@@ -1,48 +1,38 @@
 import { Component } from "@angular/core";
-import {
-	NavController,
-	AlertController,
-	LoadingController,
-	Alert
-} from "ionic-angular";
+import { NavController } from "ionic-angular";
 
-// Pages
-import { EditAccountPage } from "../edit-account/edit-account";
 import { MostrarCuentasPage } from "../mostrar-cuentas/mostrar-cuentas";
 
-// Daos
-import { PinDAO } from "../../source/daos/PinDAO";
-
-// Dtos
-import { DTOCuenta } from "../../source/dtos/DTOCuenta";
-
-// Services
-import { EncryptorAccountProvider } from "../../providers/encryptor-account/encryptor-account";
-import { CuentaDAO } from "../../source/daos/CuentaDAO";
-import { ArrDTOAccount } from "../../providers/ArrDTOAccount";
-import { Pair } from "../../source/dataEstructure/Pair";
+import { AccountClassifier } from "../../providers/AccountClassifier";
+import { EditPinPage } from "../edit-pin/edit-pin";
 
 @Component({
 	selector: "page-home",
 	templateUrl: "home.html"
 })
 export class HomePage {
-	// private accounts: Array<Pair> = null;
-	public eventAdd: boolean = false;
-	private buscando: boolean;
+	public isCreateAccountShown: boolean = false;
 
 	constructor(
 		public navCtrl: NavController,
-		private arrDtoAccount: ArrDTOAccount
+		private accountClassifier: AccountClassifier
 	) {}
 
-	private agregarCuenta(): void {
-		this.eventAdd = !this.eventAdd;
+	private toggleCreateAccount(): void {
+		this.isCreateAccountShown = !this.isCreateAccountShown;
+	}
+
+	private hideCreateAccount(): void {
+		this.isCreateAccountShown = false;
 	}
 
 	private showAccounts(tipo: string): void {
-		this.arrDtoAccount.setActual(tipo);
+		this.accountClassifier.setActual(tipo);
 		//this.tiposCuentas.buscarCategoria(tipo); esto es cuando se busca una categoria
 		this.navCtrl.push(MostrarCuentasPage);
+	}
+
+	private editPin(): void {
+		this.navCtrl.push(EditPinPage);
 	}
 }
