@@ -21,3 +21,6 @@
 	font-family: sans-serif;
 	outline: none;
 }
+body{
+	background: map-get($colors,principal);
+}

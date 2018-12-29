@@ -32,32 +32,48 @@ export class EncryptorAccountProvider {
 		this.accountDAO.insert(item);
 	}
 
-	public modifyAccounts(pin: string): void {
-		this.accountDAO.getAll().then((data: Array<DTOAccount>) => {
-			if (data) {
-				let accounts: Array<DTOAccount> = data;
+	public modifyAccounts(pin: string): Promise<void> {
+		return new Promise<void>((resolve, reject) => {
+			this.accountDAO.getAll().then((data: Array<DTOAccount>) => {
+				if (data) {
+					let accounts: Array<DTOAccount> = data;
 
-				// Se desencriptan todos los datos
-				for (let i = 0; i < accounts.length; ++i) {
-					accounts[i] = this.decryptAccount(accounts[i]);
-					accounts[i].showData();
+					// Se desencriptan todos los datos
+					for (let i = 0; i < accounts.length; ++i) {
+						accounts[i] = this.decryptAccount(accounts[i]);
+					}
+
+					RotorPosicion.setAumento(1);
+					let numero1: number = RotorPosicion.transformar(pin);
+					let numero2: number = RotorPosicion.transformar(pin);
+					let numero3: number = RotorPosicion.transformar(pin);
+
+					Enigma.getInstancia().setRotations(
+						numero1,
+						numero2,
+						numero3
+					);
+					AES.getInstancia(pin);
+
+					// Se reencriptan todos los datos con el nuevo pin
+					for (let i = 0; i < accounts.length; ++i) {
+						accounts[i] = this.encryptAccount(accounts[i]);
+					}
+
+					// Actualizar la base de datos
+					this.accountDAO.replaceAccounts(accounts);
 				}
+				resolve();
+			});
+		});
+	}
 
-				let rotorPosition = new RotorPosicion();
-				rotorPosition.setAumento(1);
-				Enigma.getInstancia().setRotations(
-					rotorPosition.transformar(pin),
-					rotorPosition.transformar(pin),
-					rotorPosition.transformar(pin)
-				);
-
-				AES.getInstancia(pin);
-
-				// Se reencriptan todos los datos
-				for (let i = 0; i < accounts.length; ++i) {
-					accounts[i] = this.encryptAccount(accounts[i]);
-				}
-			}
+	public updateAccount(item: DTOAccount): Promise<boolean> {
+		return new Promise<boolean>((resolve, reject) => {
+			item = this.encryptAccount(item);
+			this.accountDAO.update(item).then((data: boolean) => {
+				resolve(data);
+			});
 		});
 	}
 

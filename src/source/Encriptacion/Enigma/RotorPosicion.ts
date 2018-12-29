@@ -3,7 +3,7 @@ export class RotorPosicion {
 
 	constructor() {}
 
-	public transformar(pin: string): number {
+	public static transformar(pin: string): number {
 		let valor: number = 0;
 		for (let i = 0; i < pin.length; ++i) {
 			valor += pin.charCodeAt(i);
@@ -13,15 +13,15 @@ export class RotorPosicion {
 		return valor;
 	}
 
-	public transformarToArray(pin: string): Array<number> {
+	public static transformarToArray(pin: string): Array<number> {
 		return new Array<number>(
-			this.transformar(pin),
-			this.transformar(pin),
-			this.transformar(pin)
+			RotorPosicion.transformar(pin),
+			RotorPosicion.transformar(pin),
+			RotorPosicion.transformar(pin)
 		);
 	}
 
-	public setAumento(aumento: number): void {
+	public static setAumento(aumento: number): void {
 		RotorPosicion.aumento = aumento;
 	}
 }

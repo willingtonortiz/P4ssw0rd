@@ -7,18 +7,17 @@ export class AES {
 	private static instancia: AES = null;
 
 	public static getInstancia(
-		pin: string=""
+		pin: string = ""
 	): AES {
-		if (this.instancia === null) {
+		if (this.instancia === null)
 			this.instancia = new AES(pin);
-		}
+
 		return this.instancia;
 	}
 
 
 	constructor(pin: string) {
 		//texto no debe usar el caracter alfabeto[172]
-		console.log(pin);
 		this.inicializar();
 		this.llave = new Array<any>();
 		while (pin.length % 16 != 0)
@@ -69,9 +68,7 @@ export class AES {
 	}
 
 	public Encripatar(texto: string): string {
-		console.log(this.bloques);
 		this.inicializar();
-		console.log(this.bloques);
 		while (texto.length % 16 != 0)
 			texto += " ";
 		for (let i = 0; i < texto.length; i += 16) {
@@ -82,18 +79,22 @@ export class AES {
 				this.Encripatacion(this.bloques[i / 16], this.bloques[(i / 16) - 1]);
 			//this.imprimir(this.bloques[i / 16]);
 		}
-		console.log(this.bloques);
+		console.log(this);
 		return this.imprimirTexto();
 	}
 	public Desencriptar(texto: string): string {
 		this.inicializar();
 		//this.generarSubLlaves();
-		let temporal: Array<Array<number>> = this.constanteIV;
+		let temporal: Array<Array<number>> = new Array(4);
 		let temporal2: Array<Array<number>> = new Array(4);
 		let cont = 0;
 
-		for (let i = 0; i < 4; ++i)
+		for (let i = 0; i < 4; ++i) {
+			temporal[i] = new Array(4);
 			temporal2[i] = new Array(4);
+		}
+
+		this.copiar(temporal, this.constanteIV);
 
 		for (let i = 0; i < texto.length; i += 16) {
 			let add: number = this.convertir(texto, i);
@@ -103,11 +104,11 @@ export class AES {
 			i += add;
 			cont++;
 		}
+
 		return this.imprimirTexto();
 	}
 	private Encripatacion(bloque: Array<Array<number>>, bloque2: Array<Array<number>>) {
 		let iteracion: number = 0;
-		//this.generarSubLlaves();
 		this.CBS(bloque, bloque2);
 		this.addRoundKey(bloque, iteracion);
 
@@ -140,6 +141,7 @@ export class AES {
 				bloque[i][j] ^= bloque2[i][j];
 			}
 		}
+		console.log(bloque);
 	}
 	private imprimir(bloque: Array<Array<number>>) {
 		let texto: string = "";
@@ -286,7 +288,7 @@ export class AES {
 			let n2 = new Array(4);
 			let n3 = new Array(4);
 			let n4 = new Array(4);
-			var condicion;
+			let condicion;
 			for (let i = 0; i < 4; i++) {
 				n[i] = bloque[i][j];
 				condicion = bloque[i][j] >> 7;

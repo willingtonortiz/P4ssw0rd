@@ -1,14 +1,34 @@
-<ion-list>
+<ion-list id="EditAccountContainer" padding>
 	<ion-item class="inputs-newAccount">
 		<ion-label color="verde">></ion-label>
-		<ion-input
-			placeholder="usuario / correo"
-			[(ngModel)]="account.email"
-		></ion-input>
+		<ion-input placeholder="Descripcion" [(ngModel)]="account.description">
+		</ion-input>
+	</ion-item>
+	<ion-item class="inputs-newAccount">
+		<ion-label color="verde">></ion-label>
+		<ion-input placeholder="categoria" [(ngModel)]="account.categories">
+		</ion-input>
 	</ion-item>
 
 	<ion-item class="inputs-newAccount">
 		<ion-label color="verde">></ion-label>
-		<ion-input placeholder="password" [(ngModel)]="account.password"></ion-input>
+		<ion-input placeholder="tipo" [(ngModel)]="account.type"> </ion-input>
+	</ion-item>
+	<ion-item class="inputs-newAccount">
+		<ion-label color="verde">></ion-label>
+		<ion-input placeholder="usuario /correo" [(ngModel)]="account.email">
+		</ion-input>
+	</ion-item>
+
+	<ion-item class="inputs-newAccount">
+		<ion-label color="verde">></ion-label>
+		<ion-input placeholder="password" [(ngModel)]="account.password">
+		</ion-input>
 	</ion-item>
 </ion-list>
+<div id="EA-btn-options">
+	<button (click)="confirmChanges()" id="ConfirmEdit-Btn">
+		Confirmar cambios
+	</button>
+	<button (click)="cancelChanges()" id="CancelEdit-Btn">Cancelar</button>
+</div>

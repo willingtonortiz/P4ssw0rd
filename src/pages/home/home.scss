@@ -2,7 +2,38 @@
     width: 100%;
     height: 100vh;
     overflow: auto; //background: map-get($colors, principal);
-    background: #24242e;
+	background: #24242e;
+	position: relative;
+	#verify-pinContainer{
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform: translate(-50%,-50%);
+		#label-pin{
+			p{
+				margin: 20px 0;
+			}
+		}
+		#spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            p {
+                margin: 0 10px;
+                font-family: map-get($fonts, OpenSans);
+                font-weight: 300;
+                font-size: 12px;
+            }
+            ion-spinner * {
+                width: 28px;
+                height: 28px;
+                stroke: map-get($colors, verde);
+                fill: transparent;
+            }
+        }
+	}
+
     #headerContainer {
         width: 100%;
         padding: 10px 0;
@@ -93,17 +124,6 @@
 
 
 page-home {
-    // background-color: #2e3046;
-    // button{
-    // 	font-size: 3.5vh;
-    // 	color:#5CF3BC;
-    // 		text-shadow: 2px 2px 5px #5CF3BC;
-    // 	background: #2e3046;
-    // }
-    // h2,ion-icon{
-    // 	color: white;
-    // 	font-size: 3.5vh;
-    // }
     .grid-container {
         display: grid;
         grid-template-columns: 20% 75%;

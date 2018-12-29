@@ -2,17 +2,22 @@ import { Par } from "./Par";
 
 export class Rotor {
 	private longitud: number;
+	private claves: Par[];
+
+	// Guarda las rotaciones iniciarles del rotor
 	private rotaciones: number;
 	private indiceRotacion: number;
-	private claves: Par[];
 	private indice: number;
 
 	constructor(claves: Par[], indiceRotacion: number, rotaciones: number) {
+		// Datos del diccionario
 		this.claves = claves;
 		this.longitud = claves.length;
+
+		// Datos de los rotores
 		this.indiceRotacion = indiceRotacion;
-		this.rotaciones = rotaciones;
-		this.indice = rotaciones;
+		this.rotaciones = rotaciones % this.longitud;
+		this.indice = this.rotaciones;
 	}
 
 	// Rota el diccionario del rotor
@@ -25,6 +30,7 @@ export class Rotor {
 
 	public posClave(aumento: number): number {
 		let pos = (this.indice + aumento) % this.longitud;
+
 		pos = (this.claves[pos].clave.index - this.indice) % this.longitud;
 		if (pos < 0) pos += this.longitud;
 		return pos;
@@ -50,6 +56,6 @@ export class Rotor {
 
 	public setRotations(rotations: number): void {
 		this.rotaciones = rotations;
-		this.indice = rotations;
+		this.reiniciar();
 	}
 }

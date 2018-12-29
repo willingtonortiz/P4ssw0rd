@@ -1,10 +1,9 @@
-import { Alfabeto } from "../Alfabeto/Alfabeto";
 import { Rotor } from "./Rotor";
 import { Reflector } from "./Reflector";
 import { EnigmaAlfabeto } from "./EnigmaAlfabeto";
-import { IEncryptor } from "../../Interfaces/IEncryptor";
+import { Alfabeto } from "../Alfabeto/Alfabeto";
 
-export class Enigma implements IEncryptor {
+export class Enigma {
 	// Singleton
 	private static instancia: Enigma = null;
 
@@ -110,13 +109,13 @@ export class Enigma implements IEncryptor {
 	}
 
 	public setRotations(
-		rotacionesIII: number,
+		rotacionesI: number,
 		rotacionesII: number,
-		rotacionesI: number
+		rotacionesIII: number
 	): void {
 		this.rotorI.setRotations(rotacionesI);
 		this.rotorII.setRotations(rotacionesII);
-		this.rotorIII.setRotations(rotacionesII);
+		this.rotorIII.setRotations(rotacionesIII);
 	}
 
 	public encrypt(text: string): string {

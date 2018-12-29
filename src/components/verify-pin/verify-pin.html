@@ -1,11 +1,21 @@
-<div>
-	<div id="label-pin">
-		<p>{{ headerText }}</p>
+<div id="verify-pinContainer">
+
+	<div id="spinner-container" *ngIf="waitForPinConfirmation">
+		<ion-spinner name="crescent"></ion-spinner>
+		<p> Verificando Pin</p>
 	</div>
 
-	<pin-input (onWritten)="onWritten($event)"></pin-input>
+	<div *ngIf="!waitForPinConfirmation">
+		<div id="label-pin">
+			<p>{{ headerText }}</p>
+		</div>
 
-	<div>
-		<p id="errorText">{{ errorText }}</p>
+		<pin-input (onWritten)="onWritten($event)"></pin-input>
+
+		<div>
+			<p id="errorText">{{ errorText }}</p>
+		</div>
+
 	</div>
+
 </div>

@@ -150,4 +150,10 @@ export class AccountManagerProvider {
 		// this.isPinShown = false;
 		this.hidePin();
 	}
+
+	public nothingSelected(): void {
+		this.isAccountShowing = true;
+		this.isAccountDeleting = false;
+		this.isAccountEditing = false;
+	}
 }

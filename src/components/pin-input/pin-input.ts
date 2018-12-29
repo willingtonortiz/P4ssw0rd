@@ -119,7 +119,7 @@ export class PinInputComponent {
 		}
 	}
 
-	private cleanInputs(): void {
+	public cleanInputs(): void {
 		this.inputs.pinref1 = "";
 		this.inputs.pinref2 = "";
 		this.inputs.pinref3 = "";

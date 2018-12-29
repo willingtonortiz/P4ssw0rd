@@ -12,10 +12,15 @@ export class AccountClassifier {
 	private actual: Pair<string, Array<DTOAccount>> = null;
 
 	constructor(private accountDAO: AccountDAO) {
+		this.getAccounts();
+	}
+
+	public getAccounts(): void {
+		this.accounts = null;
 		this.accounts = new Array<Pair<string, Array<DTOAccount>>>();
 
 		// Obtiene todas las cuentas de la base de datos y las clasifica
-		accountDAO.getAll().then((data: Array<DTOAccount>) => {
+		this.accountDAO.getAll().then((data: Array<DTOAccount>) => {
 			if (data) {
 				data.forEach(account => {
 					this.agregarCuenta(account);

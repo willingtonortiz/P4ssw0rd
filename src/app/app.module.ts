@@ -11,7 +11,6 @@ import { MyApp } from "./app.component";
 // Pages
 import { HomePage } from "../pages/home/home";
 import { PinPage } from "../pages/pin/pin";
-import { EditAccountPage } from "../pages/edit-account/edit-account";
 import { EditPinPage } from "../pages/edit-pin/edit-pin";
 import { MostrarCuentasPage } from "../pages/mostrar-cuentas/mostrar-cuentas";
 
@@ -23,6 +22,8 @@ import { EncryptorAccountProvider } from "../providers/encryptor-account/encrypt
 import { AccountDAO } from "../source/daos/AccountDAO";
 import { PinDAO } from "../source/daos/PinDAO";
 import { AccountClassifier } from "../providers/AccountClassifier";
+import { ArrAccountProvider } from "../providers/arr-account/arr-account";
+import { AccountManagerProvider } from "../providers/account-manager/account-manager";
 
 // Components
 import { PassButtonComponent } from "../components/pass-button/pass-button";
@@ -30,9 +31,7 @@ import { CreateAccountComponent } from "../components/create-account/create-acco
 import { VerifyPinComponent } from "../components/verify-pin/verify-pin";
 import { PinInputComponent } from "../components/pin-input/pin-input";
 import { ShowAccountComponent } from "../components/show-account/show-account";
-import { AccountManagerProvider } from "../providers/account-manager/account-manager";
 import { DeleteAccountComponent } from "../components/delete-account/delete-account";
-import { ArrAccountProvider } from "../providers/arr-account/arr-account";
 
 @NgModule({
 	declarations: [
@@ -40,7 +39,6 @@ import { ArrAccountProvider } from "../providers/arr-account/arr-account";
 		// Pages
 		HomePage,
 		PinPage,
-		EditAccountPage,
 		EditPinPage,
 		MostrarCuentasPage,
 
@@ -63,7 +61,6 @@ import { ArrAccountProvider } from "../providers/arr-account/arr-account";
 		MyApp,
 		HomePage,
 		PinPage,
-		EditAccountPage,
 		EditPinPage,
 		MostrarCuentasPage
 	],
