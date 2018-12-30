@@ -79,12 +79,10 @@ export class AES {
 				this.Encripatacion(this.bloques[i / 16], this.bloques[(i / 16) - 1]);
 			//this.imprimir(this.bloques[i / 16]);
 		}
-		console.log(this);
 		return this.imprimirTexto();
 	}
 	public Desencriptar(texto: string): string {
 		this.inicializar();
-		//this.generarSubLlaves();
 		let temporal: Array<Array<number>> = new Array(4);
 		let temporal2: Array<Array<number>> = new Array(4);
 		let cont = 0;

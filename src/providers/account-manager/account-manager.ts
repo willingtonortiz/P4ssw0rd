@@ -94,7 +94,7 @@ export class AccountManagerProvider {
 	}
 
 	// Verifica si había una cuenta desencriptada y la encripta en dicho caso
-	private checkRevealedAccount(): void {
+	public checkRevealedAccount(): void {
 		// Si la cuenta actual estaba revelada
 		if (this.isAccountRevealed) {
 			// Se reencripta

@@ -103,6 +103,7 @@ export class MostrarCuentasPage {
 	}
 
 	private goBack(): void {
+		this.accountManager.checkRevealedAccount();
 		this.accountManager.restartService();
 		this.navController.pop();
 	}
