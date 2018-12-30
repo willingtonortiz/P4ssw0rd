@@ -1,4 +1,3 @@
-import { EditAccountComponent } from "./../components/edit-account/edit-account";
 import { BrowserModule } from "@angular/platform-browser";
 import { ErrorHandler, NgModule } from "@angular/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
@@ -26,12 +25,7 @@ import { ArrAccountProvider } from "../providers/arr-account/arr-account";
 import { AccountManagerProvider } from "../providers/account-manager/account-manager";
 
 // Components
-import { PassButtonComponent } from "../components/pass-button/pass-button";
-import { CreateAccountComponent } from "../components/create-account/create-account";
-import { VerifyPinComponent } from "../components/verify-pin/verify-pin";
-import { PinInputComponent } from "../components/pin-input/pin-input";
-import { ShowAccountComponent } from "../components/show-account/show-account";
-import { DeleteAccountComponent } from "../components/delete-account/delete-account";
+import { ComponentsModule } from "../components/components.module";
 
 @NgModule({
 	declarations: [
@@ -40,21 +34,13 @@ import { DeleteAccountComponent } from "../components/delete-account/delete-acco
 		HomePage,
 		PinPage,
 		EditPinPage,
-		MostrarCuentasPage,
-
-		// Components
-		PassButtonComponent,
-		CreateAccountComponent,
-		VerifyPinComponent,
-		PinInputComponent,
-		ShowAccountComponent,
-		EditAccountComponent,
-		DeleteAccountComponent
+		MostrarCuentasPage
 	],
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
-		IonicStorageModule.forRoot()
+		IonicStorageModule.forRoot(),
+		ComponentsModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [

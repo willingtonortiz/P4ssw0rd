@@ -8,6 +8,7 @@ import { EditAccountComponent } from "./edit-account/edit-account";
 import { RevealAccountComponent } from "./reveal-account/reveal-account";
 import { DeleteAccountComponent } from "./delete-account/delete-account";
 import { ShowAccountComponent } from "./show-account/show-account";
+import { IonicModule } from "ionic-angular";
 
 @NgModule({
 	declarations: [
@@ -21,7 +22,7 @@ import { ShowAccountComponent } from "./show-account/show-account";
 		ShowAccountComponent,
 		DeleteAccountComponent
 	],
-	imports: [FormsModule],
+	imports: [FormsModule, IonicModule],
 	exports: [
 		PassButtonComponent,
 		CreateAccountComponent,
