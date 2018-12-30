@@ -48,15 +48,19 @@ export class AccountClassifier {
 	}
 
 	// Elimina una cuenta del arreglo
-	public deleteAccount(account: DTOAccount): void {
+	public deleteAccount(account: DTOAccount): boolean {
 		for (let i: number = 0; i < this.actual.second.length; ++i) {
 			if (this.actual.second[i].idCuenta === account.idCuenta) {
 				this.actual.second.splice(i, 1);
-				if (this.actual.second.length == 0)
-				this.accounts.splice(this.accounts.indexOf(this.actual), 1);
+
+				if (this.actual.second.length == 0) {
+					this.accounts.splice(this.accounts.indexOf(this.actual), 1);
+					return true;
+				}
 				break;
 			}
 		}
+		return false;
 	}
 
 	private buscarTipo(tipo: string): Pair<string, Array<DTOAccount>> {

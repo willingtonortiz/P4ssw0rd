@@ -138,8 +138,7 @@ export class AES {
 			for (let j = 0; j < 4; ++j) {
 				bloque[i][j] ^= bloque2[i][j];
 			}
-		}
-		console.log(bloque);
+		};
 	}
 	private imprimir(bloque: Array<Array<number>>) {
 		let texto: string = "";
