@@ -8,6 +8,7 @@ import { EditPinPage } from "../edit-pin/edit-pin";
 import { Enigma } from "../../source/Encriptacion/Enigma/Enigma";
 import { PinDAO } from "../../source/daos/PinDAO";
 import { RotorPosicion } from "../../source/Encriptacion/Enigma/RotorPosicion";
+import { AES } from "../../source/Encriptacion/AES/AES";
 
 @Component({
 	selector: "page-home",
@@ -29,6 +30,7 @@ export class HomePage {
 			let numero3: number = RotorPosicion.transformar(pin);
 
 			Enigma.getInstancia(numero1, numero2, numero3);
+			AES.getInstancia(pin);
 		});
 	}
 

@@ -5,6 +5,8 @@ import { DTOAccount } from "../../source/dtos/DTOAccount";
 import { RotorPosicion } from "../../source/Encriptacion/Enigma/RotorPosicion";
 import { Enigma } from "../../source/Encriptacion/Enigma/Enigma";
 
+import { AES } from '../../source/Encriptacion/AES/AES'
+
 @Injectable()
 export class EncryptorAccountProvider {
 	private encryptor: Encryptor;
@@ -51,6 +53,7 @@ export class EncryptorAccountProvider {
 						numero2,
 						numero3
 					);
+					AES.getInstancia(pin);
 
 					// Se reencriptan todos los datos con el nuevo pin
 					for (let i = 0; i < accounts.length; ++i) {

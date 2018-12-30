@@ -99,9 +99,11 @@ export class MostrarCuentasPage {
 			this.optionTaked = "delete";
 		}
 		this.accountManager.setOption("delete");
+
 	}
 
 	private goBack(): void {
+		this.accountManager.checkRevealedAccount();
 		this.accountManager.restartService();
 		this.navController.pop();
 	}

@@ -17,10 +17,12 @@
 		/>
 		<!-- La imagen debe ser cambiada por una 'X' -->
 	</div>
-
-	<verify-pin
-		[headerText]="headerText"
-		[waitForPinConfirmation]="waitForPinConfirmation"
-		(onWrittenEvent)="onPinWritten($event)"
-	></verify-pin>
+	<div id="editPin-VerifyContainer">
+		<img src="../../assets/EditarPinIcon.svg" width="80" height="80" alt="">
+		<verify-pin
+			[headerText]="headerText"
+			[waitForPinConfirmation]="waitForPinConfirmation"
+			(onWrittenEvent)="onPinWritten($event)"
+		></verify-pin>
+	</div>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { DTOAccount } from "../../source/dtos/DTOAccount";
 import { EncryptorAccountProvider } from "../encryptor-account/encryptor-account";
+import { PinDAO } from "../../source/daos/PinDAO";
 
 @Injectable()
 export class AccountManagerProvider {
@@ -17,7 +18,8 @@ export class AccountManagerProvider {
 	// Manejo de opciones (reveal, edit, delete)
 	private currentOption: string = "nothing";
 
-	constructor(private encryptorAccount: EncryptorAccountProvider) {}
+	constructor(private encryptorAccount: EncryptorAccountProvider,
+		) {}
 
 	public restartService(): void {
 		this.isAccountRevealed = false;
@@ -92,7 +94,7 @@ export class AccountManagerProvider {
 	}
 
 	// Verifica si había una cuenta desencriptada y la encripta en dicho caso
-	private checkRevealedAccount(): void {
+	public checkRevealedAccount(): void {
 		// Si la cuenta actual estaba revelada
 		if (this.isAccountRevealed) {
 			// Se reencripta
